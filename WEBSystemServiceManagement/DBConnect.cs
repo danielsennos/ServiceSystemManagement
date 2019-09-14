@@ -30,7 +30,7 @@ namespace WEBSystemServiceManagement
         }
         public string Consultar(String ConsultarSql)
         {
-            String Result;
+            String Result = null;
            
                 conexao = new MySqlConnection(PATH);
                 conexao.Open();
@@ -41,7 +41,11 @@ namespace WEBSystemServiceManagement
                 MySqlDataReader dr;
                 dr = comandos.ExecuteReader();
                 dr.Read();
+
+            if (dr.HasRows)
+            {
                 Result = dr.GetString(0);
+            }              
 
 
                 conexao.Close(); 

@@ -42,11 +42,11 @@ namespace WEBSystemServiceManagement
 
             if(access == true)
             {
-                //chamar tela de exibiçãodechamados
+                Response.Redirect("~/UserInterface/ExibirChamados", true);
             }
             else
             {
-                //por um aviso de senha inválida
+                throw new Exception("Senha inválida");
             }
         }
 

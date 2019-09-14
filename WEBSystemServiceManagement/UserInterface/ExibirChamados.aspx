@@ -7,6 +7,14 @@
     <title></title>
 </head>
 <body>
+    <grid ID="GridView1" runat="server">
+
+
+    </grid>
+
+
+
+
     <form id="form2" runat="server">
         CHAMADOS
         <div>
