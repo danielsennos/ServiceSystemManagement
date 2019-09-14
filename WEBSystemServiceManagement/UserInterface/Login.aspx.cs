@@ -23,12 +23,34 @@ namespace WEBSystemServiceManagement
         {
             LoginModel pModel = new LoginModel();
             LoginController LoginControl = new LoginController();
+            bool access;
 
             pModel.LoginName = LoginUser.Value;
             pModel.password = SenhaLogin.Value;
-            LoginControl.GrantAccess(pModel);
 
+            if (pModel.LoginName == "")
+            {
+                throw new Exception("Favor digitar o usuário.");
+            } else if (pModel.password == "")
+            {
+                throw new Exception("Favor digitar a senha.");
+            }
+            else
+            {
+              access = LoginControl.GrantAccess(pModel);
+            }
+
+            if(access == true)
+            {
+                //chamar tela de exibiçãodechamados
+            }
+            else
+            {
+                //por um aviso de senha inválida
+            }
         }
+
+
 
         
         

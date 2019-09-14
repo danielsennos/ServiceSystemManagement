@@ -9,14 +9,14 @@ namespace WEBSystemServiceManagement
 {
     public partial class ExibirChamados : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        public void aloha(object sender, EventArgs e)
+        public void IniciaTela(object sender, EventArgs e)
         {
-            
+            Page_Load(sender, e);
         }
     }
 }
