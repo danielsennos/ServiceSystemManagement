@@ -10,15 +10,15 @@
 namespace WEBSystemServiceManagement {
     
     
-    public partial class ExibirChamados {
+    public partial class CriarNovoChamado {
         
         /// <summary>
-        /// GridView1 control.
+        /// CriarNovoChamadoForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GridView1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm CriarNovoChamadoForm;
     }
 }

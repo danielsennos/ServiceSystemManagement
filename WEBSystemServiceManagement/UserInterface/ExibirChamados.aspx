@@ -6,6 +6,10 @@
 <head runat="server">
     <title></title>
 </head>
+                        <li><a runat="server" href="~/UserInterface/CriarNovoChamado">Criar Nova Solicitação</a></li>
+                        <li><a runat="server" href="#">Relatórios</a></li>
+                        <li><a runat="server" href="#">Pesquisar</a></li>
+                        <li><a runat="server" href="#">Admin</a></li>
 <body>
     <grid ID="GridView1" runat="server">
 
@@ -15,10 +19,6 @@
 
 
 
-    <form id="form2" runat="server">
-        CHAMADOS
-        <div>
-        </div>
-    </form>
+
 </body>
 </html>
