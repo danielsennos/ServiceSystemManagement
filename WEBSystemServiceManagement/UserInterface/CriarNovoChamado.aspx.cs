@@ -13,5 +13,10 @@ namespace WEBSystemServiceManagement
         {
 
         }
+
+        protected void ClienteList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
