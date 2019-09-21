@@ -13,93 +13,66 @@ namespace WEBSystemServiceManagement {
     public partial class CriarNovoChamado {
         
         /// <summary>
-        /// CriarNovoChamadoForm control.
+        /// FormCriarNovo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm CriarNovoChamadoForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm FormCriarNovo;
         
         /// <summary>
-        /// NumChamado control.
+        /// NumSolicitacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText NumChamado;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText NumSolicitacao;
         
         /// <summary>
-        /// InserirAnotacaoBtn control.
+        /// Text1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputSubmit InserirAnotacaoBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
         
         /// <summary>
-        /// ClienteList control.
+        /// Cliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ClienteList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Cliente;
         
         /// <summary>
-        /// RequisitanteList control.
+        /// Requisitante control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList RequisitanteList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Requisitante;
         
         /// <summary>
-        /// CategoriaList control.
+        /// Categoria control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CategoriaList;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Categoria;
         
         /// <summary>
-        /// UrgenciaList control.
+        /// Urgência control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList UrgenciaList;
-        
-        /// <summary>
-        /// GrupoList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList GrupoList;
-        
-        /// <summary>
-        /// DropDownList2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList2;
-        
-        /// <summary>
-        /// SalvarChamadoBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SalvarChamadoBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Urgência;
     }
 }
