@@ -67,12 +67,21 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Categoria;
         
         /// <summary>
-        /// Urgência control.
+        /// GrupoDesignado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Urgência;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText GrupoDesignado;
+        
+        /// <summary>
+        /// Designado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Designado;
     }
 }

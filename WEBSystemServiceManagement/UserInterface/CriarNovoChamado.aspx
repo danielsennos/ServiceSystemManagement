@@ -33,37 +33,50 @@
         </div>
         <!--FIM DO MENU LATERAL-->
         <div class="BodyContent-Center">
+
             <form id="FormCriarNovo" runat="server">
-                Número da Solicitação:
+                <div class="ColumFixedLeft">
+                    Número da Solicitação:
                 <input id="NumSolicitacao" class="InputDefault" runat="server" type="text" readonly />
 
-                Anotações de Trabalho:
+                    Anotações de Trabalho:
                 <input id="Text1" class="InputDefault" runat="server" type="text" />
 
-                <br />
-                Cliente:
+                    <br />
+                    Cliente:
             <input id="Cliente" class="InputDefault" runat="server" type="text" />
 
-                <br />
-                Requisitante:
+                    <br />
+                    Requisitante:
                 <input id="Requisitante" class="InputDefault" runat="server" type="text" />
 
-                <br />
-                Categoria:
+                    <br />
+                    Categoria:
               <input id="Categoria" class="InputDefault" runat="server" type="text" />
 
-                <br />
-                Resumo:
+                    <br />
+                    Resumo:
               <textarea id="Resumo" cols="40" rows="10" style="border-radius: 5px"></textarea>
 
-                Urgência:
-              <input id="Urgência" class="InputDefault" runat="server" type="text" />
+                    Urgência:
+               <select id="Urgencia" class="InputDefault">
+                   <option value="Baixa">Baixa</option>
+                   <option value="Média">Média</option>
+                   <option value="Alta">Alta</option>
+                   <option value="Crítica">Crítica</option>
+               </select>
 
+                    Grupo Designado:
+              <input id="GrupoDesignado" class="InputDefault" runat="server" type="text" />
 
+                    Designado:
+              <input id="Designado" class="InputDefault" runat="server" type="text" />
+                </div>
 
-
-
+                
             </form>
+
         </div>
+    </div>
 </body>
 </html>
