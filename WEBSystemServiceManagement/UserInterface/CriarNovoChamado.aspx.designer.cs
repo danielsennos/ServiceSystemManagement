@@ -22,22 +22,13 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.HtmlControls.HtmlForm FormCriarNovo;
         
         /// <summary>
-        /// NumSolicitacao control.
+        /// num_chamado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText NumSolicitacao;
-        
-        /// <summary>
-        /// Text1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Text1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText num_chamado;
         
         /// <summary>
         /// Cliente control.
@@ -67,6 +58,24 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Categoria;
         
         /// <summary>
+        /// Resumo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea Resumo;
+        
+        /// <summary>
+        /// Urgencia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect Urgencia;
+        
+        /// <summary>
         /// GrupoDesignado control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,23 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText Designado;
+        
+        /// <summary>
+        /// Anotacoes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText Anotacoes;
+        
+        /// <summary>
+        /// Salvar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Salvar;
     }
 }

@@ -16,7 +16,18 @@ namespace WEBSystemServiceManagement
 
         protected void SalvarChamado(object sender, EventArgs e)
         {
+            ChamadoModel mChamado = new ChamadoModel();
 
+            mChamado.num_chamado = num_chamado.Value;
+            mChamado.cliente = Cliente.Value;
+            mChamado.requisitante = Requisitante.Value;
+            mChamado.categoria = Categoria.Value;
+            mChamado.resumo_chamado = Resumo.Value;
+            mChamado.urgencia = Urgencia.Value;
+            mChamado.grupo_designado = GrupoDesignado.Value;
+            mChamado.anotacao = Anotacoes.Value;
+
+            
         }
     }
 }

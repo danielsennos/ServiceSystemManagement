@@ -173,6 +173,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BussinessLogicLayer\CriarNovoChamadoController.cs" />
     <Compile Include="BussinessLogicLayer\LoginController.cs" />
     <Compile Include="Model\ChamadoModel.cs" />
     <Compile Include="Model\Relatorios.cs" />

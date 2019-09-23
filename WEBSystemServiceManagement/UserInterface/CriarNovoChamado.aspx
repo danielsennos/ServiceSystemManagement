@@ -37,10 +37,7 @@
             <form id="FormCriarNovo" runat="server">
                 <div class="ColumFixedLeft">
                     Número da Solicitação:
-                <input id="NumSolicitacao" class="InputDefault" runat="server" type="text" readonly />
-
-                    Anotações de Trabalho:
-                <input id="Text1" class="InputDefault" runat="server" type="text" />
+                <input id="num_chamado" class="InputDefault" runat="server" type="text" readonly />
 
                     <br />
                     Cliente:
@@ -56,10 +53,10 @@
 
                     <br />
                     Resumo:
-              <textarea id="Resumo" cols="40" rows="10" style="border-radius: 5px"></textarea>
+              <textarea id="Resumo" cols="40" runat="server" rows="10" style="border-radius: 5px"></textarea>
 
                     Urgência:
-               <select id="Urgencia" class="InputDefault">
+               <select id="Urgencia" name="Urgencia" runat="server" class="InputDefault">
                    <option value="Baixa">Baixa</option>
                    <option value="Média">Média</option>
                    <option value="Alta">Alta</option>
@@ -71,10 +68,16 @@
 
                     Designado:
               <input id="Designado" class="InputDefault" runat="server" type="text" />
-                </div>
-
                 
-            </form>
+                  Anotações de Trabalho:
+              <input id="Anotacoes" class="InputDefault" runat="server" type="text" />
+                                 
+                    
+                    <asp:Button ID="Salvar" runat="server" Text="Salvar" OnClick="SalvarChamado" />
+
+                    </div>
+                    
+                    </form>
 
         </div>
     </div>
