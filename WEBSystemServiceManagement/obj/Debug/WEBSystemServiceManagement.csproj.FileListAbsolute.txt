@@ -74,8 +74,6 @@ C:\Users\Daniel\source\repos\WEBSystemServiceManagement\obj\Debug\WEBSystemServi
 C:\Users\Daniel\source\repos\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.dll
 C:\Users\Daniel\source\repos\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.pdb
 C:\Users\Daniel\source\repos\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csprojAssemblyReference.cache
-C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csprojAssemblyReference.cache
-C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csproj.CoreCompileInputs.cache
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\bin\WEBSystemServiceManagement.dll.config
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\bin\WEBSystemServiceManagement.dll
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\bin\WEBSystemServiceManagement.pdb
@@ -147,6 +145,8 @@ C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagem
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\bin\Antlr3.Runtime.pdb
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csprojAssemblyReference.cache
+C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csproj.CoreCompileInputs.cache
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csproj.CopyComplete
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.dll
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.pdb

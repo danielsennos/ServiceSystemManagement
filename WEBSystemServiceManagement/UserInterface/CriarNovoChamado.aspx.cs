@@ -27,6 +27,11 @@ namespace WEBSystemServiceManagement
             mChamado.grupo_designado = GrupoDesignado.Value;
             mChamado.anotacao = Anotacoes.Value;
 
+            CriarNovoChamadoController ChamadoController = new CriarNovoChamadoController();
+            ChamadoController.SalvarChamado(mChamado);
+
+
+
             
         }
     }
