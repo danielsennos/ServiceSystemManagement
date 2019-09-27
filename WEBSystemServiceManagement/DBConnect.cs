@@ -9,7 +9,8 @@ namespace WEBSystemServiceManagement
     public class DBConnect
     {
         private MySqlConnection conexao;
-        string PATH = "SERVER=localhost;DATABASE=dbssm; UID=root;PASSWORD=";        
+        //string PATH = "SERVER=localhost;DATABASE=dbssm; UID=root;PASSWORD=";
+        string PATH = "SERVER=den1.mysql4.gear.host;DATABASE=dbssm; UID=dbssm;PASSWORD=Pm6Qup1~_5c8";
 
         public void Inserir(String InsertSql)
         {
