@@ -28,7 +28,7 @@
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Titulog</h2>
+            <h2>Titulo 3</h2>
             <p>
                 [Escreva aqui o conteúdo]
             </p>
