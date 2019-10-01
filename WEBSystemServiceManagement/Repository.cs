@@ -62,11 +62,14 @@ namespace WEBSystemServiceManagement
 
         public void Categorias(String SQLQuery)
         {
+
             SQLQuery = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
 
-            using (var conn = new MySqlConnection("SERVER=den1.mysql4.gear.host;DATABASE=dbssm; UID=dbssm;PASSWORD=Pm6Qup1~_5c8")) { 
-            // conexao = new MySqlConnection(PATH);
-            // conexao.Open();
+            List< Categorias > CategoriaList = new List<Categorias>();
+            CategoriaChamados pModel = new CategoriaChamados();
+
+
+            using (var conn = new MySqlConnection(PATH)) { 
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
             adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
@@ -75,7 +78,9 @@ namespace WEBSystemServiceManagement
 
             foreach(DataRow linha in dataset.Tables[0].Rows)
                 {
+                    pModel.CategoriaS = Convert.ToString(linha["categoria"]);
 
+                    CategoriaList.Add(pModel);
                 }
 
 
