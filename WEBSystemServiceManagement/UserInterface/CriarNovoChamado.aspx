@@ -75,6 +75,9 @@
                     
                     <asp:Button ID="Salvar" runat="server" Text="Salvar" OnClick="SalvarChamado" />
 
+                    <br/>
+                    teste de load:
+                    <asp:DropDownList ID="categoriateste" runat="server" OnLoad="CarregaCategoria"></asp:DropDownList>
                     </div>
                     
                     </form>

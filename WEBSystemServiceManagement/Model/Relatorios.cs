@@ -7,6 +7,7 @@ namespace WEBSystemServiceManagement
 {
     public class Relatorios
     {
-       public String Resultado { get; set; }
+        public String Resultado { get; set; }
     }
+
 }

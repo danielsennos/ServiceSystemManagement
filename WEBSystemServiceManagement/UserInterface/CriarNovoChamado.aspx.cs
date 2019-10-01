@@ -11,7 +11,7 @@ namespace WEBSystemServiceManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void SalvarChamado(object sender, EventArgs e)
@@ -32,7 +32,21 @@ namespace WEBSystemServiceManagement
 
 
 
-            
         }
+
+        public void CarregaCategoria(object sender, EventArgs e)
+        {
+            Repository SQLConnect = new Repository();
+            String query = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
+            Relatorios Rel = new Relatorios();
+
+            SQLConnect.Categorias(query);
+            //Rel.ResultadoLista = SQLConnect.ResultList(query);
+
+            
+
+        }
+
+
     }
 }

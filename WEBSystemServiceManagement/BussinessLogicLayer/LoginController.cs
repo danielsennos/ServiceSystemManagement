@@ -8,7 +8,7 @@ namespace WEBSystemServiceManagement
 {
     public class LoginController
     {
-        DBConnect SQLConnect = new DBConnect();
+        Repository SQLConnect = new Repository();
         Relatorios pRelatorios = new Relatorios();
 
         public bool GrantAccess(LoginModel pModel)
@@ -32,7 +32,7 @@ namespace WEBSystemServiceManagement
                         FROM USUARIOS 
                         where SENHA = '{1}'",
                         "USUARIOS",
-                    pModel.password);
+                    pModel.LoginName);
 
                 pRelatorios.Resultado = SQLConnect.Consultar(query);
             }
