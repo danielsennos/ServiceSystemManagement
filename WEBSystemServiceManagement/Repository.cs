@@ -77,11 +77,11 @@ namespace WEBSystemServiceManagement
             adapter.Fill(dataset);
 
             foreach(DataRow linha in dataset.Tables[0].Rows)
-                {
+               /* {
                     pModel.CategoriaS = Convert.ToString(linha["categoria"]);
 
-                    CategoriaList.Add(pModel);
-                }
+                    CategoriaList.Add();
+                }*/
 
 
         }
