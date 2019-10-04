@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -60,35 +61,49 @@ namespace WEBSystemServiceManagement
 
 
 
-        public void Categorias(String SQLQuery)
+        public ArrayList Categorias(String SQLQuery)
         {
 
             SQLQuery = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
 
+            ArrayList lista = new ArrayList();
             List< Categorias > CategoriaList = new List<Categorias>();
             CategoriaChamados pModel = new CategoriaChamados();
 
+            DataTable data = new DataTable("tabela");
+            using (var conn = new MySqlConnection(PATH))
+            {
 
-            using (var conn = new MySqlConnection(PATH)) { 
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                DataSet dataset = new DataSet();
+                adapter.Fill(dataset);
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter();
-            adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-            DataSet dataset = new DataSet();
-            adapter.Fill(dataset);
+                /*foreach(DataRow linha in dataset.Tables[0].Rows)
+                   {
+                        pModel.CategoriaS = Convert.ToString(linha["categoria"]);
 
-            foreach(DataRow linha in dataset.Tables[0].Rows)
-               /* {
-                    pModel.CategoriaS = Convert.ToString(linha["categoria"]);
+                        CategoriaList.Add();                    }*/
 
-                    CategoriaList.Add();
-                }*/
+                
+                foreach (DataRow dtrow in dataset.Tables[0].Rows)
+                {
+                    lista.Add(dtrow);
+                }
 
 
+
+
+
+                }
+
+                return lista;
         }
 
-        }
 
-       
+
+
+
     } 
 
 }

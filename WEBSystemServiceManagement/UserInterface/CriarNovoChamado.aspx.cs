@@ -36,14 +36,23 @@ namespace WEBSystemServiceManagement
 
         public void CarregaCategoria(object sender, EventArgs e)
         {
+            
             Repository SQLConnect = new Repository();
             String query = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
             Relatorios Rel = new Relatorios();
-
-            SQLConnect.Categorias(query);
+            
+            var x = SQLConnect.Categorias(query);
             //Rel.ResultadoLista = SQLConnect.ResultList(query);
 
-            
+            L
+
+            foreach (var item in x)
+            {
+                categoriateste.Items.Add(item.ToString());
+            }
+
+
+
 
         }
 
