@@ -23,3 +23,10 @@ WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/sto
 *.ide-wal
 *.ide
 WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
+*.pdb
+*.dll
+WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.csproj.FileListAbsolute.txt
+WEBSystemServiceManagement/bin/WEBSystemServiceManagement.pdb
+WEBSystemServiceManagement/bin/WEBSystemServiceManagement.dll
+*.ide
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
