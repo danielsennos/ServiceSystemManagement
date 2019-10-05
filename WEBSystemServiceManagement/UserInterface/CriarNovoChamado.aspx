@@ -45,11 +45,11 @@
 
                     <br />
                     Requisitante:
-                <input id="Requisitante" class="InputDefault" runat="server" type="text" />
+                    <asp:DropDownList ID="Requisitante" runat="server"></asp:DropDownList>
 
                     <br />
                     Categoria:
-              <input id="Categoria" class="InputDefault" runat="server" type="text" />
+              <asp:DropDownList ID="Categoria" runat="server"></asp:DropDownList>
 
                     <br />
                     Resumo:
@@ -63,24 +63,23 @@
                    <option value="Crítica">Crítica</option>
                </select>
 
-                    Grupo Designado:
-              <input id="GrupoDesignado" class="InputDefault" runat="server" type="text" />
+                    <br />
+                    Grupo Designado: <br />
+               <asp:DropDownList ID="GrupoDesignado" runat="server"></asp:DropDownList>
 
-                    Designado:
+                    <br />
+                    Designado:<br />
               <input id="Designado" class="InputDefault" runat="server" type="text" />
-                
-                  Anotações de Trabalho:
+
+                    Anotações de Trabalho:
               <input id="Anotacoes" class="InputDefault" runat="server" type="text" />
-                                 
-                    
+
+
                     <asp:Button ID="Salvar" runat="server" Text="Salvar" OnClick="SalvarChamado" />
 
-                    <br/>
-                    teste de load:
-                    <asp:DropDownList ID="categoriateste" runat="server" OnLoad="CarregaCategoria"></asp:DropDownList>
-                    </div>
-                    
-                    </form>
+                </div>
+
+            </form>
 
         </div>
     </div>

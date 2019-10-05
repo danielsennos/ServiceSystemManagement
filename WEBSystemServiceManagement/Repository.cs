@@ -60,50 +60,75 @@ namespace WEBSystemServiceManagement
         #endregion
 
 
-
-        public ArrayList Categorias(String SQLQuery)
+        public ArrayList CarregaCategorias(String SQLQuery)
         {
-
-            SQLQuery = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
-
             ArrayList lista = new ArrayList();
-            List< Categorias > CategoriaList = new List<Categorias>();
-            CategoriaChamados pModel = new CategoriaChamados();
 
-            DataTable data = new DataTable("tabela");
             using (var conn = new MySqlConnection(PATH))
             {
-
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                DataSet dataset = new DataSet();
-                adapter.Fill(dataset);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
 
-                /*foreach(DataRow linha in dataset.Tables[0].Rows)
-                   {
-                        pModel.CategoriaS = Convert.ToString(linha["categoria"]);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-                        CategoriaList.Add();                    }*/
+                foreach (DataRow row in dt.Rows)
+              {
+                    lista.Add(row["categoria"].ToString());
+              }
+            }
+            return lista;
+        }
+        public ArrayList CarregaGruposSuporte(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
 
-                
-                foreach (DataRow dtrow in dataset.Tables[0].Rows)
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
                 {
-                    lista.Add(dtrow);
+                    lista.Add(row["grupo_nome"].ToString());
                 }
+            }
+            return lista;
+        }
+        public ArrayList CarregaRequisitante(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
 
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
 
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
 
-
-
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["nome_cliente"].ToString());
                 }
-
-                return lista;
+            }
+            return lista;
         }
 
 
 
 
 
-    } 
+
+    }
 
 }

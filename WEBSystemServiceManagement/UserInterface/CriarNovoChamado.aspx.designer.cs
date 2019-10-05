@@ -46,7 +46,7 @@ namespace WEBSystemServiceManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Requisitante;
+        protected global::System.Web.UI.WebControls.DropDownList Requisitante;
         
         /// <summary>
         /// Categoria control.
@@ -55,7 +55,7 @@ namespace WEBSystemServiceManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Categoria;
+        protected global::System.Web.UI.WebControls.DropDownList Categoria;
         
         /// <summary>
         /// Resumo control.
@@ -82,7 +82,7 @@ namespace WEBSystemServiceManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText GrupoDesignado;
+        protected global::System.Web.UI.WebControls.DropDownList GrupoDesignado;
         
         /// <summary>
         /// Designado control.
@@ -110,14 +110,5 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Salvar;
-        
-        /// <summary>
-        /// categoriateste control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList categoriateste;
     }
 }
