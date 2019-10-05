@@ -19,3 +19,7 @@ WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.csproj.FileListA
 *.cache
 WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.dll
 WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.pdb
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-shm
+*.ide-wal
+*.ide
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
