@@ -9,16 +9,18 @@ namespace WEBSystemServiceManagement
     {
         public void SalvarChamado(ChamadoModel mChamado)
         {
-
             String query = @"INSER INTO SSM_CHAMADOS (NUM_CHAMADO, ID_CLIENTE, ID_CATEGORIA, URGENCIA, DATA_CHAMADO  ) VALUES
-                                    " + mChamado.num_chamado + "," + mChamado.id_cliente + "," + mChamado.id_categoria + "," + mChamado.urgencia
-                                    +"SYSDATE";
-            
+                                    " + mChamado.num_chamado + "," + mChamado.id_cliente + "," + mChamado.id_categoria + "," + mChamado.urgencia);                                 + "SYSDATE";
 
 
-            DBConnect db = new DBConnect();
+
+
+            Repository db = new Repository();
+
             db.Inserir(query);
 
         }
+
+
     }
 }
