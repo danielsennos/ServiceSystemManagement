@@ -39,17 +39,16 @@
                     Número da Solicitação:
                 <input id="num_chamado" class="InputDefault" runat="server" type="text" readonly />
 
-                    <br />
                     Cliente:
             <input id="Cliente" class="InputDefault" runat="server" type="text" />
 
                     <br />
                     Requisitante:
-                    <asp:DropDownList ID="Requisitante" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="Requisitante" class="InputDefault" runat="server"></asp:DropDownList>
 
                     <br />
                     Categoria:
-              <asp:DropDownList ID="Categoria" runat="server"></asp:DropDownList>
+              <asp:DropDownList ID="Categoria" class="InputDefault" runat="server"></asp:DropDownList>
 
                     <br />
                     Resumo:
@@ -65,7 +64,7 @@
 
                     <br />
                     Grupo Designado: <br />
-               <asp:DropDownList ID="GrupoDesignado" runat="server"></asp:DropDownList>
+               <asp:DropDownList ID="GrupoDesignado" class="InputDefault" runat="server"></asp:DropDownList>
 
                     <br />
                     Designado:<br />

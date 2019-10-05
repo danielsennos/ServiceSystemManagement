@@ -12,8 +12,8 @@ namespace WEBSystemServiceManagement
         protected void Page_Load(object sender, EventArgs e)
         {
             Repository SQLConnect = new Repository();
-            
-            
+
+
             if (Categoria.Items.Count == 0)
             {
                 String query = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
@@ -41,6 +41,7 @@ namespace WEBSystemServiceManagement
                     Requisitante.Items.Add(item.ToString());
                 }
             }
+
         }
 
         protected void SalvarChamado(object sender, EventArgs e)
