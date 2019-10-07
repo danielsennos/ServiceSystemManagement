@@ -9,9 +9,9 @@ namespace WEBSystemServiceManagement
 {
     public partial class CriarNovoChamado : System.Web.UI.Page
     {
+        Repository SQLConnect = new Repository();
         protected void Page_Load(object sender, EventArgs e)
-        {
-            Repository SQLConnect = new Repository();
+        {           
 
 
             if (Categoria.Items.Count == 0)
@@ -31,14 +31,14 @@ namespace WEBSystemServiceManagement
                 {
                     GrupoDesignado.Items.Add(item.ToString());
                 }
-            }
-            if (Requisitante.Items.Count == 0)
+            }            
+            if (Cliente.Items.Count == 0)
             {
-                String query = @"SELECT NOME_CLIENTE FROM CLIENTE;";
-                var ListaCategoria = SQLConnect.CarregaRequisitante(query);
+                String query = @"SELECT EMPRESA_CLIENTE FROM EMPRESA_CLIENTE;";
+                var ListaCategoria = SQLConnect.CarregaCliente(query);
                 foreach (var item in ListaCategoria)
                 {
-                    Requisitante.Items.Add(item.ToString());
+                    Cliente.Items.Add(item.ToString());
                 }
             }
 
@@ -48,8 +48,8 @@ namespace WEBSystemServiceManagement
         {
             ChamadoModel mChamado = new ChamadoModel();
 
-            mChamado.num_chamado = num_chamado.Value;
-            mChamado.cliente = Cliente.Value;
+            mChamado.num_chamado = TipoSolicitacao.Value;
+            mChamado.cliente = (Cliente.SelectedItem.ToString()); 
             mChamado.requisitante = (Requisitante.SelectedItem.ToString());
             mChamado.categoria = (Categoria.SelectedItem.ToString());
             mChamado.resumo_chamado = Resumo.Value;
@@ -62,29 +62,20 @@ namespace WEBSystemServiceManagement
             ChamadoController.SalvarChamado(mChamado);
 
 
-
         }
-
-        public void CarregaCategoria(object sender, EventArgs e)
-        {/*
-            
-            Repository SQLConnect = new Repository();
-            String query = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
-            Relatorios Rel = new Relatorios();
-            
-            var x = SQLConnect.Categorias(query);
-            //Rel.ResultadoLista = SQLConnect.ResultList(query);
-
-            
-
-            foreach (var item in x)
+        protected void CarregaRequisitante(object sender, EventArgs e)
+        {
+            if (Requisitante.Items.Count == 0)
             {
-                categoriateste.Items.Add(item.ToString());
-            }*/
-
-
-
-
+                String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
+                                JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = CLI.ID_EMPRESA_CLIENTE
+                                WHERE EC.EMPRESA_CLIENTE = 'TESTE'; ;";
+                var ListaCategoria = SQLConnect.CarregaRequisitante(query);
+                foreach (var item in ListaCategoria)
+                {
+                    Requisitante.Items.Add(item.ToString());
+                }
+            }
         }
 
 

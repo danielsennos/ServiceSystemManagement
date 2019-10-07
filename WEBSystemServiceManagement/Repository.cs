@@ -13,7 +13,7 @@ namespace WEBSystemServiceManagement
         
         private MySqlConnection conexao;
         //string PATH = "SERVER=localhost;DATABASE=dbssm; UID=root;PASSWORD=";
-        string PATH = "SERVER=den1.mysql4.gear.host;DATABASE=dbssm; UID=dbssm;PASSWORD=Pm6Qup1~_5c8";
+        string PATH = "SERVER=den1.mysql4.gear.host;DATABASE=dbssm; UID=dbssm;PASSWORD=Pm6Qup1~_5c7";
 
         #region MetodosGenericos
         public void Inserir(String InsertSql)
@@ -119,6 +119,27 @@ namespace WEBSystemServiceManagement
                 foreach (DataRow row in dt.Rows)
                 {
                     lista.Add(row["nome_cliente"].ToString());
+                }
+            }
+            return lista;
+        }
+        public ArrayList CarregaCliente(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["empresa_cliente"].ToString());
                 }
             }
             return lista;

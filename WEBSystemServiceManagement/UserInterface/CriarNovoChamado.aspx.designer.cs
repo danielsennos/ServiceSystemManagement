@@ -22,13 +22,13 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.HtmlControls.HtmlForm FormCriarNovo;
         
         /// <summary>
-        /// num_chamado control.
+        /// TipoSolicitacao control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText num_chamado;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect TipoSolicitacao;
         
         /// <summary>
         /// Cliente control.
@@ -37,7 +37,7 @@ namespace WEBSystemServiceManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Cliente;
+        protected global::System.Web.UI.WebControls.DropDownList Cliente;
         
         /// <summary>
         /// Requisitante control.
