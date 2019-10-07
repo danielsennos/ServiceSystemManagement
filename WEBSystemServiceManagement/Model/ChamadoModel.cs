@@ -7,6 +7,7 @@ namespace WEBSystemServiceManagement
 {
     public class ChamadoModel
     {
+        public String tipo_chamado { get; set; }
         public String num_chamado { get; set; }
         public int id_cliente { get; set; }
         public string cliente { get; set; }

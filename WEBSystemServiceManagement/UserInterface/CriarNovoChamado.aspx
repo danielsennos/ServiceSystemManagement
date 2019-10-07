@@ -36,11 +36,14 @@
 
             <form id="FormCriarNovo" runat="server">
                 <div class="ColumFixedLeft">
-                    Número da Solicitação:
-                <input id="num_chamado" class="InputDefault" runat="server" type="text" readonly />
+                    Tipo da Solicitação:
+                               <select id="TipoSolicitacao" name="TipoSolicitacao" runat="server" class="InputDefault">
+                   <option value="REQ">Solicitação</option>
+                   <option value="INC">Falha/Erro</option>
+               </select>
 
                     Cliente:
-            <input id="Cliente" class="InputDefault" runat="server" type="text" />
+                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaRequisitante"></asp:DropDownList>
 
                     <br />
                     Requisitante:
