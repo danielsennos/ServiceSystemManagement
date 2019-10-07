@@ -1,32 +1,53 @@
-.ide .suo
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-shm
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-wal
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-shm
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-shm
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-wal
-WEBSystemServiceManagement/bin/WEBSystemServiceManagement.dll
-*.pdb
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
 *.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
 *.pdb
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-wal
-*.dll
-WEBSystemServiceManagement/bin/WEBSystemServiceManagement.pdb
-WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.csproj.FileListAbsolute.txt
-*.cache
-WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.dll
-WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.pdb
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide-shm
-*.ide-wal
-*.ide
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
-*.pdb
-*.dll
-WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.csproj.FileListAbsolute.txt
-WEBSystemServiceManagement/bin/WEBSystemServiceManagement.pdb
-WEBSystemServiceManagement/bin/WEBSystemServiceManagement.dll
-*.ide
-WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+

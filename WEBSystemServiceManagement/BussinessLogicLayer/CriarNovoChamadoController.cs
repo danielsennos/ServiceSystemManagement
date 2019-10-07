@@ -9,7 +9,9 @@ namespace WEBSystemServiceManagement
     {
         public void SalvarChamado(ChamadoModel mChamado)
         {
+
             Repository db = new Repository();
+
 
 
             String selectMaxNumChamado = "SELECT MAX(NUM_CHAMADO) FROM CHAMADOS;";
