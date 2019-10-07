@@ -10,6 +10,7 @@ namespace WEBSystemServiceManagement
     public partial class CriarNovoChamado : System.Web.UI.Page
     {
         Repository SQLConnect = new Repository();
+        
         protected void Page_Load(object sender, EventArgs e)
         {           
 
@@ -41,6 +42,19 @@ namespace WEBSystemServiceManagement
                     Cliente.Items.Add(item.ToString());
                 }
             }
+            {
+                ChamadoModel mChamado = new ChamadoModel();
+                mChamado.cliente = (Cliente.SelectedItem.ToString());
+                String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
+                                JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = CLI.ID_EMPRESA_CLIENTE
+                                WHERE EC.EMPRESA_CLIENTE ='"
+                                + mChamado.cliente + "';";
+                var ListaCategoria = SQLConnect.CarregaRequisitante(query);
+                foreach (var item in ListaCategoria)
+                {
+                    Requisitante.Items.Add(item.ToString());
+                }
+            }
 
         }
 
@@ -65,11 +79,14 @@ namespace WEBSystemServiceManagement
         }
         protected void CarregaRequisitante(object sender, EventArgs e)
         {
+            ChamadoModel mChamado = new ChamadoModel();
             if (Requisitante.Items.Count == 0)
             {
+                mChamado.cliente = (Cliente.SelectedItem.ToString());
                 String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
                                 JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = CLI.ID_EMPRESA_CLIENTE
-                                WHERE EC.EMPRESA_CLIENTE = 'TESTE'; ;";
+                                WHERE EC.EMPRESA_CLIENTE ="
+                                + mChamado.cliente + "';";
                 var ListaCategoria = SQLConnect.CarregaRequisitante(query);
                 foreach (var item in ListaCategoria)
                 {

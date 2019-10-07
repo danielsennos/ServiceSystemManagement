@@ -43,7 +43,7 @@
                </select>
 
                     Cliente:
-                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaRequisitante"></asp:DropDownList>
 
                     <br />
                     Requisitante:
