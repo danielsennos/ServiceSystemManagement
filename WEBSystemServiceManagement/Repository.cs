@@ -97,7 +97,7 @@ namespace WEBSystemServiceManagement
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lista.Add(row["grupo_nome"].ToString());
+                    lista.Add(row["grupo_sup_nome"].ToString());
                 }
             }
             return lista;

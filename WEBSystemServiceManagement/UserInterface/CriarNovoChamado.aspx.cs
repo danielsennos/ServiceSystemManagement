@@ -27,7 +27,7 @@ namespace WEBSystemServiceManagement
             }
             if (GrupoDesignado.Items.Count == 0)
             {
-                String query = @"SELECT GRUPO_NOME FROM GRUPO_SUPORTE;";
+                String query = @"SELECT GRUPO_SUP_NOME FROM GRUPO_SUPORTE;";
                 var ListaCategoria = SQLConnect.CarregaGruposSuporte(query);
                 foreach (var item in ListaCategoria)
                 {
