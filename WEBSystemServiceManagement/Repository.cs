@@ -147,7 +147,6 @@ namespace WEBSystemServiceManagement
 
         public void InserirChamado(String InsertSql)
         {
-            String Result = null;
             conexao = new MySqlConnection(PATH);
             try
             {                
@@ -160,6 +159,32 @@ namespace WEBSystemServiceManagement
             {
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
+        }
+
+        public ArrayList ExibeChamados(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["tipo_chamado"].ToString());
+                    lista.Add(row["num_chamado"].ToString());
+                    lista.Add(row["urgencia"].ToString());
+
+
+                }
+            }
+            return lista;
         }
 
     }

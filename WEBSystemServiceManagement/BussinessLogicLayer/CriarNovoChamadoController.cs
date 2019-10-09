@@ -11,7 +11,7 @@ namespace WEBSystemServiceManagement
         {
 
             Repository db = new Repository();
-            ExibirChamados exibir = new ExibirChamados();
+            //ExibirChamados exibir = new ExibirChamados();
 
 
 

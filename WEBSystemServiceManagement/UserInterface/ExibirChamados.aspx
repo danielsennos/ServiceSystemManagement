@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExibirChamados.aspx.cs" Inherits="WEBSystemServiceManagement.ExibirChamados" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExibirChamados.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.ExibirChamados" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
 
@@ -52,7 +52,9 @@
 
 
 
-    </div>
+
+
+</div>
    
 </div>
 </body>
