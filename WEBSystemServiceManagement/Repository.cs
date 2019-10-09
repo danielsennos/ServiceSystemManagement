@@ -145,10 +145,22 @@ namespace WEBSystemServiceManagement
             return lista;
         }
 
-
-
-
-
+        public void InserirChamado(String InsertSql)
+        {
+            String Result = null;
+            conexao = new MySqlConnection(PATH);
+            try
+            {                
+                conexao.Open();
+                MySqlCommand comandos = new MySqlCommand(InsertSql, conexao);
+                comandos.ExecuteNonQuery();
+                conexao.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Erro de comando SQL" + ex.Message);
+            }
+        }
 
     }
 

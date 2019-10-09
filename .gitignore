@@ -54,3 +54,14 @@ dkms.conf
 *.ide-shm
 *.ide-wal
 *.cache
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide
+WEBSystemServiceManagement/bin/WEBSystemServiceManagement.dll
+WEBSystemServiceManagement/bin/WEBSystemServiceManagement.pdb
+WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.csprojAssemblyReference.cache
+WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.dll
+WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.pdb
+*.nupkg
+*.p7s
+*.dll
+*.xml

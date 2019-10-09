@@ -63,7 +63,7 @@ namespace WEBSystemServiceManagement
         {
             ChamadoModel mChamado = new ChamadoModel();
 
-            mChamado.num_chamado = TipoSolicitacao.Value;
+            mChamado.tipo_chamado = TipoSolicitacao.Value.ToString();
             mChamado.cliente = (Cliente.SelectedItem.ToString()); 
             mChamado.requisitante = (Requisitante.SelectedItem.ToString());
             mChamado.categoria = (Categoria.SelectedItem.ToString());
@@ -72,17 +72,18 @@ namespace WEBSystemServiceManagement
             mChamado.grupo_designado = (GrupoDesignado.SelectedItem.ToString());
             mChamado.anotacao = Anotacoes.Value;
 
-
             CriarNovoChamadoController ChamadoController = new CriarNovoChamadoController();
             ChamadoController.SalvarChamado(mChamado);
+
+            Response.Redirect("~/UserInterface/ExibirChamados", true);
+
 
 
         }
         protected void CarregaRequisitante(object sender, EventArgs e)
         {
             ChamadoModel mChamado = new ChamadoModel();
-            if (Requisitante.Items.Count == 0)
-            {
+
                 mChamado.cliente = (Cliente.SelectedItem.ToString());
                 String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
                                 JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = CLI.ID_EMPRESA_CLIENTE
@@ -93,7 +94,7 @@ namespace WEBSystemServiceManagement
                 {
                     Requisitante.Items.Add(item.ToString());
                 }
-            }
+            
         }
 
 
