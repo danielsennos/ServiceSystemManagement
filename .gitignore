@@ -65,3 +65,9 @@ WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.pdb
 *.p7s
 *.dll
 *.xml
+WEBSystemServiceManagement/packages/Newtonsoft.Json.11.0.1/lib/portable-net45%2Bwin8%2Bwp8%2Bwpa81/Newtonsoft.Json.xml
+*.dll
+*.nupkg
+WEBSystemServiceManagement/packages/System.Text.Encodings.Web.4.5.0/LICENSE.TXT
+WEBSystemServiceManagement/packages/System.Text.Encodings.Web.4.5.0/useSharedDesignerContext.txt
+*.csproj

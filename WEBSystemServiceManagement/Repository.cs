@@ -145,20 +145,37 @@ namespace WEBSystemServiceManagement
             return lista;
         }
 
-        public void InserirChamado(String InsertSql)
+        public String InserirChamado(String InsertSql, String ConsultarSql)
         {
             conexao = new MySqlConnection(PATH);
+            MySqlTransaction trans = null;
+            String Result = null;
             try
             {                
                 conexao.Open();
-                MySqlCommand comandos = new MySqlCommand(InsertSql, conexao);
+                trans = conexao.BeginTransaction();
+                MySqlCommand comandos = new MySqlCommand();
+                comandos = new MySqlCommand(InsertSql, conexao);
                 comandos.ExecuteNonQuery();
+                comandos = new MySqlCommand(ConsultarSql, conexao);
+                comandos.ExecuteNonQuery();
+                MySqlDataReader dr;
+                dr = comandos.ExecuteReader();
+                dr.Read();
+
+                if (dr.HasRows)
+                {
+                    Result = dr.GetString(0);
+                }
+
+                trans.Commit();
                 conexao.Close();
             }
             catch (Exception ex)
             {
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
+            return Result;
         }
 
         public ArrayList ExibeChamados(String SQLQuery)
@@ -180,7 +197,6 @@ namespace WEBSystemServiceManagement
                     lista.Add(row["tipo_chamado"].ToString());
                     lista.Add(row["num_chamado"].ToString());
                     lista.Add(row["urgencia"].ToString());
-
 
                 }
             }
