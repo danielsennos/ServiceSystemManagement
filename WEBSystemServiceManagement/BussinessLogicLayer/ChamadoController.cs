@@ -5,19 +5,12 @@ using System.Web;
 
 namespace WEBSystemServiceManagement
 {
-    public class CriarNovoChamadoController
+    public class ChamadoController
     {
         public void SalvarChamado(ChamadoModel mChamado)
         {
-
             Repository db = new Repository();
-            //ExibirChamados exibir = new ExibirChamados();
 
-
-
-            //String selectMaxNumChamado = "SELECT MAX(NUM_CHAMADO) FROM CHAMADOS;";
-            //Int16 MaxNumChamado = Convert.ToInt16(db.Consultar(selectMaxNumChamado));
-            //string NextNumChamado = (MaxNumChamado + 1).ToString("D8");
             String selectDataAlvo = @"SELECT LIMITE_EXECUCAO FROM ALVO_SLA AL
                                     JOIN CATEGORIA_CHAMADO CC ON CC.ID_CATEGORIA = AL.ID_CATEGORIA
                                     JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = AL.ID_EMPRESA_CLIENTE
@@ -29,7 +22,7 @@ namespace WEBSystemServiceManagement
 
 
 
-            String query = @"INSERT INTO CHAMADOS (TIPO_CHAMADO,
+            String InsertSql = @"INSERT INTO CHAMADOS (TIPO_CHAMADO,
                                                       NUM_CHAMADO, 
                                                       ID_CLIENTE,  
                                                       ID_CATEGORIA, 
@@ -44,16 +37,25 @@ namespace WEBSystemServiceManagement
                                       + mChamado.urgencia + "','"
                                       + (DateTime.Now) + "','"
                                       + DateTime.Now.AddHours(AlvoSLA) + "'," 
-                                      + "'Aberto');";          
+                                      + "'Aberto');";
+            String ConsultarSql = "SELECT MAX(NUM_CHAMADO) FROM CHAMADOS;";
 
-            db.InserirChamado(query);
-            //String queryReturnNumChamado = "select num_chamado from chamados where id_chamado = (select last_insert_id());";
-            //mChamado.num_chamado = (db.Consultar(queryReturnNumChamado));
+           var NewNumChamado =  db.InserirChamado(InsertSql, ConsultarSql);
 
+            EditarChamado EditCham = new EditarChamado();
+            EditCham.EditChamado(NewNumChamado);
             
         }
 
-        
+        public void ExibirChamadosAbertos()
+        {
+            Repository db = new Repository();
+            string query = "SELECT * FROM CHAMADOS WHERE STATUS_CHAMADO = 'ABERTO';";
+            db.ExibeChamados(query);
+        }
+       
+
+
 
 
     }

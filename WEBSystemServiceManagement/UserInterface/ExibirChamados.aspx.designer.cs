@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WEBSystemServiceManagement.UserInterface {
+namespace WEBSystemServiceManagement {
     
     
     public partial class ExibirChamados {

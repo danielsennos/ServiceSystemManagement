@@ -12,9 +12,7 @@ namespace WEBSystemServiceManagement
         Repository SQLConnect = new Repository();
         
         protected void Page_Load(object sender, EventArgs e)
-        {          
-
-
+        {   
 
             if (Categoria.Items.Count == 0)
             {
@@ -43,7 +41,7 @@ namespace WEBSystemServiceManagement
                     Cliente.Items.Add(item.ToString());
                 }
             }
-            {
+            /*{
                 ChamadoModel mChamado = new ChamadoModel();
                 mChamado.cliente = (Cliente.SelectedItem.ToString());
                 String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
@@ -55,7 +53,7 @@ namespace WEBSystemServiceManagement
                 {
                     Requisitante.Items.Add(item.ToString());
                 }
-            }
+            }*/
 
         }
 
@@ -70,14 +68,15 @@ namespace WEBSystemServiceManagement
             mChamado.resumo_chamado = Resumo.Value;
             mChamado.urgencia = Urgencia.Value;
             mChamado.grupo_designado = (GrupoDesignado.SelectedItem.ToString());
-            mChamado.anotacao = Anotacoes.Value;
-
-            CriarNovoChamadoController ChamadoController = new CriarNovoChamadoController();
-            ChamadoController.SalvarChamado(mChamado);
-
-            Response.Redirect("~/UserInterface/ExibirChamados", true);
 
 
+           ChamadoController ChamadoController = new ChamadoController();
+           var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
+
+            EditarChamado ec = new EditarChamado();
+            
+            
+            
 
         }
         protected void CarregaRequisitante(object sender, EventArgs e)
@@ -95,6 +94,11 @@ namespace WEBSystemServiceManagement
                     Requisitante.Items.Add(item.ToString());
                 }
             
+        }
+        protected void ExibeChamadosLoad(object sender, EventArgs e)
+        {
+            ChamadoModel pModel = new ChamadoModel();
+            Response.Redirect("~/UserInterface/ExibirChamados", true);
         }
 
 

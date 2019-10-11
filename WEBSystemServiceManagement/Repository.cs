@@ -162,19 +162,20 @@ namespace WEBSystemServiceManagement
                 MySqlDataReader dr;
                 dr = comandos.ExecuteReader();
                 dr.Read();
-
                 if (dr.HasRows)
                 {
                     Result = dr.GetString(0);
                 }
-
-                trans.Commit();
+                dr.Close();
+                trans.Commit();                
                 conexao.Close();
+
             }
             catch (Exception ex)
             {
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
+
             return Result;
         }
 
