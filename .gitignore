@@ -51,3 +51,23 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+*.ide-shm
+*.ide-wal
+*.cache
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/.suo
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/Server/sqlite3/storage.ide
+WEBSystemServiceManagement/bin/WEBSystemServiceManagement.dll
+WEBSystemServiceManagement/bin/WEBSystemServiceManagement.pdb
+WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.csprojAssemblyReference.cache
+WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.dll
+WEBSystemServiceManagement/obj/Debug/WEBSystemServiceManagement.pdb
+*.nupkg
+*.p7s
+*.dll
+*.xml
+WEBSystemServiceManagement/packages/Newtonsoft.Json.11.0.1/lib/portable-net45%2Bwin8%2Bwp8%2Bwpa81/Newtonsoft.Json.xml
+*.dll
+*.nupkg
+WEBSystemServiceManagement/packages/System.Text.Encodings.Web.4.5.0/LICENSE.TXT
+WEBSystemServiceManagement/packages/System.Text.Encodings.Web.4.5.0/useSharedDesignerContext.txt
+*.csproj

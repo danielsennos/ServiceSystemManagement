@@ -94,21 +94,21 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.HtmlControls.HtmlInputText Designado;
         
         /// <summary>
-        /// Anotacoes control.
+        /// SalvarBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Anotacoes;
+        protected global::System.Web.UI.WebControls.Button SalvarBtn;
         
         /// <summary>
-        /// Salvar control.
+        /// CancelarBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Salvar;
+        protected global::System.Web.UI.WebControls.Button CancelarBtn;
     }
 }

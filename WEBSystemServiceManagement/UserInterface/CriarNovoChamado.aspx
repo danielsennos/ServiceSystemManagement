@@ -43,7 +43,7 @@
                </select>
 
                     Cliente:
-                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaRequisitante"></asp:DropDownList>
+                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server"></asp:DropDownList>
 
                     <br />
                     Requisitante:
@@ -73,11 +73,9 @@
                     Designado:<br />
               <input id="Designado" class="InputDefault" runat="server" type="text" />
 
-                    Anotações de Trabalho:
-              <input id="Anotacoes" class="InputDefault" runat="server" type="text" />
 
-
-                    <asp:Button ID="Salvar" runat="server" Text="Salvar" OnClick="SalvarChamado" />
+                    <asp:Button ID="SalvarBtn" runat="server" Text="Salvar" OnClick="SalvarChamado" />
+                    <asp:Button ID="CancelarBtn" runat="server" Text="Cancelar" OnClick="ExibeChamadosLoad"/>
 
                 </div>
 

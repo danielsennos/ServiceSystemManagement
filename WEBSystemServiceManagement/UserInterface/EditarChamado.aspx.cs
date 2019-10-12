@@ -5,14 +5,17 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WEBSystemServiceManagement.UserInterface
+namespace WEBSystemServiceManagement
 {
-    public partial class ExibirChamados : System.Web.UI.Page
+    public partial class EditarChamado : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ChamadoController pExibir = new ChamadoController();
-            pExibir.ExibirChamadosAbertos();
+
+        }
+        public void EditChamado(String numChamado)
+        {
+
         }
     }
 }
