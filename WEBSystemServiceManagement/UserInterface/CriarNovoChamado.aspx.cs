@@ -63,7 +63,7 @@ namespace WEBSystemServiceManagement
 
             mChamado.tipo_chamado = TipoSolicitacao.Value.ToString();
             mChamado.cliente = (Cliente.SelectedItem.ToString()); 
-            mChamado.requisitante = (Requisitante.SelectedItem.ToString());
+            //mChamado.requisitante = (Requisitante.SelectedItem.ToString());
             mChamado.categoria = (Categoria.SelectedItem.ToString());
             mChamado.resumo_chamado = Resumo.Value;
             mChamado.urgencia = Urgencia.Value;
@@ -73,10 +73,11 @@ namespace WEBSystemServiceManagement
            ChamadoController ChamadoController = new ChamadoController();
            var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
 
-            EditarChamado ec = new EditarChamado();
-            
-            
-            
+            EditarChamado EditCham = new EditarChamado();
+            EditCham.EditChamado(NewNumChamado);
+
+
+
 
         }
         protected void CarregaRequisitante(object sender, EventArgs e)

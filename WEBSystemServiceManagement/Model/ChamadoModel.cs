@@ -7,6 +7,7 @@ namespace WEBSystemServiceManagement
 {
     public class ChamadoModel
     {
+        public int id_chamado { get; set; }
         public String tipo_chamado { get; set; }
         public string num_chamado { get; set; }
         public int id_cliente { get; set; }
@@ -24,12 +25,13 @@ namespace WEBSystemServiceManagement
         public string grupo_designado { get; set; }
         public string anotacao { get; set; }
         public List<AnotacoesList> anotacoeslista {get; set;}
+        public List<ChamadoModel> ChamadoList { get; set; }
 
 
     }
     public class AnotacoesList
     {
-        public DateTime data_anotacao { get; set; }
-        public long anotacoes { get; set; }
+        public string data_anotacao { get; set; }
+        public string anotacoes { get; set; }
     }
 }

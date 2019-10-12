@@ -11,10 +11,19 @@ namespace WEBSystemServiceManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            string x = "teste";
+            testeinput.Value = x;
         }
         public void EditChamado(String numChamado)
         {
+            if (String.IsNullOrWhiteSpace(numChamado)) numChamado = "";
+            ChamadoController chamadoController = new ChamadoController();
+            ChamadoModel pModel = new ChamadoModel();
+
+            List<ChamadoModel> ListaChamado = chamadoController.EditarChamado(numChamado);
+
+
+
 
         }
     }

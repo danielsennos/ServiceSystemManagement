@@ -167,14 +167,17 @@ namespace WEBSystemServiceManagement
                     Result = dr.GetString(0);
                 }
                 dr.Close();
-                trans.Commit();                
-                conexao.Close();
+                trans.Commit();                               
+                
 
             }
             catch (Exception ex)
             {
+                trans.Rollback();
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
+            finally { conexao.Close(); }
+            
 
             return Result;
         }
@@ -202,6 +205,59 @@ namespace WEBSystemServiceManagement
                 }
             }
             return lista;
+        }
+
+        public List<ChamadoModel> EditChamados(String SQLQuery)
+        {
+           // ArrayList lista = new ArrayList();
+            List<ChamadoModel> Lista = new List<ChamadoModel>();
+
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    ChamadoModel pModel = new ChamadoModel();
+                    pModel.id_chamado = Convert.ToInt32(row["ID_CHAMADO"]);
+                    Lista.Add(pModel);
+                }
+            }
+            return Lista;
+        }
+
+        public List<AnotacoesList> RetornaNotasChamado(String SQLQuery)
+        {
+            //ArrayList lista = new ArrayList();
+            List<AnotacoesList> Lista = new List<AnotacoesList>();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    AnotacoesList ListAnotacoes = new AnotacoesList();
+                    ListAnotacoes.data_anotacao = row["DATA_NOTA"].ToString();
+                    ListAnotacoes.anotacoes = row["NOTA"].ToString();
+                    Lista.Add(ListAnotacoes);
+
+                }
+            }
+            return Lista;
         }
 
     }
