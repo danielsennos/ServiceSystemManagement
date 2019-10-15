@@ -167,14 +167,17 @@ namespace WEBSystemServiceManagement
                     Result = dr.GetString(0);
                 }
                 dr.Close();
-                trans.Commit();                
-                conexao.Close();
+                trans.Commit();                               
+                
 
             }
             catch (Exception ex)
             {
+                trans.Rollback();
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
+            finally { conexao.Close(); }
+            
 
             return Result;
         }
@@ -202,6 +205,87 @@ namespace WEBSystemServiceManagement
                 }
             }
             return lista;
+        }
+
+        public ChamadoModel EditChamados(String SQLQuery)
+        {
+            ChamadoModel pModel = new ChamadoModel();
+
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+            
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {                    
+                    pModel.id_chamado = Convert.ToInt32(row["ID_CHAMADO"]);
+                    pModel.tipo_chamado = row["TIPO_CHAMADO"].ToString();
+                    pModel.num_chamado = row["NUM_CHAMADO"].ToString();
+                    pModel.status_chamado = row["STATUS_CHAMADO"].ToString();
+                    pModel.requisitante = row["EMPRESA_CLIENTE"].ToString();
+                    pModel.cliente = row["NOME_CLIENTE"].ToString();
+                    pModel.urgencia = row["URGENCIA"].ToString();
+                    pModel.data_abertura = row["DATA_ABERTURA"].ToString();
+                    pModel.data_alvo_resolucao = row["DATA_ALVO_RESOLUCAO"].ToString();
+                    pModel.data_conclusao = row["DATA_CONCLUSAO"].ToString();
+                    pModel.resumo_chamado = row["RESUMO_CHAMADO"].ToString();                    
+
+                }
+            }
+            return pModel;
+        }
+
+        public List<AnotacoesList> RetornaNotasChamado(String SQLQuery)
+        {
+            //ArrayList lista = new ArrayList();
+            List<AnotacoesList> Lista = new List<AnotacoesList>();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+                //DataSet dataset = new DataSet();
+                //adapter.Fill(dataset);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    AnotacoesList ListAnotacoes = new AnotacoesList();
+                    ListAnotacoes.data_anotacao = row["DATA_NOTA"].ToString();
+                    ListAnotacoes.anotacoes = row["NOTA"].ToString();
+                    Lista.Add(ListAnotacoes);
+
+                }
+            }
+            return Lista;
+        }
+
+        public void AtualizaStatus(string UpdateSQL)
+        {
+            conexao = new MySqlConnection(PATH);
+            MySqlTransaction trans = null;
+            try
+            {
+                conexao.Open();
+                trans = conexao.BeginTransaction();
+                MySqlCommand comandos = new MySqlCommand();
+                comandos = new MySqlCommand(UpdateSQL, conexao);
+                comandos.ExecuteNonQuery();                               
+                trans.Commit();
+
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+                throw new Exception("Erro de comando SQL" + ex.Message);
+            }
+            finally { conexao.Close(); }
         }
 
     }

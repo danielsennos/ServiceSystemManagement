@@ -21,6 +21,7 @@ namespace WEBSystemServiceManagement
                 foreach (var item in ListaCategoria)
                 {
                     Categoria.Items.Add(item.ToString());
+                    
                 }
             }
             if (GrupoDesignado.Items.Count == 0)
@@ -63,7 +64,7 @@ namespace WEBSystemServiceManagement
 
             mChamado.tipo_chamado = TipoSolicitacao.Value.ToString();
             mChamado.cliente = (Cliente.SelectedItem.ToString()); 
-            mChamado.requisitante = (Requisitante.SelectedItem.ToString());
+            //mChamado.requisitante = (Requisitante.SelectedItem.ToString());
             mChamado.categoria = (Categoria.SelectedItem.ToString());
             mChamado.resumo_chamado = Resumo.Value;
             mChamado.urgencia = Urgencia.Value;
@@ -73,10 +74,19 @@ namespace WEBSystemServiceManagement
            ChamadoController ChamadoController = new ChamadoController();
            var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
 
-            EditarChamado ec = new EditarChamado();
-            
-            
-            
+            //EditarChamado EditCham = new EditarChamado();
+            //mChamado = EditCham.EditChamado(NewNumChamado);
+
+           // EditarChamado editarChamado = new EditarChamado();
+            //editarChamado.Page_Load(mChamado);
+           HttpCookie cookie = new HttpCookie("nomeCookie");            
+            cookie.Expires = DateTime.Now.AddMinutes(1);
+            cookie.Value = NewNumChamado;
+            Response.Cookies.Add(cookie);
+           
+            Response.Redirect("~/UserInterface/EditarChamado", true);
+
+            Response.Redirect("~", true);
 
         }
         protected void CarregaRequisitante(object sender, EventArgs e)

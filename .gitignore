@@ -71,3 +71,6 @@ WEBSystemServiceManagement/packages/Newtonsoft.Json.11.0.1/lib/portable-net45%2B
 WEBSystemServiceManagement/packages/System.Text.Encodings.Web.4.5.0/LICENSE.TXT
 WEBSystemServiceManagement/packages/System.Text.Encodings.Web.4.5.0/useSharedDesignerContext.txt
 *.csproj
+*.cache
+*.dll
+*.dll

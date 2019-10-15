@@ -7,7 +7,7 @@ namespace WEBSystemServiceManagement
 {
     public class ChamadoController
     {
-        public void SalvarChamado(ChamadoModel mChamado)
+        public string SalvarChamado(ChamadoModel mChamado)
         {
             Repository db = new Repository();
 
@@ -42,8 +42,9 @@ namespace WEBSystemServiceManagement
 
            var NewNumChamado =  db.InserirChamado(InsertSql, ConsultarSql);
 
-            EditarChamado EditCham = new EditarChamado();
-            EditCham.EditChamado(NewNumChamado);
+            return NewNumChamado;
+
+
             
         }
 
@@ -53,10 +54,39 @@ namespace WEBSystemServiceManagement
             string query = "SELECT * FROM CHAMADOS WHERE STATUS_CHAMADO = 'ABERTO';";
             db.ExibeChamados(query);
         }
-       
+        public ChamadoModel EditarChamado(string NumChamado)
+        {
+            Repository db = new Repository();
+            ChamadoModel pModel = new ChamadoModel();
+            
+
+            string SqlIdChamado = @"SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NumChamado + ";";
+            pModel.id_chamado = Convert.ToInt32(db.Consultar(SqlIdChamado));
+
+            string SqlChamado = @"SELECT CS.ID_CHAMADO, CS.TIPO_CHAMADO, CS.NUM_CHAMADO, CS.STATUS_CHAMADO, CLI.NOME_CLIENTE, EMCLI.EMPRESA_CLIENTE, CS.URGENCIA, CS.DATA_ABERTURA, 
+            CS.DATA_ALVO_RESOLUCAO, CS.DATA_CONCLUSAO, CS.RESUMO_CHAMADO
+            FROM CHAMADOS CS
+            LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
+            LEFT JOIN EMPRESA_CLIENTE EMCLI ON EMCLI.ID_EMPRESA_CLIENTE = CS.ID_EMPRESA_CLIENTE
+            WHERE CS.ID_CHAMADO = " + pModel.id_chamado + ";";
+            pModel = db.EditChamados(SqlChamado);
+
+            return pModel;
+        }
+
+        public List<AnotacoesList> RetornaAnotacoes(string NumChamado)
+        {
+            Repository db = new Repository();
+            var id_chamado = 32;
+            string SqlNotasChamado = "SELECT DATA_NOTA, NOTA FROM NOTAS_CHAMADOS WHERE ID_CHAMADO =" + id_chamado + ";";
+            List<AnotacoesList> ListaAnotacoes = db.RetornaNotasChamado(SqlNotasChamado);
+
+            return null;
+        }
 
 
 
 
-    }
+
+        }
 }
