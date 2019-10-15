@@ -54,7 +54,7 @@ namespace WEBSystemServiceManagement
             string query = "SELECT * FROM CHAMADOS WHERE STATUS_CHAMADO = 'ABERTO';";
             db.ExibeChamados(query);
         }
-        public List<ChamadoModel> EditarChamado(string NumChamado)
+        public ChamadoModel EditarChamado(string NumChamado)
         {
             Repository db = new Repository();
             ChamadoModel pModel = new ChamadoModel();
@@ -69,9 +69,9 @@ namespace WEBSystemServiceManagement
             LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
             LEFT JOIN EMPRESA_CLIENTE EMCLI ON EMCLI.ID_EMPRESA_CLIENTE = CS.ID_EMPRESA_CLIENTE
             WHERE CS.ID_CHAMADO = " + pModel.id_chamado + ";";
-            List<ChamadoModel> ListaChamado = db.EditChamados(SqlChamado);
+            pModel = db.EditChamados(SqlChamado);
 
-            return ListaChamado;
+            return pModel;
         }
 
         public List<AnotacoesList> RetornaAnotacoes(string NumChamado)
