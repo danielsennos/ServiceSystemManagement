@@ -166,13 +166,22 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.WebControls.LinkButton CanceladoChange;
         
         /// <summary>
-        /// StatusNewEdit control.
+        /// Resumo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList StatusNewEdit;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea Resumo;
+        
+        /// <summary>
+        /// InserirNotaBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton InserirNotaBtn;
         
         /// <summary>
         /// SalvarEditBtn control.

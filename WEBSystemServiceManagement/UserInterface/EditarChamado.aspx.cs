@@ -16,22 +16,23 @@ namespace WEBSystemServiceManagement
         {
             ChamadoModel mChamado = new ChamadoModel();
             ChamadoController chamadoController = new ChamadoController();
+            string numChamado = null;
 
-            HttpCookie cookie;   
+            HttpCookie cookie;
             cookie = Request.Cookies["nomeCookie"];
             if (cookie != null)
             {
-                string numChamado = cookie.Value;
+                numChamado = cookie.Value;
                 mChamado = chamadoController.EditarChamado(numChamado);
             }
             else
-            {                
-                var numChamado = "1";
+            {
+                numChamado = "1";
                 mChamado = chamadoController.EditarChamado(numChamado);
 
                 //Response.Redirect("~/UserInterface/ExibirChamados", true);
-            } 
-            if(mChamado.tipo_chamado == "REQ"){ TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }
+            }
+            if (mChamado.tipo_chamado == "REQ") { TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }
             NumChamadoEdit.Text = mChamado.tipo_chamado + mChamado.num_chamado.PadLeft((8 - mChamado.num_chamado.Count()), '0');
             ClienteEdit.Text = mChamado.cliente;
             RequisitanteEdit.Text = mChamado.requisitante;
@@ -43,16 +44,118 @@ namespace WEBSystemServiceManagement
             StatusEdit.Text = mChamado.status_chamado;
             ID_Chamado.Text = (mChamado.id_chamado).ToString();
 
+            List<AnotacoesList> ListaAnotacoes = chamadoController.RetornaAnotacoes(numChamado);
+
+            //retornar lista ou grid para view
+
+            #region Controle de Status
+            if (StatusEdit.Text == "Aberto")
+            {
+                AbertoChange.ForeColor = Color.Red;
+                AbertoChange.Visible = true;
+                AbertoChange.Enabled = true;
+                AbertoChange.Text = "Aberto";
+                AndamentoChange.ForeColor = Color.Blue;
+                AndamentoChange.Visible = true;
+                AndamentoChange.Enabled = true;
+                PendenteChange.ForeColor = Color.Blue;
+                PendenteChange.Visible = true;
+                PendenteChange.Enabled = true;
+                ConcluidoChange.ForeColor = Color.Blue;
+                ConcluidoChange.Visible = false;
+                ConcluidoChange.Enabled = false;
+                CanceladoChange.ForeColor = Color.Blue;
+                CanceladoChange.Visible = true;
+                CanceladoChange.Enabled = true;
+            }
+            else if (StatusEdit.Text == "Em Andamento")
+            {
+                AbertoChange.ForeColor = Color.Blue;
+                AbertoChange.Visible = false;
+                AbertoChange.Enabled = false;
+                AbertoChange.Text = "Aberto";
+                AndamentoChange.ForeColor = Color.Red;
+                AndamentoChange.Visible = true;
+                AndamentoChange.Enabled = true;
+                PendenteChange.ForeColor = Color.Blue;
+                PendenteChange.Visible = true;
+                PendenteChange.Enabled = true;
+                ConcluidoChange.ForeColor = Color.Blue;
+                ConcluidoChange.Visible = true;
+                ConcluidoChange.Enabled = true;
+                CanceladoChange.ForeColor = Color.Blue;
+                CanceladoChange.Visible = true;
+                CanceladoChange.Enabled = true;
+            }
+            else if (StatusEdit.Text == "Pendente")
+            {
+                AbertoChange.ForeColor = Color.Blue;
+                AbertoChange.Visible = false;
+                AbertoChange.Enabled = false;
+                AbertoChange.Text = "Aberto";
+                AndamentoChange.ForeColor = Color.Blue;
+                AndamentoChange.Visible = true;
+                AndamentoChange.Enabled = true;
+                PendenteChange.ForeColor = Color.Red;
+                PendenteChange.Visible = true;
+                PendenteChange.Enabled = false;
+                ConcluidoChange.ForeColor = Color.Blue;
+                ConcluidoChange.Visible = false;
+                ConcluidoChange.Enabled = false;
+                CanceladoChange.ForeColor = Color.Blue;
+                CanceladoChange.Visible = true;
+                CanceladoChange.Enabled = true;
+            }
+            else if (StatusEdit.Text == "Concluído")
+            {
+                AbertoChange.ForeColor = Color.Blue;
+                AbertoChange.Visible = true;
+                AbertoChange.Enabled = true;
+                AbertoChange.Text = "Reabrir";
+                AndamentoChange.ForeColor = Color.Blue;
+                AndamentoChange.Visible = false;
+                AndamentoChange.Enabled = false;
+                PendenteChange.ForeColor = Color.Blue;
+                PendenteChange.Visible = false;
+                PendenteChange.Enabled = false;
+                ConcluidoChange.ForeColor = Color.Red;
+                ConcluidoChange.Visible = true;
+                ConcluidoChange.Enabled = false;
+                CanceladoChange.ForeColor = Color.Blue;
+                CanceladoChange.Visible = false;
+                CanceladoChange.Enabled = false;
+            }
+            else if (StatusEdit.Text == "Cancelado")
+            {
+                AbertoChange.ForeColor = Color.Blue;
+                AbertoChange.Visible = false;
+                AbertoChange.Enabled = false;
+                AbertoChange.Text = "Aberto";
+                AndamentoChange.ForeColor = Color.Blue;
+                AndamentoChange.Visible = false;
+                AndamentoChange.Enabled = false;
+                PendenteChange.ForeColor = Color.Blue;
+                PendenteChange.Visible = false;
+                PendenteChange.Enabled = false;
+                ConcluidoChange.ForeColor = Color.Blue;
+                ConcluidoChange.Visible = false;
+                ConcluidoChange.Enabled = false;
+                CanceladoChange.ForeColor = Color.Red;
+                CanceladoChange.Visible = true;
+                CanceladoChange.Enabled = false;
+                CanceladoChange.Text = "Cancelado";
+            }
+            #endregion
+
         }
 
-        public void SatusAbertoChange(object sender, EventArgs e)
+        public void StatusAbertoChange(object sender, EventArgs e)
         {
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Aberto' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.AtualizaStatus(query);
-            AbertoChange.ForeColor = Color.Red;
 
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
@@ -60,14 +163,13 @@ namespace WEBSystemServiceManagement
             Response.Cookies.Add(cookie);
             Page_Load(sender, e);
         }
-        public void SatusEmAndamentoChange(object sender, EventArgs e)
+        public void StatusEmAndamentoChange(object sender, EventArgs e)
         {
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Em Andamento' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.AtualizaStatus(query);
-            
 
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
@@ -75,6 +177,47 @@ namespace WEBSystemServiceManagement
             Response.Cookies.Add(cookie);
             Page_Load(sender, e);
         }
+        public void StatusPendenteChange(object sender, EventArgs e)
+        {
+            Repository db = new Repository();
+            ChamadoModel mChamado = new ChamadoModel();
+            mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Pendente' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
+            db.AtualizaStatus(query);
 
+            HttpCookie cookie = new HttpCookie("nomeCookie");
+            cookie.Expires = DateTime.Now.AddMinutes(1);
+            cookie.Value = (mChamado.id_chamado).ToString();
+            Response.Cookies.Add(cookie);
+            Page_Load(sender, e);
+        }
+        public void StatusConcluidoChange(object sender, EventArgs e)
+        {
+            Repository db = new Repository();
+            ChamadoModel mChamado = new ChamadoModel();
+            mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Concluído' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
+            db.AtualizaStatus(query);
+
+            HttpCookie cookie = new HttpCookie("nomeCookie");
+            cookie.Expires = DateTime.Now.AddMinutes(1);
+            cookie.Value = (mChamado.id_chamado).ToString();
+            Response.Cookies.Add(cookie);
+            Page_Load(sender, e);
+        }
+        public void StatusCanceladoChange(object sender, EventArgs e)
+        {
+            Repository db = new Repository();
+            ChamadoModel mChamado = new ChamadoModel();
+            mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
+            db.AtualizaStatus(query);
+
+            HttpCookie cookie = new HttpCookie("nomeCookie");
+            cookie.Expires = DateTime.Now.AddMinutes(1);
+            cookie.Value = (mChamado.id_chamado).ToString();
+            Response.Cookies.Add(cookie);
+            Page_Load(sender, e);
+        }
     }
 }

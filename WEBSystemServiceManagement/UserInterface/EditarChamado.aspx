@@ -35,7 +35,7 @@
         <!--FIM DO MENU LATERAL-->
         <div class="BodyContent-Center">
             <form id="FormEditChamado" runat="server">
-                <asp:TextBox ID="ID_Chamado" runat="server" class="InputDefault" visible="false"></asp:TextBox>
+                <asp:TextBox ID="ID_Chamado" runat="server" class="InputDefault" Visible="false"></asp:TextBox>
                 <div class="ColumFixedLeft">
                     Tipo da Solicitação:<br />
                     <asp:TextBox ID="TipoSolicitacaoEdit" runat="server" class="InputDefault" ReadOnly="true"></asp:TextBox>
@@ -76,17 +76,21 @@
                 <div class="ColumFixedRight">
                     <div class="Container-Filtros">
                         <b>Fluxo de Tabalho:</b>
-                        <asp:LinkButton ID="AbertoChange" runat="server" OnClick="SatusAbertoChange">Aberto</asp:LinkButton>
-                        <asp:LinkButton ID="AndamentoChange" runat="server">Em Andamento</asp:LinkButton>
-                        <asp:LinkButton ID="PendenteChange" runat="server">Pendente</asp:LinkButton>
-                        <asp:LinkButton ID="ConcluidoChange" runat="server">Concluído</asp:LinkButton>
-                        <asp:LinkButton ID="CanceladoChange" runat="server">Cancelar</asp:LinkButton>
+                        <asp:LinkButton ID="AbertoChange" runat="server" OnClick="StatusAbertoChange">Aberto</asp:LinkButton>
+                        <asp:LinkButton ID="AndamentoChange" runat="server" OnClick="StatusEmAndamentoChange">Em Andamento</asp:LinkButton>
+                        <asp:LinkButton ID="PendenteChange" runat="server" OnClick="StatusPendenteChange">Pendente</asp:LinkButton>
+                        <asp:LinkButton ID="ConcluidoChange" runat="server" OnClick="StatusConcluidoChange">Concluído</asp:LinkButton>
+                        <asp:LinkButton ID="CanceladoChange" runat="server" OnClick="StatusCanceladoChange">Cancelar</asp:LinkButton>
                     </div>
-                    Novo Status:
-              <asp:DropDownList ID="StatusNewEdit" class="InputDefault" runat="server"></asp:DropDownList>
+                    <br />
+                    <b>Anoteções de Trabalho:</b>
+                    <textarea id="Resumo" cols="40" runat="server" rows="2" maxlength="180" style="border-radius: 5px"></textarea>
+                    <asp:LinkButton ID="InserirNotaBtn" runat="server">Inserir Anotação</asp:LinkButton>
+                    <br />
+                    <br />
 
                 </div>
-
+               
 
 
                 <asp:Button ID="SalvarEditBtn" runat="server" Text="Salvar" />
