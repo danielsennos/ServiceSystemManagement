@@ -36,7 +36,11 @@
         <div class="BodyContent-Center">
             <form id="FormEditChamado" runat="server">
                 <asp:TextBox ID="ID_Chamado" runat="server" class="InputDefault" Visible="false"></asp:TextBox>
+                <asp:TextBox ID="NumChamado" runat="server" class="InputDefault" Visible="false"></asp:TextBox>
                 <div class="ColumFixedLeft">
+                    <b>Detalhes do Chamado:</b>
+                    <br />
+                  <br />
                     Tipo da Solicitação:<br />
                     <asp:TextBox ID="TipoSolicitacaoEdit" runat="server" class="InputDefault" ReadOnly="true"></asp:TextBox>
                     Número do Chamado:                    
@@ -76,19 +80,22 @@
                 <div class="ColumFixedRight">
                     <div class="Container-Filtros">
                         <b>Fluxo de Tabalho:</b>
-                        <asp:LinkButton ID="AbertoChange" runat="server" OnClick="StatusAbertoChange">Aberto</asp:LinkButton>
-                        <asp:LinkButton ID="AndamentoChange" runat="server" OnClick="StatusEmAndamentoChange">Em Andamento</asp:LinkButton>
+
+                        <asp:LinkButton ID="AbertoChange" runat="server" OnClick="StatusAbertoChange" >Aberto</asp:LinkButton>
+                        <asp:LinkButton ID="AndamentoChange" runat="server" OnClick="StatusEmAndamentoChange" >Em Andamento</asp:LinkButton>
                         <asp:LinkButton ID="PendenteChange" runat="server" OnClick="StatusPendenteChange">Pendente</asp:LinkButton>
                         <asp:LinkButton ID="ConcluidoChange" runat="server" OnClick="StatusConcluidoChange">Concluído</asp:LinkButton>
                         <asp:LinkButton ID="CanceladoChange" runat="server" OnClick="StatusCanceladoChange">Cancelar</asp:LinkButton>
                     </div>
                     <br />
-                    <b>Anoteções de Trabalho:</b>
-                    <textarea id="Resumo" cols="40" runat="server" rows="2" maxlength="180" style="border-radius: 5px"></textarea>
-                    <asp:LinkButton ID="InserirNotaBtn" runat="server">Inserir Anotação</asp:LinkButton>
+                    <b>Anotações de Trabalho:</b>
+                    <textarea id="AnotacaoEdit" cols="40" runat="server" rows="2" maxlength="180" style="border-radius: 5px"></textarea>
+                    <asp:LinkButton ID="InserirNotaBtn" runat="server" OnClick="InsereAnotacao">Inserir Anotação</asp:LinkButton>
                     <br />
                     <br />
-
+                    <asp:GridView ID="GridAnotacoes" runat="server">
+                        
+                    </asp:GridView>
                 </div>
                
 

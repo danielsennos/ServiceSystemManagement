@@ -31,6 +31,15 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.WebControls.TextBox ID_Chamado;
         
         /// <summary>
+        /// NumChamado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NumChamado;
+        
+        /// <summary>
         /// TipoSolicitacaoEdit control.
         /// </summary>
         /// <remarks>
@@ -166,13 +175,13 @@ namespace WEBSystemServiceManagement {
         protected global::System.Web.UI.WebControls.LinkButton CanceladoChange;
         
         /// <summary>
-        /// Resumo control.
+        /// AnotacaoEdit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Resumo;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea AnotacaoEdit;
         
         /// <summary>
         /// InserirNotaBtn control.
@@ -182,6 +191,15 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton InserirNotaBtn;
+        
+        /// <summary>
+        /// GridAnotacoes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridAnotacoes;
         
         /// <summary>
         /// SalvarEditBtn control.

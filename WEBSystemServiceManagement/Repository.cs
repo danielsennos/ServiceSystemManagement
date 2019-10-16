@@ -240,10 +240,11 @@ namespace WEBSystemServiceManagement
             return pModel;
         }
 
-        public List<AnotacoesList> RetornaNotasChamado(String SQLQuery)
+        public DataTable RetornaNotasChamado(String SQLQuery)
         {
             //ArrayList lista = new ArrayList();
-            List<AnotacoesList> Lista = new List<AnotacoesList>();
+            //List<AnotacoesList> Lista = new List<AnotacoesList>();
+            DataTable dt = new DataTable();
 
             using (var conn = new MySqlConnection(PATH))
             {
@@ -251,20 +252,20 @@ namespace WEBSystemServiceManagement
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
                 //DataSet dataset = new DataSet();
                 //adapter.Fill(dataset);
-
-                DataTable dt = new DataTable();
+                
                 adapter.Fill(dt);
 
-                foreach (DataRow row in dt.Rows)
-                {
-                    AnotacoesList ListAnotacoes = new AnotacoesList();
-                    ListAnotacoes.data_anotacao = row["DATA_NOTA"].ToString();
-                    ListAnotacoes.anotacao = row["NOTA"].ToString();
-                    Lista.Add(ListAnotacoes);
+                //foreach (DataRow row in dt.Rows)
+                //{
+                //    AnotacoesList ListAnotacoes = new AnotacoesList();
+                //    ListAnotacoes.data_anotacao = row["DATA_NOTA"].ToString();
+                //    ListAnotacoes.anotacao = row["NOTA"].ToString();
+                //    Lista.Add(ListAnotacoes);
 
-                }
+                //}
             }
-            return Lista;
+            //return Lista;
+            return dt;
         }
 
         public void AtualizaStatus(string UpdateSQL)

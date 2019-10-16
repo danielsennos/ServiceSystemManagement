@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 
@@ -42,6 +43,10 @@ namespace WEBSystemServiceManagement
 
            var NewNumChamado =  db.InserirChamado(InsertSql, ConsultarSql);
 
+           String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES((SELECT ID_CHAMADO FROM (SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NewNumChamado + ") AS TEMP),'Aberto','" + DateTime.Now + "');";
+           db.Inserir(queryNota);
+
+
             return NewNumChamado;           
         }
 
@@ -54,8 +59,7 @@ namespace WEBSystemServiceManagement
         public ChamadoModel EditarChamado(string NumChamado)
         {
             Repository db = new Repository();
-            ChamadoModel pModel = new ChamadoModel();
-            
+            ChamadoModel pModel = new ChamadoModel();            
 
             string SqlIdChamado = @"SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NumChamado + ";";
             pModel.id_chamado = Convert.ToInt32(db.Consultar(SqlIdChamado));
@@ -72,13 +76,15 @@ namespace WEBSystemServiceManagement
             return pModel;
         }
 
-        public List<AnotacoesList> RetornaAnotacoes(string NumChamado)
+        public DataTable RetornaAnotacoes(int IdChamado)
         {
             Repository db = new Repository();
-            string SqlNotasChamado = "SELECT DATA_NOTA, NOTA FROM NOTAS_CHAMADOS WHERE ID_CHAMADO =" + NumChamado + ";";
-            List<AnotacoesList> ListaAnotacoes = db.RetornaNotasChamado(SqlNotasChamado);
 
-            return ListaAnotacoes;
+            string SqlNotasChamado = "SELECT DATA_NOTA as Data, NOTA as Anotação FROM NOTAS_CHAMADOS WHERE ID_CHAMADO =" + IdChamado + ";";
+
+            DataTable AnotacoesDt = db.RetornaNotasChamado(SqlNotasChamado);
+
+            return AnotacoesDt;
         }
 
 
