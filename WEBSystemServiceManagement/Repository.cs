@@ -226,6 +226,7 @@ namespace WEBSystemServiceManagement
                     pModel.tipo_chamado = row["TIPO_CHAMADO"].ToString();
                     pModel.num_chamado = row["NUM_CHAMADO"].ToString();
                     pModel.status_chamado = row["STATUS_CHAMADO"].ToString();
+                    pModel.categoria = row["CATEGORIA"].ToString();
                     pModel.requisitante = row["EMPRESA_CLIENTE"].ToString();
                     pModel.cliente = row["NOME_CLIENTE"].ToString();
                     pModel.urgencia = row["URGENCIA"].ToString();
@@ -258,7 +259,7 @@ namespace WEBSystemServiceManagement
                 {
                     AnotacoesList ListAnotacoes = new AnotacoesList();
                     ListAnotacoes.data_anotacao = row["DATA_NOTA"].ToString();
-                    ListAnotacoes.anotacoes = row["NOTA"].ToString();
+                    ListAnotacoes.anotacao = row["NOTA"].ToString();
                     Lista.Add(ListAnotacoes);
 
                 }

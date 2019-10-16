@@ -42,10 +42,7 @@ namespace WEBSystemServiceManagement
 
            var NewNumChamado =  db.InserirChamado(InsertSql, ConsultarSql);
 
-            return NewNumChamado;
-
-
-            
+            return NewNumChamado;           
         }
 
         public void ExibirChamadosAbertos()
@@ -63,11 +60,12 @@ namespace WEBSystemServiceManagement
             string SqlIdChamado = @"SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NumChamado + ";";
             pModel.id_chamado = Convert.ToInt32(db.Consultar(SqlIdChamado));
 
-            string SqlChamado = @"SELECT CS.ID_CHAMADO, CS.TIPO_CHAMADO, CS.NUM_CHAMADO, CS.STATUS_CHAMADO, CLI.NOME_CLIENTE, EMCLI.EMPRESA_CLIENTE, CS.URGENCIA, CS.DATA_ABERTURA, 
+            string SqlChamado = @"SELECT CS.ID_CHAMADO, CS.TIPO_CHAMADO, CS.NUM_CHAMADO, CS.STATUS_CHAMADO, CC.CATEGORIA, CLI.NOME_CLIENTE, EMCLI.EMPRESA_CLIENTE, CS.URGENCIA, CS.DATA_ABERTURA, 
             CS.DATA_ALVO_RESOLUCAO, CS.DATA_CONCLUSAO, CS.RESUMO_CHAMADO
             FROM CHAMADOS CS
             LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
             LEFT JOIN EMPRESA_CLIENTE EMCLI ON EMCLI.ID_EMPRESA_CLIENTE = CS.ID_EMPRESA_CLIENTE
+            LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA
             WHERE CS.ID_CHAMADO = " + pModel.id_chamado + ";";
             pModel = db.EditChamados(SqlChamado);
 
@@ -77,11 +75,10 @@ namespace WEBSystemServiceManagement
         public List<AnotacoesList> RetornaAnotacoes(string NumChamado)
         {
             Repository db = new Repository();
-            var id_chamado = 32;
-            string SqlNotasChamado = "SELECT DATA_NOTA, NOTA FROM NOTAS_CHAMADOS WHERE ID_CHAMADO =" + id_chamado + ";";
+            string SqlNotasChamado = "SELECT DATA_NOTA, NOTA FROM NOTAS_CHAMADOS WHERE ID_CHAMADO =" + NumChamado + ";";
             List<AnotacoesList> ListaAnotacoes = db.RetornaNotasChamado(SqlNotasChamado);
 
-            return null;
+            return ListaAnotacoes;
         }
 
 

@@ -34,6 +34,6 @@ namespace WEBSystemServiceManagement
     public class AnotacoesList
     {
         public string data_anotacao { get; set; }
-        public string anotacoes { get; set; }
+        public string anotacao { get; set; }
     }
 }
