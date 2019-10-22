@@ -37,19 +37,24 @@
     <div class="BodyContent-Center ">
 
 <div class="Container-Filtros">
+    <form id="LinksForm" runat="server">
 <b>Filtros Rápidos:</b>
-    <a onclick="" runat="server">Abertos</a>
-    <a onclick="" runat="server">Designados ao Meu Grupo</a>
-    <a onclick="" runat="server">Designados a Mim</a>
-    <a onclick="" runat="server">Pendentes</a>
-    <a onclick="" runat="server">Em andamento</a>
-    <a onclick="" runat="server">Cancelados</a>
-    <a onclick="" runat="server">Encerrados</a>
-
+    <asp:LinkButton ID="AbertoLink" runat="server" OnClick="ExibeChamadosAbertos" >Aberto</asp:LinkButton>
+    <asp:LinkButton ID="MyGroupLink" runat="server"  >Designados ao Meu Grupo</asp:LinkButton>
+    <asp:LinkButton ID="ToMeLink" runat="server"  >Designados a Mim</asp:LinkButton>
+    <asp:LinkButton ID="PendentesLink" runat="server" OnClick="ExibeChamadosPendentes" >Pendentes</asp:LinkButton>
+    <asp:LinkButton ID="EmAndamentoLink" runat="server" >Em andamento</asp:LinkButton>
+    <asp:LinkButton ID="CanceladosLink" runat="server"  >Cancelados</asp:LinkButton>
+    <asp:LinkButton ID="EncerradosLink" runat="server"  >Encerrados</asp:LinkButton>
+</form>
  </div>
+        <br />
+<form id="FormExibirChamados" runat="server">
 
-
-
+                    <asp:GridView ID="GridChamados" runat="server">
+                        
+                    </asp:GridView>
+</form>
 
 </div>
    

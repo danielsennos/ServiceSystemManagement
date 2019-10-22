@@ -182,29 +182,19 @@ namespace WEBSystemServiceManagement
             return Result;
         }
 
-        public ArrayList ExibeChamados(String SQLQuery)
+        public DataTable ExibeChamados(String SQLQuery)
         {
-            ArrayList lista = new ArrayList();
+            DataTable dt = new DataTable();
 
             using (var conn = new MySqlConnection(PATH))
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                //DataSet dataset = new DataSet();
-                //adapter.Fill(dataset);
 
-                DataTable dt = new DataTable();
                 adapter.Fill(dt);
-
-                foreach (DataRow row in dt.Rows)
-                {
-                    lista.Add(row["tipo_chamado"].ToString());
-                    lista.Add(row["num_chamado"].ToString());
-                    lista.Add(row["urgencia"].ToString());
-
-                }
             }
-            return lista;
+
+            return dt;
         }
 
         public ChamadoModel EditChamados(String SQLQuery)
@@ -242,29 +232,16 @@ namespace WEBSystemServiceManagement
 
         public DataTable RetornaNotasChamado(String SQLQuery)
         {
-            //ArrayList lista = new ArrayList();
-            //List<AnotacoesList> Lista = new List<AnotacoesList>();
             DataTable dt = new DataTable();
 
             using (var conn = new MySqlConnection(PATH))
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                //DataSet dataset = new DataSet();
-                //adapter.Fill(dataset);
-                
+                                
                 adapter.Fill(dt);
-
-                //foreach (DataRow row in dt.Rows)
-                //{
-                //    AnotacoesList ListAnotacoes = new AnotacoesList();
-                //    ListAnotacoes.data_anotacao = row["DATA_NOTA"].ToString();
-                //    ListAnotacoes.anotacao = row["NOTA"].ToString();
-                //    Lista.Add(ListAnotacoes);
-
-                //}
             }
-            //return Lista;
+            
             return dt;
         }
 

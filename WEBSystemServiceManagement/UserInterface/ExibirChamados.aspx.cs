@@ -11,8 +11,31 @@ namespace WEBSystemServiceManagement.UserInterface
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ChamadoController pExibir = new ChamadoController();
-            pExibir.ExibirChamadosAbertos();
+            ChamadoController chamadoController = new ChamadoController();
+            ChamadoModel mChamado = new ChamadoModel();
+            String StatusChamado = "Aberto";
+
+            GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
+            GridChamados.DataBind();
+        }
+        protected void ExibeChamadosAbertos(object sender, EventArgs e)
+        {
+            ChamadoController chamadoController = new ChamadoController();
+            ChamadoModel mChamado = new ChamadoModel();
+            String StatusChamado = "Aberto";
+
+            GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
+            GridChamados.DataBind();
+        }
+
+        protected void ExibeChamadosPendentes(object sender, EventArgs e)
+        {
+            ChamadoController chamadoController = new ChamadoController();
+            ChamadoModel mChamado = new ChamadoModel();
+            String StatusChamado = "Pendente";
+
+            GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
+            GridChamados.DataBind();
         }
     }
 }

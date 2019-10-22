@@ -163,6 +163,8 @@ namespace WEBSystemServiceManagement
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Aberto','" + DateTime.Now + "');";
             db.Inserir(queryNota);
 
+            AnotacaoEdit.InnerText = "";
+
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
             cookie.Value = (mChamado.num_chamado).ToString();
@@ -182,6 +184,8 @@ namespace WEBSystemServiceManagement
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Em Andamento','" + DateTime.Now + "');";
             db.Inserir(queryNota);
 
+            AnotacaoEdit.InnerText = "";
+
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
             cookie.Value = (mChamado.num_chamado).ToString();
@@ -200,6 +204,8 @@ namespace WEBSystemServiceManagement
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Pendente','" + DateTime.Now + "');";
             db.Inserir(queryNota);
 
+            AnotacaoEdit.InnerText = "";
+
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
             cookie.Value = (mChamado.num_chamado).ToString();
@@ -217,6 +223,8 @@ namespace WEBSystemServiceManagement
 
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText  +"','" + DateTime.Now + "');";
             db.Inserir(queryNota);
+
+            AnotacaoEdit.InnerText = "";
 
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
@@ -247,6 +255,8 @@ namespace WEBSystemServiceManagement
 
                 String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + ",'" + DateTime.Now + "');";
                 db.Inserir(queryNota);
+
+            AnotacaoEdit.InnerText = "";
 
                 HttpCookie cookie = new HttpCookie("nomeCookie");
                 cookie.Expires = DateTime.Now.AddMinutes(1);

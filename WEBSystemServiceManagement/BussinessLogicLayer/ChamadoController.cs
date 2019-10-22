@@ -50,12 +50,6 @@ namespace WEBSystemServiceManagement
             return NewNumChamado;           
         }
 
-        public void ExibirChamadosAbertos()
-        {
-            Repository db = new Repository();
-            string query = "SELECT * FROM CHAMADOS WHERE STATUS_CHAMADO = 'ABERTO';";
-            db.ExibeChamados(query);
-        }
         public ChamadoModel EditarChamado(string NumChamado)
         {
             Repository db = new Repository();
@@ -87,9 +81,16 @@ namespace WEBSystemServiceManagement
             return AnotacoesDt;
         }
 
-
-
-
+        public DataTable ExibirChamados(String StatusChamado)
+        {
+            Repository db = new Repository();
+            string query = "SELECT * FROM CHAMADOS WHERE STATUS_CHAMADO = '" + StatusChamado + "';";
+            DataTable ChamadosDt = db.ExibeChamados(query);
+            return ChamadosDt;
 
         }
+
+
+
+    }
 }
