@@ -7,11 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WEBSystemServiceManagement
+namespace WEBSystemServiceManagement.UserInterface
 {
 
 
     public partial class Relatorios
     {
+
+        /// <summary>
+        /// RelatorioForm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm RelatorioForm;
+
+        /// <summary>
+        /// GridRelatorio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridRelatorio;
     }
 }

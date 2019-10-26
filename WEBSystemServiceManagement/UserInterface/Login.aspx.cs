@@ -29,7 +29,7 @@ namespace WEBSystemServiceManagement
             }
 
         }
-        public void EsqueciSenha(object sender, EventArgs e)
+        public void EsqueciMinhaSenha(object sender, EventArgs e)
         {
             LoginController loginController = new LoginController();
             LoginModel pModel = new LoginModel();

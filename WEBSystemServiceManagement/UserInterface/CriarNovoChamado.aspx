@@ -9,9 +9,9 @@
         <div class="container">
             <div class="navbar-collapse collapse">
                 <div class="navbar-nav">
-                    <a href="~/UserInterface/ExibirChamados" runat="server" class="navbar-brand">Painel</a>
-                    <a href="~/UserInterface/CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
-                    <a href="./" runat="server" class="navbar-brand">Relatórios</a>
+                    <a href="./ExibirChamados" runat="server" class="navbar-brand">Painel</a>
+                    <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
+                    <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./" runat="server" class="navbar-brand">Pesquisar</a>
                 </div>
             </div>
@@ -23,11 +23,10 @@
     <div class="BodyContent">
         <!--INÍCIO DO MENU LATERAL-->
         <div class="Menu-Left-Bar">
-            <a href="~/UserInterface/ExibirChamados" runat="server" class="MenuLink">Exibir Solicitações</a>
-            <a href="~/UserInterface/CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
-            <a href="./" runat="server" class="MenuLink">Pesquisar Solicitações</a>
-            <a href="./" runat="server" class="MenuLink">Consultar Clientes</a>
+            <a href="./ExibirChamados" runat="server" class="MenuLink">Exibir Solicitações</a>
+            <a href="./CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
             <a href="./" runat="server" class="MenuLink">Relatórios</a>
+            <a href="./" runat="server" class="MenuLink">Pesquisar Solicitações</a>
             <a href="./" runat="server" class="MenuLink">Admin</a>
             <a href="../" runat="server" class="MenuLink">Sair</a>
         </div>

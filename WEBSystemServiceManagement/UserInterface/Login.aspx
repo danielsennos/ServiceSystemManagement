@@ -23,7 +23,7 @@
             <b>Senha:</b><br />
             <input id="LoginPassword" class="InputDefault" runat="server" type="password" /><br /><br />
             <asp:Button ID="AcessarBtn" runat="server" Text="Acessar" OnClick="Acessar" />
-            <asp:Button ID="EsqueciSenhaBtn" runat="server" Text="Esqueci Minha Senha" OnClick="EsqueciSenha" />
+            <asp:Button ID="EsqueciSenhaBtn" runat="server" Text="Esqueci Minha Senha" OnClick="EsqueciMinhaSenha" />
 </form>
         </div>
     </body>
