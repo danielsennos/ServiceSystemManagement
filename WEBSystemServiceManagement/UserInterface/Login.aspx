@@ -1,34 +1,30 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WEBSystemServiceManagement.Login" %>
+<link href="../Content/bootstrap.css" rel="stylesheet" />
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-               <div>
-                   <b>
-                   <br />
-                   <br />
-                   Bem Vindo ao Sistem Service Management<br />
-                   <br />
-                   <br />
-                   <br />
-                   Login:</b>
-                   <input id="LoginUser" runat="server" type="text" />
-                   <b>
-                   <br />
-                   <br />
-                   Senha:</b>
-                   <input id="SenhaLogin" name="SenhaLogin" runat="server" type="password" /><br />
-                   <br />
-&nbsp;<asp:Button ID="AcessarBtn" runat="server" Text="Acessar" OnClick="Acessar" />
-                   <br />
-                   <br />
-                   <asp:Button ID="PassResetBtn" runat="server" Text="'Esqueci a Senha'" OnClick="SenhaRecover" />
+<html>
+    <body>
+            <!--INICIO DO CABEÇALHO CONTENDO OS LINKS DE ACESSO RÁPIDO-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <div class="navbar-nav">
+                    <a href="../" runat="server" class="navbar-brand">Página Inicial</a>
+                    <a href="../" runat="server" class="navbar-brand">Ajuda</a>
+                </div>
+            </div>
         </div>
-    </form>
-</body>
+    </div>
+    <!--FIM DO CABEÇALHO-->
+
+        <div class="BodyContent-Center">
+            <form id="LoginForm" runat="server">
+            <b>Login:</b> <br />
+            <input id="LoginName" class="InputDefault" runat="server" type="text" /><br />
+            <b>Senha:</b><br />
+            <input id="LoginPassword" class="InputDefault" runat="server" type="password" /><br /><br />
+            <asp:Button ID="AcessarBtn" runat="server" Text="Acessar" OnClick="Acessar" />
+            <asp:Button ID="EsqueciSenhaBtn" runat="server" Text="Esqueci Minha Senha" OnClick="EsqueciSenha" />
+</form>
+        </div>
+    </body>
 </html>

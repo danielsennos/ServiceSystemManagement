@@ -86,7 +86,6 @@ namespace WEBSystemServiceManagement
            
             Response.Redirect("~/UserInterface/EditarChamado", true);
 
-            Response.Redirect("~", true);
 
         }
         protected void CarregaRequisitante(object sender, EventArgs e)

@@ -13,51 +13,48 @@ namespace WEBSystemServiceManagement
         {
 
         }
-
-        public void SenhaRecover(object sender, EventArgs e)
-        {
-
-        }
-
         public void Acessar(object sender, EventArgs e)
         {
+            LoginController loginController = new LoginController();
             LoginModel pModel = new LoginModel();
-            LoginController LoginControl = new LoginController();
-            bool access;
-
-            pModel.LoginName = LoginUser.Value;
-            pModel.password = SenhaLogin.Value;
-
-            if (pModel.LoginName == "")
+            pModel.LoginName = LoginName.Value;
+            pModel.Password = LoginPassword.Value;
+            bool AcessGranted = loginController.GrantAccess(pModel);
+            if(AcessGranted == false)
             {
-                throw new Exception("Favor digitar o usuário.");
-            } else if (pModel.password == "")
-            {
-                throw new Exception("Favor digitar a senha.");
-            }
-            else
-            {
-              access = LoginControl.GrantAccess(pModel);
-            }
-
-            if(access == true)
+                throw new Exception("Dados incorretos.");
+            } else
             {
                 Response.Redirect("~/UserInterface/ExibirChamados", true);
             }
+
+        }
+        public void EsqueciSenha(object sender, EventArgs e)
+        {
+            LoginController loginController = new LoginController();
+            LoginModel pModel = new LoginModel();
+            Repository db = new Repository();
+            
+            if(LoginName.Value == "")
+            {
+                throw new Exception("Digite o Login para envio da senha");
+            }
+
+            pModel.LoginName = LoginName.Value;
+            string ConsultarNome = @"SELECT LOGIN FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
+            string NomeUser = db.Consultar(ConsultarNome);
+            if (NomeUser == "" || NomeUser == null)
+            {
+                throw new Exception("Usuário inexistente.");
+            }
             else
             {
-                throw new Exception("Senha inválida");
+                loginController.EsqueciMinhaSenha(pModel);
             }
         }
 
 
 
-        
-        
-             //String InsertSql = "INSERT INTO CHAMADOS VALUES('" + chamados.Num_Chamado + "','" + chamados.Cliente + "','" + chamados.Categoria + "','" + chamados.Solicitante + "')";
-            //SQLConnect.Inserir();
 
-
-        
     }
 }

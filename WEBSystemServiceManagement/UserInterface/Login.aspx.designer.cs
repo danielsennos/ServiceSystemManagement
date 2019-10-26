@@ -7,38 +7,40 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WEBSystemServiceManagement {
-    
-    
-    public partial class Login {
-        
+namespace WEBSystemServiceManagement
+{
+
+
+    public partial class Login
+    {
+
         /// <summary>
-        /// form1 control.
+        /// LoginForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlForm LoginForm;
+
         /// <summary>
-        /// LoginUser control.
+        /// LoginName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText LoginUser;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputText LoginName;
+
         /// <summary>
-        /// SenhaLogin control.
+        /// LoginPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputPassword SenhaLogin;
-        
+        protected global::System.Web.UI.HtmlControls.HtmlInputPassword LoginPassword;
+
         /// <summary>
         /// AcessarBtn control.
         /// </summary>
@@ -47,14 +49,14 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button AcessarBtn;
-        
+
         /// <summary>
-        /// PassResetBtn control.
+        /// EsqueciSenhaBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PassResetBtn;
+        protected global::System.Web.UI.WebControls.Button EsqueciSenhaBtn;
     }
 }
