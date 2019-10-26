@@ -253,7 +253,7 @@ namespace WEBSystemServiceManagement
                 String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
                 db.AtualizaStatus(query);
 
-                String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + ",'" + DateTime.Now + "');";
+                String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
                 db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";

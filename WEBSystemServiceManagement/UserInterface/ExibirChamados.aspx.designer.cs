@@ -15,13 +15,13 @@ namespace WEBSystemServiceManagement.UserInterface
     {
 
         /// <summary>
-        /// LinksForm control.
+        /// TelaForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm LinksForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm TelaForm;
 
         /// <summary>
         /// AbertoLink control.
@@ -78,22 +78,13 @@ namespace WEBSystemServiceManagement.UserInterface
         protected global::System.Web.UI.WebControls.LinkButton CanceladosLink;
 
         /// <summary>
-        /// EncerradosLink control.
+        /// ConcluidosLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton EncerradosLink;
-
-        /// <summary>
-        /// FormExibirChamados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm FormExibirChamados;
+        protected global::System.Web.UI.WebControls.LinkButton ConcluidosLink;
 
         /// <summary>
         /// GridChamados control.

@@ -17,7 +17,7 @@ namespace WEBSystemServiceManagement
                                     JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = AL.ID_EMPRESA_CLIENTE
                                     WHERE EC.EMPRESA_CLIENTE ='" + mChamado.cliente
                                     + "' AND CC.CATEGORIA ='"
-                                    + mChamado.categoria +"';";
+                                    + mChamado.categoria + "';";
             Int16 AlvoSLA = Convert.ToInt16(db.Consultar(selectDataAlvo));
 
 
@@ -37,23 +37,23 @@ namespace WEBSystemServiceManagement
                                       + "(SELECT ID_CATEGORIA FROM(SELECT ID_CATEGORIA FROM CATEGORIA_CHAMADO WHERE CATEGORIA ='" + mChamado.categoria + "')AS TEMP),'"
                                       + mChamado.urgencia + "','"
                                       + (DateTime.Now) + "','"
-                                      + DateTime.Now.AddHours(AlvoSLA) + "'," 
+                                      + DateTime.Now.AddHours(AlvoSLA) + "',"
                                       + "'Aberto');";
             String ConsultarSql = "SELECT MAX(NUM_CHAMADO) FROM CHAMADOS;";
 
-           var NewNumChamado =  db.InserirChamado(InsertSql, ConsultarSql);
+            var NewNumChamado = db.InserirChamado(InsertSql, ConsultarSql);
 
-           String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES((SELECT ID_CHAMADO FROM (SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NewNumChamado + ") AS TEMP),'Aberto','" + DateTime.Now + "');";
-           db.Inserir(queryNota);
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES((SELECT ID_CHAMADO FROM (SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NewNumChamado + ") AS TEMP),'Aberto','" + DateTime.Now + "');";
+            db.Inserir(queryNota);
 
 
-            return NewNumChamado;           
+            return NewNumChamado;
         }
 
         public ChamadoModel EditarChamado(string NumChamado)
         {
             Repository db = new Repository();
-            ChamadoModel pModel = new ChamadoModel();            
+            ChamadoModel pModel = new ChamadoModel();
 
             string SqlIdChamado = @"SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NumChamado + ";";
             pModel.id_chamado = Convert.ToInt32(db.Consultar(SqlIdChamado));
@@ -84,7 +84,14 @@ namespace WEBSystemServiceManagement
         public DataTable ExibirChamados(String StatusChamado)
         {
             Repository db = new Repository();
-            string query = "SELECT * FROM CHAMADOS WHERE STATUS_CHAMADO = '" + StatusChamado + "';";
+            string query = @"SELECT CONCAT(CS.TIPO_CHAMADO, CS.NUM_CHAMADO) as 'Número do Chamado', CS.STATUS_CHAMADO as 'Status',
+                            CC.CATEGORIA as 'Categoria', EMCLI.EMPRESA_CLIENTE as 'Cliente', CS.URGENCIA as 'Urgência',
+                            CS.DATA_ABERTURA as 'Data Abertura', CS.DATA_ALVO_RESOLUCAO as 'Data Alvo para Resolução'
+                            FROM CHAMADOS CS
+                            LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
+                            LEFT JOIN EMPRESA_CLIENTE EMCLI ON EMCLI.ID_EMPRESA_CLIENTE = CS.ID_EMPRESA_CLIENTE
+                            LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA
+                            WHERE CS.STATUS_CHAMADO = '" + StatusChamado + "';";
             DataTable ChamadosDt = db.ExibeChamados(query);
             return ChamadosDt;
 
