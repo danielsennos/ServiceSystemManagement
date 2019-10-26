@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WEBSystemServiceManagement {
-    
-    
-    public partial class EditarChamado {
-        
+namespace WEBSystemServiceManagement
+{
+
+
+    public partial class EditarChamado
+    {
+
         /// <summary>
         /// FormEditChamado control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm FormEditChamado;
-        
+
         /// <summary>
         /// ID_Chamado control.
         /// </summary>
@@ -29,7 +31,16 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ID_Chamado;
-        
+
+        /// <summary>
+        /// NumChamado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox NumChamado;
+
         /// <summary>
         /// TipoSolicitacaoEdit control.
         /// </summary>
@@ -38,7 +49,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TipoSolicitacaoEdit;
-        
+
         /// <summary>
         /// NumChamadoEdit control.
         /// </summary>
@@ -47,7 +58,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox NumChamadoEdit;
-        
+
         /// <summary>
         /// ClienteEdit control.
         /// </summary>
@@ -56,7 +67,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox ClienteEdit;
-        
+
         /// <summary>
         /// RequisitanteEdit control.
         /// </summary>
@@ -65,7 +76,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox RequisitanteEdit;
-        
+
         /// <summary>
         /// CategoriaEdit control.
         /// </summary>
@@ -74,7 +85,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox CategoriaEdit;
-        
+
         /// <summary>
         /// UrgenciaEdit control.
         /// </summary>
@@ -83,7 +94,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox UrgenciaEdit;
-        
+
         /// <summary>
         /// GrupoDesignadoEdit control.
         /// </summary>
@@ -92,7 +103,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox GrupoDesignadoEdit;
-        
+
         /// <summary>
         /// DesignadoEdit control.
         /// </summary>
@@ -101,7 +112,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DesignadoEdit;
-        
+
         /// <summary>
         /// StatusEdit control.
         /// </summary>
@@ -110,7 +121,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox StatusEdit;
-        
+
         /// <summary>
         /// ResumoEdit control.
         /// </summary>
@@ -119,70 +130,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea ResumoEdit;
-        
-        /// <summary>
-        /// AbertoChange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AbertoChange;
-        
-        /// <summary>
-        /// AndamentoChange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AndamentoChange;
-        
-        /// <summary>
-        /// PendenteChange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton PendenteChange;
-        
-        /// <summary>
-        /// ConcluidoChange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ConcluidoChange;
-        
-        /// <summary>
-        /// CanceladoChange control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CanceladoChange;
-        
-        /// <summary>
-        /// Resumo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Resumo;
-        
-        /// <summary>
-        /// InserirNotaBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton InserirNotaBtn;
-        
+
         /// <summary>
         /// SalvarEditBtn control.
         /// </summary>
@@ -191,7 +139,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SalvarEditBtn;
-        
+
         /// <summary>
         /// CancelarEditBtn control.
         /// </summary>
@@ -200,5 +148,77 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button CancelarEditBtn;
+
+        /// <summary>
+        /// AbertoChange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AbertoChange;
+
+        /// <summary>
+        /// AndamentoChange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton AndamentoChange;
+
+        /// <summary>
+        /// PendenteChange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton PendenteChange;
+
+        /// <summary>
+        /// ConcluidoChange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton ConcluidoChange;
+
+        /// <summary>
+        /// CanceladoChange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton CanceladoChange;
+
+        /// <summary>
+        /// AnotacaoEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea AnotacaoEdit;
+
+        /// <summary>
+        /// InserirNotaBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton InserirNotaBtn;
+
+        /// <summary>
+        /// GridAnotacoes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridAnotacoes;
     }
 }

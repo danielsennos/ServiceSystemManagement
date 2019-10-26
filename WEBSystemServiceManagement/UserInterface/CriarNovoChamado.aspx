@@ -39,7 +39,7 @@
                     Tipo da Solicitação:
                                <select id="TipoSolicitacao" name="TipoSolicitacao" runat="server" class="InputDefault">
                    <option value="REQ">Solicitação</option>
-                   <option value="INC">Falha/Erro</option>
+                   <option value="INC">Falha ou Erro</option>
                </select>
 
                     Cliente:

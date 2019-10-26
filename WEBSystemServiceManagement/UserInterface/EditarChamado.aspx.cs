@@ -16,22 +16,23 @@ namespace WEBSystemServiceManagement
         {
             ChamadoModel mChamado = new ChamadoModel();
             ChamadoController chamadoController = new ChamadoController();
-            string numChamado = null;
 
             HttpCookie cookie;
             cookie = Request.Cookies["nomeCookie"];
+            string numChamado = null;
+
             if (cookie != null)
-            {
+               {
                 numChamado = cookie.Value;
                 mChamado = chamadoController.EditarChamado(numChamado);
             }
             else
             {
+                numChamado = NumChamado.Text;
                 numChamado = "1";
                 mChamado = chamadoController.EditarChamado(numChamado);
-
-                //Response.Redirect("~/UserInterface/ExibirChamados", true);
             }
+
             if (mChamado.tipo_chamado == "REQ") { TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }
             NumChamadoEdit.Text = mChamado.tipo_chamado + mChamado.num_chamado.PadLeft((8 - mChamado.num_chamado.Count()), '0');
             ClienteEdit.Text = mChamado.cliente;
@@ -43,17 +44,17 @@ namespace WEBSystemServiceManagement
             ResumoEdit.InnerText = mChamado.resumo_chamado;
             StatusEdit.Text = mChamado.status_chamado;
             ID_Chamado.Text = (mChamado.id_chamado).ToString();
+            NumChamado.Text = mChamado.num_chamado;
 
-            List<AnotacoesList> ListaAnotacoes = chamadoController.RetornaAnotacoes(numChamado);
+            GridAnotacoes.DataSource = chamadoController.RetornaAnotacoes(mChamado.id_chamado);
+            GridAnotacoes.DataBind();
 
-            //retornar lista ou grid para view
-
-            #region Controle de Status
+            #region Controle Fluxo de Status
             if (StatusEdit.Text == "Aberto")
             {
                 AbertoChange.ForeColor = Color.Red;
                 AbertoChange.Visible = true;
-                AbertoChange.Enabled = true;
+                AbertoChange.Enabled = false;
                 AbertoChange.Text = "Aberto";
                 AndamentoChange.ForeColor = Color.Blue;
                 AndamentoChange.Visible = true;
@@ -147,6 +148,7 @@ namespace WEBSystemServiceManagement
             }
             #endregion
 
+            
         }
 
         public void StatusAbertoChange(object sender, EventArgs e)
@@ -154,26 +156,39 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Aberto' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.AtualizaStatus(query);
 
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Aberto','" + DateTime.Now + "');";
+            db.Inserir(queryNota);
+
+            AnotacaoEdit.InnerText = "";
+
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.id_chamado).ToString();
+            cookie.Value = (mChamado.num_chamado).ToString();
             Response.Cookies.Add(cookie);
             Page_Load(sender, e);
         }
+
         public void StatusEmAndamentoChange(object sender, EventArgs e)
         {
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Em Andamento' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.AtualizaStatus(query);
 
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Em Andamento','" + DateTime.Now + "');";
+            db.Inserir(queryNota);
+
+            AnotacaoEdit.InnerText = "";
+
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.id_chamado).ToString();
+            cookie.Value = (mChamado.num_chamado).ToString();
             Response.Cookies.Add(cookie);
             Page_Load(sender, e);
         }
@@ -182,12 +197,18 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Pendente' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.AtualizaStatus(query);
 
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Pendente','" + DateTime.Now + "');";
+            db.Inserir(queryNota);
+
+            AnotacaoEdit.InnerText = "";
+
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.id_chamado).ToString();
+            cookie.Value = (mChamado.num_chamado).ToString();
             Response.Cookies.Add(cookie);
             Page_Load(sender, e);
         }
@@ -196,12 +217,18 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Concluído' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.AtualizaStatus(query);
 
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText  +"','" + DateTime.Now + "');";
+            db.Inserir(queryNota);
+
+            AnotacaoEdit.InnerText = "";
+
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.id_chamado).ToString();
+            cookie.Value = (mChamado.num_chamado).ToString();
             Response.Cookies.Add(cookie);
             Page_Load(sender, e);
         }
@@ -209,13 +236,49 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
+
+            //if (AnotacaoEdit.InnerText == "" || AnotacaoEdit.InnerText.Count() < 10)
+            //{
+                
+            //    HttpCookie cookie = new HttpCookie("nomeCookie");
+            //    cookie.Expires = DateTime.Now.AddMinutes(1);
+            //    cookie.Value = NumChamado.Text;
+            //    Response.Cookies.Add(cookie);
+            //    Page_Load(sender, e);
+            //}
+            //else
+            //{
+                mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+                mChamado.num_chamado = NumChamado.Text;
+                String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
+                db.AtualizaStatus(query);
+
+                String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
+                db.Inserir(queryNota);
+
+            AnotacaoEdit.InnerText = "";
+
+                HttpCookie cookie = new HttpCookie("nomeCookie");
+                cookie.Expires = DateTime.Now.AddMinutes(1);
+                cookie.Value = (mChamado.num_chamado).ToString();
+                Response.Cookies.Add(cookie);
+                Page_Load(sender, e);
+            //}
+        }
+        public void InsereAnotacao(object sender, EventArgs e)
+        {
+            Repository db = new Repository();
+            ChamadoModel mChamado = new ChamadoModel();
+            mChamado.anotacao = AnotacaoEdit.InnerText;
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
-            String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
-            db.AtualizaStatus(query);
+            mChamado.num_chamado = NumChamado.Text;
+            String query = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'"
+                + mChamado.anotacao + "','" + DateTime.Now + "');";
+            db.Inserir(query);
 
             HttpCookie cookie = new HttpCookie("nomeCookie");
             cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.id_chamado).ToString();
+            cookie.Value = (mChamado.num_chamado).ToString();
             Response.Cookies.Add(cookie);
             Page_Load(sender, e);
         }

@@ -20,7 +20,7 @@
  </div>
 <!--FIM DO CABEÇALHO-->
 
-
+<form id="TelaForm" runat="server">
 <div class="BodyContent">
     <!--INÍCIO DO MENU LATERAL-->
 <div class="Menu-Left-Bar">
@@ -37,22 +37,43 @@
     <div class="BodyContent-Center ">
 
 <div class="Container-Filtros">
+    
 <b>Filtros Rápidos:</b>
-    <a onclick="" runat="server">Abertos</a>
-    <a onclick="" runat="server">Designados ao Meu Grupo</a>
-    <a onclick="" runat="server">Designados a Mim</a>
-    <a onclick="" runat="server">Pendentes</a>
-    <a onclick="" runat="server">Em andamento</a>
-    <a onclick="" runat="server">Cancelados</a>
-    <a onclick="" runat="server">Encerrados</a>
+
+    <asp:LinkButton ID="AbertoLink" runat="server" OnClick="ExibeChamadosAbertos" >Aberto</asp:LinkButton>
+    <asp:LinkButton ID="MyGroupLink" runat="server"  >Designados ao Meu Grupo</asp:LinkButton>
+    <asp:LinkButton ID="ToMeLink" runat="server"  >Designados a Mim</asp:LinkButton>
+    <asp:LinkButton ID="PendentesLink" runat="server" OnClick="ExibeChamadosPendentes" >Pendentes</asp:LinkButton>
+    <asp:LinkButton ID="EmAndamentoLink" runat="server" OnClick="ExibeChamadosEmAndamento">Em andamento</asp:LinkButton>
+    <asp:LinkButton ID="CanceladosLink" runat="server"  OnClick="ExibeChamadosCancelados">Cancelados</asp:LinkButton>
+    <asp:LinkButton ID="ConcluidosLink" runat="server"  OnClick="ExibeChamadosConcluidos">Concluídos</asp:LinkButton>
+
 
  </div>
+        <br />
 
 
-
+                    <asp:GridView ID="GridChamados" runat="server" OnSelectedIndexChanged="EditSelectChamado" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
+                        <AlternatingRowStyle BackColor="White" />
+                        <FooterStyle BackColor="#CCCC99" />
+                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
+                        <RowStyle BackColor="#F7F7DE" />
+                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
+                        <SortedAscendingHeaderStyle BackColor="#848384" />
+                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
+                        <SortedDescendingHeaderStyle BackColor="#575357" />
+                        <columns>
+                        <asp:commandfield selecttext="Editar Chamado" showselectbutton="True"  ControlStyle-ForeColor="Blue" HeaderText="Alterar Chamado" />
+                        </columns>
+                                              
+                    </asp:GridView>
+        
 
 </div>
    
 </div>
+</form>
 </body>
 </html>

@@ -72,19 +72,16 @@ namespace WEBSystemServiceManagement
 
 
            ChamadoController ChamadoController = new ChamadoController();
-           var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
-
-            //EditarChamado EditCham = new EditarChamado();
-            //mChamado = EditCham.EditChamado(NewNumChamado);
-
-           // EditarChamado editarChamado = new EditarChamado();
-            //editarChamado.Page_Load(mChamado);
-           HttpCookie cookie = new HttpCookie("nomeCookie");            
+            var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
+            
+            HttpCookie cookie = new HttpCookie("nomeCookie");            
             cookie.Expires = DateTime.Now.AddMinutes(1);
             cookie.Value = NewNumChamado;
             Response.Cookies.Add(cookie);
            
+
             Response.Redirect("~/UserInterface/EditarChamado", true);
+
 
 
         }
@@ -104,12 +101,12 @@ namespace WEBSystemServiceManagement
                 }
             
         }
+
         protected void ExibeChamadosLoad(object sender, EventArgs e)
         {
             ChamadoModel pModel = new ChamadoModel();
             Response.Redirect("~/UserInterface/ExibirChamados", true);
         }
-
 
     }
 }
