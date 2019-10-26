@@ -30,7 +30,7 @@
         <a href="./" runat="server" class="MenuLink">Consultar Clientes</a>
         <a href="./" runat="server" class="MenuLink">Relatórios</a>
         <a href="./" runat="server" class="MenuLink">Admin</a>
-        <a href="./" runat="server" class="MenuLink">Sair</a>
+        <a href="../" runat="server" class="MenuLink">Sair</a>
 </div>
 <!--FIM DO MENU LATERAL-->
 

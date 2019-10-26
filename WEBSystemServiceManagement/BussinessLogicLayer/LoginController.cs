@@ -9,8 +9,7 @@ namespace WEBSystemServiceManagement
     public class LoginController
     {
         Repository SQLConnect = new Repository();
-        Relatorios pRelatorios = new Relatorios();
-
+        
         public bool GrantAccess(LoginModel pModel)
         {
             String query = String.Format(@"
@@ -20,12 +19,12 @@ namespace WEBSystemServiceManagement
                         "USUARIOS",
                     pModel.LoginName);
 
-            pRelatorios.Resultado = SQLConnect.Consultar(query);
+            var Result = SQLConnect.Consultar(query);
 
-            if (pRelatorios.Resultado == null)
+            if (Result == null)
             {
                 throw new Exception("Usuário Inexistente.");
-            } else if (pModel.LoginName == pRelatorios.Resultado)
+            } else if (pModel.LoginName == Result)
             {
                 query = String.Format(@"
                         SELECT SENHA
@@ -34,10 +33,10 @@ namespace WEBSystemServiceManagement
                         "USUARIOS",
                     pModel.LoginName);
 
-                pRelatorios.Resultado = SQLConnect.Consultar(query);
+                Result = SQLConnect.Consultar(query);
             }
 
-           if (pRelatorios.Resultado == pModel.password)
+           if (Result == pModel.password)
             {
                 return true;
             } else

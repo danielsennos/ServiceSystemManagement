@@ -169,6 +169,7 @@
     <Content Include="UserInterface\EditarChamado.aspx" />
     <Content Include="UserInterface\ExibirChamados.aspx" />
     <Content Include="UserInterface\Login.aspx" />
+    <Content Include="UserInterface\Relatorios.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -188,7 +189,6 @@
     <Compile Include="BussinessLogicLayer\LoginController.cs" />
     <Compile Include="Model\CategoriaChamados.cs" />
     <Compile Include="Model\ChamadoModel.cs" />
-    <Compile Include="Model\Relatorios.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -250,6 +250,13 @@
     </Compile>
     <Compile Include="UserInterface\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Relatorios.aspx.cs">
+      <DependentUpon>Relatorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInterface\Relatorios.aspx.designer.cs">
+      <DependentUpon>Relatorios.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
