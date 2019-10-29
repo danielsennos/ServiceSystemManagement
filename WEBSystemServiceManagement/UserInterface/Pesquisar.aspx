@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExibirChamados.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.ExibirChamados" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Pesquisar.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.Pesquisar" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
 
 <html>
-
 <body>
-<!--INICIO DO CABEÇALHO CONTENDO OS LINKS DE ACESSO RÁPIDO-->
+    <!--INICIO DO CABEÇALHO CONTENDO OS LINKS DE ACESSO RÁPIDO-->
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-collapse collapse">
@@ -20,39 +19,26 @@
  </div>
 <!--FIM DO CABEÇALHO-->
 
-<form id="TelaForm" runat="server">
-<div class="BodyContent">
-    <!--INÍCIO DO MENU LATERAL-->
-<div class="Menu-Left-Bar">
+      <div class="BodyContent">
+        <!--INÍCIO DO MENU LATERAL-->
+        <div class="Menu-Left-Bar">
             <a href="./ExibirChamados" runat="server" class="MenuLink">Exibir Solicitações</a>
             <a href="./CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
             <a href="./" runat="server" class="MenuLink">Relatórios</a>
             <a href="./" runat="server" class="MenuLink">Pesquisar Solicitações</a>
             <a href="./" runat="server" class="MenuLink">Admin</a>
             <a href="../" runat="server" class="MenuLink">Sair</a>
-</div>
-<!--FIM DO MENU LATERAL-->
+        </div>
+        <!--FIM DO MENU LATERAL-->
+        <div class="BodyContent-Center">
+             <form id="PesquisaForm" runat="server">
 
-    <div class="BodyContent-Center ">
+                 <b>Palavra-Chave: </b>
+                 <input id="PesquisarInput" class="InputDefault" runat="server" type="text"  />
+                 <asp:Button ID="PesquisarBtn" runat="server" Text="Pesquisar" OnClick="PesquisarAction" />
 
-<div class="Container-Filtros">
-    
-<b>Filtros Rápidos:</b>
-
-    <asp:LinkButton ID="AbertoLink" runat="server" OnClick="ExibeChamadosAbertos" >Aberto</asp:LinkButton>
-    <asp:LinkButton ID="MyGroupLink" runat="server"  >Designados ao Meu Grupo</asp:LinkButton>
-    <asp:LinkButton ID="ToMeLink" runat="server"  >Designados a Mim</asp:LinkButton>
-    <asp:LinkButton ID="PendentesLink" runat="server" OnClick="ExibeChamadosPendentes" >Pendentes</asp:LinkButton>
-    <asp:LinkButton ID="EmAndamentoLink" runat="server" OnClick="ExibeChamadosEmAndamento">Em andamento</asp:LinkButton>
-    <asp:LinkButton ID="CanceladosLink" runat="server"  OnClick="ExibeChamadosCancelados">Cancelados</asp:LinkButton>
-    <asp:LinkButton ID="ConcluidosLink" runat="server"  OnClick="ExibeChamadosConcluidos">Concluídos</asp:LinkButton>
-
-
- </div>
-        <br />
-
-
-                    <asp:GridView ID="GridChamados" runat="server" OnSelectedIndexChanged="EditSelectChamado" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
+                 <br />
+                        <asp:GridView ID="GridPesquisa" runat="server" OnSelectedIndexChanged="ExibirDetalhes" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
                         <AlternatingRowStyle BackColor="White" />
                         <FooterStyle BackColor="#CCCC99" />
                         <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
@@ -64,15 +50,13 @@
                         <SortedDescendingCellStyle BackColor="#EAEAD3" />
                         <SortedDescendingHeaderStyle BackColor="#575357" />
                         <columns>
-                        <asp:commandfield selecttext="Editar Chamado" showselectbutton="True"  ControlStyle-ForeColor="Blue" HeaderText="Alterar Chamado" />
+                        <asp:commandfield selecttext="Exibir Detalhes" showselectbutton="True"  ControlStyle-ForeColor="Blue" HeaderText="Detalhes do Chamado" />
                         </columns>
                                               
                     </asp:GridView>
-        
+            </form>   
+            </div>
+          </div>
 
-</div>
-   
-</div>
-</form>
 </body>
 </html>

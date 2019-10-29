@@ -10,7 +10,7 @@ namespace WEBSystemServiceManagement
 {
     public class Repository
     {
-        
+
         private MySqlConnection conexao;
         //string PATH = "SERVER=localhost;DATABASE=dbssm; UID=root;PASSWORD=";
         string PATH = "SERVER=den1.mysql4.gear.host;DATABASE=dbssm; UID=dbssm;PASSWORD=Pm6Qup1~_5c7";
@@ -36,24 +36,24 @@ namespace WEBSystemServiceManagement
         public string Consultar(String ConsultarSql)
         {
             String Result = null;
-            
-                conexao = new MySqlConnection(PATH);
-                conexao.Open();
 
-                MySqlCommand comandos = new MySqlCommand(ConsultarSql, conexao);
-                comandos.ExecuteNonQuery();
+            conexao = new MySqlConnection(PATH);
+            conexao.Open();
 
-                MySqlDataReader dr;
-                dr = comandos.ExecuteReader();
-                dr.Read();
+            MySqlCommand comandos = new MySqlCommand(ConsultarSql, conexao);
+            comandos.ExecuteNonQuery();
+
+            MySqlDataReader dr;
+            dr = comandos.ExecuteReader();
+            dr.Read();
 
             if (dr.HasRows)
             {
                 Result = dr.GetString(0);
-            }              
+            }
 
 
-                conexao.Close(); 
+            conexao.Close();
 
             return Result;
         }
@@ -75,9 +75,9 @@ namespace WEBSystemServiceManagement
                 adapter.Fill(dt);
 
                 foreach (DataRow row in dt.Rows)
-              {
+                {
                     lista.Add(row["categoria"].ToString());
-              }
+                }
             }
             return lista;
         }
@@ -151,7 +151,7 @@ namespace WEBSystemServiceManagement
             MySqlTransaction trans = null;
             String Result = null;
             try
-            {                
+            {
                 conexao.Open();
                 trans = conexao.BeginTransaction();
                 MySqlCommand comandos = new MySqlCommand();
@@ -167,8 +167,8 @@ namespace WEBSystemServiceManagement
                     Result = dr.GetString(0);
                 }
                 dr.Close();
-                trans.Commit();                               
-                
+                trans.Commit();
+
 
             }
             catch (Exception ex)
@@ -177,7 +177,7 @@ namespace WEBSystemServiceManagement
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
             finally { conexao.Close(); }
-            
+
 
             return Result;
         }
@@ -192,7 +192,7 @@ namespace WEBSystemServiceManagement
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
 
                 adapter.Fill(dt);
-     
+
             }
 
             return dt;
@@ -207,12 +207,12 @@ namespace WEBSystemServiceManagement
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-            
+
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
 
                 foreach (DataRow row in dt.Rows)
-                {                    
+                {
                     pModel.id_chamado = Convert.ToInt32(row["ID_CHAMADO"]);
                     pModel.tipo_chamado = row["TIPO_CHAMADO"].ToString();
                     pModel.num_chamado = row["NUM_CHAMADO"].ToString();
@@ -224,7 +224,7 @@ namespace WEBSystemServiceManagement
                     pModel.data_abertura = row["DATA_ABERTURA"].ToString();
                     pModel.data_alvo_resolucao = row["DATA_ALVO_RESOLUCAO"].ToString();
                     pModel.data_conclusao = row["DATA_CONCLUSAO"].ToString();
-                    pModel.resumo_chamado = row["RESUMO_CHAMADO"].ToString();                    
+                    pModel.resumo_chamado = row["RESUMO_CHAMADO"].ToString();
 
                 }
             }
@@ -239,10 +239,10 @@ namespace WEBSystemServiceManagement
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                                
+
                 adapter.Fill(dt);
             }
-            
+
             return dt;
         }
 
@@ -256,7 +256,7 @@ namespace WEBSystemServiceManagement
                 trans = conexao.BeginTransaction();
                 MySqlCommand comandos = new MySqlCommand();
                 comandos = new MySqlCommand(UpdateSQL, conexao);
-                comandos.ExecuteNonQuery();                               
+                comandos.ExecuteNonQuery();
                 trans.Commit();
 
             }
@@ -268,6 +268,21 @@ namespace WEBSystemServiceManagement
             finally { conexao.Close(); }
         }
 
-    }
+        public DataTable Procurar(String SQLQuery)
+        {
+            DataTable dt = new DataTable();
 
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                adapter.Fill(dt);
+
+            }
+
+            return dt;
+        }
+
+    }
 }

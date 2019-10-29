@@ -12,7 +12,7 @@
                     <a href="./ExibirChamados" runat="server" class="navbar-brand">Painel</a>
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
-                    <a href="./" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
                 </div>
             </div>
         </div>

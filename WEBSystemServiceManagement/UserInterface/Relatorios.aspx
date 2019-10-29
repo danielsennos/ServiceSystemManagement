@@ -11,7 +11,7 @@
                     <a href="./ExibirChamados" runat="server" class="navbar-brand">Painel</a>
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
-                    <a href="./" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
                 </div>
             </div>
         </div>
@@ -20,16 +20,17 @@
 
 
     <div class="BodyContent">
-        <!--INÍCIO DO MENU LATERAL-->
+        <!--INÍCIO DO MENU LATERAL DE RELATÓRIOS-->
         <div class="Menu-Left-Bar">
-            <a href="./" runat="server" class="MenuLink">Relatório 1</a>
-            <a href="./" runat="server" class="MenuLink">Relatório 2</a>
-            <a href="./" runat="server" class="MenuLink">Relatório 3</a>
-            <a href="./" runat="server" class="MenuLink">Relatório 4</a>
-            <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
-            <a href="../" runat="server" class="MenuLink">Sair</a>
+            <a href="./" runat="server" class="MenuLink" style="padding-left:0px; width:215px; margin-left:10px">Chamados por Cliente</a>
+            <a href="./" runat="server" class="MenuLink" style="padding-left:0px; width:215px; margin-left:10px">Tempo Médio de Atendimento</a>
+            <a href="./" runat="server" class="MenuLink" style="padding-left:0px; width:215px; margin-left:10px">Chamados Abertos no Mês</a>
+            <a href="./" runat="server" class="MenuLink" style="padding-left:0px; width:215px; margin-left:10px">Categorias mais solicitadas</a>
+            <a href="./ExibirChamados" runat="server" class="MenuLink" style="padding-left:0px; width:215px; margin-left:10px">Voltar</a>
+            <a href="../" runat="server" class="MenuLink" style="padding-left:0px; width:215px; margin-left:10px">Sair</a>
         </div>
-        </div>
+        
+        <!--FIM DO MENU LATERAL DE RELATÓRIOS -->
 
         <div class="BodyContent-Center">
             <form id="RelatorioForm" runat="server">
@@ -39,5 +40,7 @@
             </form>           
 
             </div>
+
+</div>
     </body>
 </html>

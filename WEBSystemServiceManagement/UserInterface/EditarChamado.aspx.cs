@@ -29,7 +29,7 @@ namespace WEBSystemServiceManagement
             else
             {
                 numChamado = NumChamado.Text;
-                numChamado = "1";
+                //numChamado = "1";
                 mChamado = chamadoController.EditarChamado(numChamado);
             }
 

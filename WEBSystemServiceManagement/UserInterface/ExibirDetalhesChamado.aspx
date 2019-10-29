@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditarChamado.aspx.cs" Inherits="WEBSystemServiceManagement.EditarChamado" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExibirDetalhesChamado.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.ExibirDetalhesChamado" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
 
@@ -37,7 +37,7 @@
                 <asp:TextBox ID="ID_Chamado" runat="server" class="InputDefault" Visible="false"></asp:TextBox>
                 <asp:TextBox ID="NumChamado" runat="server" class="InputDefault" Visible="false"></asp:TextBox>
                 <div class="ColumFixedLeft">
-                    <b>Detalhes do Chamado:</b>
+                    <h4>Detalhes do Chamado:</h4>
                     <br />
                   <br />
                     Tipo da Solicitação:<br />
@@ -76,26 +76,14 @@
               <textarea id="ResumoEdit" cols="40" runat="server" rows="10" style="border-radius: 5px" readonly></textarea>
 
                     <br />
-                <asp:Button ID="SalvarEditBtn" runat="server" Text="Salvar" />
-                <asp:Button ID="CancelarEditBtn" runat="server" Text="Cancelar" OnClick="Page_Load" />
 
 
 
                 </div>
                 <div class="ColumFixedRight">
-                    <div class="Container-Filtros">
-                        <b>Fluxo de Tabalho:</b>
 
-                        <asp:LinkButton ID="AbertoChange" runat="server" OnClick="StatusAbertoChange" >Aberto</asp:LinkButton>
-                        <asp:LinkButton ID="AndamentoChange" runat="server" OnClick="StatusEmAndamentoChange" >Em Andamento</asp:LinkButton>
-                        <asp:LinkButton ID="PendenteChange" runat="server" OnClick="StatusPendenteChange">Pendente</asp:LinkButton>
-                        <asp:LinkButton ID="ConcluidoChange" runat="server" OnClick="StatusConcluidoChange">Concluído</asp:LinkButton>
-                        <asp:LinkButton ID="CanceladoChange" runat="server" OnClick="StatusCanceladoChange">Cancelar</asp:LinkButton>
-                    </div>
                     <br />
                     <b>Anotações de Trabalho:</b>
-                    <textarea id="AnotacaoEdit" cols="40" runat="server" rows="2" maxlength="180" style="border-radius: 5px"></textarea>
-                    <asp:LinkButton ID="InserirNotaBtn" runat="server" OnClick="InsereAnotacao">Inserir Anotação</asp:LinkButton>
                     <br />
                     <br />
                     <asp:GridView ID="GridAnotacoes" runat="server">

@@ -168,7 +168,9 @@
     <Content Include="UserInterface\CriarNovoChamado.aspx" />
     <Content Include="UserInterface\EditarChamado.aspx" />
     <Content Include="UserInterface\ExibirChamados.aspx" />
+    <Content Include="UserInterface\ExibirDetalhesChamado.aspx" />
     <Content Include="UserInterface\Login.aspx" />
+    <Content Include="UserInterface\Pesquisar.aspx" />
     <Content Include="UserInterface\Relatorios.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -187,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BussinessLogicLayer\ChamadoController.cs" />
     <Compile Include="BussinessLogicLayer\LoginController.cs" />
+    <Compile Include="BussinessLogicLayer\PesquisarController.cs" />
     <Compile Include="Model\CategoriaChamados.cs" />
     <Compile Include="Model\ChamadoModel.cs" />
     <Compile Include="Model\LoginModel.cs" />
@@ -244,12 +247,26 @@
     <Compile Include="UserInterface\ExibirChamados.aspx.designer.cs">
       <DependentUpon>ExibirChamados.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserInterface\ExibirDetalhesChamado.aspx.cs">
+      <DependentUpon>ExibirDetalhesChamado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInterface\ExibirDetalhesChamado.aspx.designer.cs">
+      <DependentUpon>ExibirDetalhesChamado.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserInterface\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UserInterface\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\Pesquisar.aspx.cs">
+      <DependentUpon>Pesquisar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInterface\Pesquisar.aspx.designer.cs">
+      <DependentUpon>Pesquisar.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\Relatorios.aspx.cs">
       <DependentUpon>Relatorios.aspx</DependentUpon>
