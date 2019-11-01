@@ -12,10 +12,9 @@ namespace WEBSystemServiceManagement
     {
 
         private MySqlConnection conexao;
-        //string PATH = "SERVER=localhost;DATABASE=dbssm; UID=root;PASSWORD=";
-        string PATH = "SERVER=den1.mysql4.gear.host;DATABASE=dbssm; UID=dbssm;PASSWORD=Pm6Qup1~_5c7";
+        private readonly string PATH = "SERVER=den1.mysql4.gear.host;DATABASE=dbssm; UID=dbssm;PASSWORD=Pm6Qup1~_5c7";
 
-        #region MetodosGenericos
+        #region MetodosUniversais
         public void Inserir(String InsertSql)
         {
             try
@@ -57,6 +56,21 @@ namespace WEBSystemServiceManagement
 
             return Result;
         }
+        public DataTable RetornaTabela(String SQLQuery)
+        {
+            DataTable dt = new DataTable();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                adapter.Fill(dt);
+
+            }
+
+            return dt;
+        }
         #endregion
 
 
@@ -68,8 +82,6 @@ namespace WEBSystemServiceManagement
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                //DataSet dataset = new DataSet();
-                //adapter.Fill(dataset);
 
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -89,8 +101,6 @@ namespace WEBSystemServiceManagement
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                //DataSet dataset = new DataSet();
-                //adapter.Fill(dataset);
 
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -110,8 +120,6 @@ namespace WEBSystemServiceManagement
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                //DataSet dataset = new DataSet();
-                //adapter.Fill(dataset);
 
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -131,8 +139,6 @@ namespace WEBSystemServiceManagement
             {
                 MySqlDataAdapter adapter = new MySqlDataAdapter();
                 adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-                //DataSet dataset = new DataSet();
-                //adapter.Fill(dataset);
 
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
@@ -168,8 +174,6 @@ namespace WEBSystemServiceManagement
                 }
                 dr.Close();
                 trans.Commit();
-
-
             }
             catch (Exception ex)
             {
@@ -283,6 +287,8 @@ namespace WEBSystemServiceManagement
 
             return dt;
         }
+
+
 
     }
 }

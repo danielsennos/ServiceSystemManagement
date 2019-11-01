@@ -17,9 +17,6 @@ namespace WEBSystemServiceManagement.UserInterface
 
             
             GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
-            //GridChamados.Rows[1].Visible = false;
-            //int index = Int32.Parse(e.ToString());
-            //GridChamados.Columns[1].HeaderText = "Titulo Header";
             GridChamados.DataBind();
            
         }
