@@ -14,8 +14,8 @@ namespace WEBSystemServiceManagement
 
             String selectDataAlvo = @"SELECT LIMITE_EXECUCAO FROM ALVO_SLA AL
                                     JOIN CATEGORIA_CHAMADO CC ON CC.ID_CATEGORIA = AL.ID_CATEGORIA
-                                    JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = AL.ID_EMPRESA_CLIENTE
-                                    WHERE EC.EMPRESA_CLIENTE ='" + mChamado.cliente
+                                    JOIN EMPRESAS EC ON EC.ID_EMPRESA = AL.ID_EMPRESA
+                                    WHERE EC.EMPRESA_NOME ='" + mChamado.cliente
                                     + "' AND CC.CATEGORIA ='"
                                     + mChamado.categoria + "';";
             Int16 AlvoSLA = Convert.ToInt16(db.Consultar(selectDataAlvo));
@@ -58,11 +58,11 @@ namespace WEBSystemServiceManagement
             string SqlIdChamado = @"SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NumChamado + ";";
             pModel.id_chamado = Convert.ToInt32(db.Consultar(SqlIdChamado));
 
-            string SqlChamado = @"SELECT CS.ID_CHAMADO, CS.TIPO_CHAMADO, CS.NUM_CHAMADO, CS.STATUS_CHAMADO, CC.CATEGORIA, CLI.NOME_CLIENTE, EMCLI.EMPRESA_CLIENTE, CS.URGENCIA, CS.DATA_ABERTURA, 
+            string SqlChamado = @"SELECT CS.ID_CHAMADO, CS.TIPO_CHAMADO, CS.NUM_CHAMADO, CS.STATUS_CHAMADO, CC.CATEGORIA, CLI.NOME_CLIENTE, EMCLI.EMPRESA_NOME, CS.URGENCIA, CS.DATA_ABERTURA, 
             CS.DATA_ALVO_RESOLUCAO, CS.DATA_CONCLUSAO, CS.RESUMO_CHAMADO
             FROM CHAMADOS CS
             LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
-            LEFT JOIN EMPRESA_CLIENTE EMCLI ON EMCLI.ID_EMPRESA_CLIENTE = CS.ID_EMPRESA_CLIENTE
+            LEFT JOIN EMPRESAS EMCLI ON EMCLI.ID_EMPRESA = CS.ID_EMPRESA
             LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA
             WHERE CS.ID_CHAMADO = " + pModel.id_chamado + ";";
             pModel = db.EditChamados(SqlChamado);
@@ -85,11 +85,11 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
             string query = @"SELECT CONCAT(CS.TIPO_CHAMADO, CS.NUM_CHAMADO) as 'Número do Chamado', CS.STATUS_CHAMADO as 'Status',
-                            CC.CATEGORIA as 'Categoria', EMCLI.EMPRESA_CLIENTE as 'Cliente', CS.URGENCIA as 'Urgência',
+                            CC.CATEGORIA as 'Categoria', EMCLI.EMPRESA_NOME as 'Cliente', CS.URGENCIA as 'Urgência',
                             CS.DATA_ABERTURA as 'Data Abertura', CS.DATA_ALVO_RESOLUCAO as 'Data Alvo para Resolução'
                             FROM CHAMADOS CS
                             LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
-                            LEFT JOIN EMPRESA_CLIENTE EMCLI ON EMCLI.ID_EMPRESA_CLIENTE = CS.ID_EMPRESA_CLIENTE
+                            LEFT JOIN EMPRESAS EMCLI ON EMCLI.ID_EMPRESA = CS.ID_EMPRESA
                             LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA
                             WHERE CS.STATUS_CHAMADO = '" + StatusChamado + "';";
             DataTable ChamadosDt = db.ExibeChamados(query);

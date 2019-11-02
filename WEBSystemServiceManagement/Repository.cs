@@ -71,6 +71,28 @@ namespace WEBSystemServiceManagement
 
             return dt;
         }
+
+        public void Update(string UpdateSQL)
+        {
+            conexao = new MySqlConnection(PATH);
+            MySqlTransaction trans = null;
+            try
+            {
+                conexao.Open();
+                trans = conexao.BeginTransaction();
+                MySqlCommand comandos = new MySqlCommand();
+                comandos = new MySqlCommand(UpdateSQL, conexao);
+                comandos.ExecuteNonQuery();
+                trans.Commit();
+
+            }
+            catch (Exception ex)
+            {
+                trans.Rollback();
+                throw new Exception("Erro de comando SQL" + ex.Message);
+            }
+            finally { conexao.Close(); }
+        }
         #endregion
 
 
@@ -145,7 +167,7 @@ namespace WEBSystemServiceManagement
 
                 foreach (DataRow row in dt.Rows)
                 {
-                    lista.Add(row["empresa_cliente"].ToString());
+                    lista.Add(row["empresa_nome"].ToString());
                 }
             }
             return lista;
@@ -222,7 +244,7 @@ namespace WEBSystemServiceManagement
                     pModel.num_chamado = row["NUM_CHAMADO"].ToString();
                     pModel.status_chamado = row["STATUS_CHAMADO"].ToString();
                     pModel.categoria = row["CATEGORIA"].ToString();
-                    pModel.requisitante = row["EMPRESA_CLIENTE"].ToString();
+                    pModel.requisitante = row["EMPRESA_NOME"].ToString();
                     pModel.cliente = row["NOME_CLIENTE"].ToString();
                     pModel.urgencia = row["URGENCIA"].ToString();
                     pModel.data_abertura = row["DATA_ABERTURA"].ToString();
@@ -250,27 +272,7 @@ namespace WEBSystemServiceManagement
             return dt;
         }
 
-        public void AtualizaStatus(string UpdateSQL)
-        {
-            conexao = new MySqlConnection(PATH);
-            MySqlTransaction trans = null;
-            try
-            {
-                conexao.Open();
-                trans = conexao.BeginTransaction();
-                MySqlCommand comandos = new MySqlCommand();
-                comandos = new MySqlCommand(UpdateSQL, conexao);
-                comandos.ExecuteNonQuery();
-                trans.Commit();
-
-            }
-            catch (Exception ex)
-            {
-                trans.Rollback();
-                throw new Exception("Erro de comando SQL" + ex.Message);
-            }
-            finally { conexao.Close(); }
-        }
+        
 
         public DataTable Procurar(String SQLQuery)
         {
@@ -287,8 +289,53 @@ namespace WEBSystemServiceManagement
 
             return dt;
         }
+       
+        public AdminModel.Empresa EditEmpresa(String SQLQuery)
+        {
+            AdminModel.Empresa pModel = new AdminModel.Empresa();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    pModel.IdEmpresa = row["ID_EMPRESA"].ToString();
+                    pModel.NomeEmpresa = row["EMPRESA_NOME"].ToString();
+                    pModel.CNPJEmpresa = row["CNPJ_EMPRESA"].ToString();
+                    pModel.CidadeEmpresa = row["CIDADE_EMPRESA"].ToString();
+                    pModel.EstadoEmpresa = row["ESTADO_EMPRESA"].ToString();
+                    pModel.EnderecoEmpresa = row["ENDERECO_EMPRESA"].ToString();
 
 
+                }
+            }
+            return pModel;
+        }
+
+        public ArrayList CarregaCidades(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["nome"].ToString());
+                }
+            }
+            return lista;
+        }
 
     }
 }

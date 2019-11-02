@@ -11,106 +11,97 @@ namespace WEBSystemServiceManagement.UserInterface
 {
 
 
-    public partial class Admin
+    public partial class EmpresaAdmin
     {
 
         /// <summary>
-        /// AdminForm control.
+        /// EmpresaForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm AdminForm;
+        protected global::System.Web.UI.HtmlControls.HtmlForm EmpresaForm;
 
         /// <summary>
-        /// EmpresaBtn control.
+        /// idempresa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton EmpresaBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText idempresa;
 
         /// <summary>
-        /// ClienteBtn control.
+        /// NomeEmpresaInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton ClienteBtn;
+        protected global::System.Web.UI.WebControls.TextBox NomeEmpresaInput;
 
         /// <summary>
-        /// CategoriaBtn control.
+        /// CNPJEmpresaInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton CategoriaBtn;
+        protected global::System.Web.UI.WebControls.TextBox CNPJEmpresaInput;
 
         /// <summary>
-        /// GrupoBtn control.
+        /// EnderecoInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton GrupoBtn;
+        protected global::System.Web.UI.WebControls.TextBox EnderecoInput;
 
         /// <summary>
-        /// UsuarioBtn control.
+        /// EstadosList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton UsuarioBtn;
+        protected global::System.Web.UI.WebControls.DropDownList EstadosList;
 
         /// <summary>
-        /// GridEmpresa control.
+        /// CidadeList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridEmpresa;
+        protected global::System.Web.UI.WebControls.DropDownList CidadeList;
 
         /// <summary>
-        /// GridCliente control.
+        /// Status control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridCliente;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect Status;
 
         /// <summary>
-        /// GridCategoria control.
+        /// SalvartBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridCategoria;
+        protected global::System.Web.UI.WebControls.Button SalvartBtn;
 
         /// <summary>
-        /// GridGrupoSuporte control.
+        /// CancelarBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridGrupoSuporte;
-
-        /// <summary>
-        /// GridUsuarios control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridUsuarios;
+        protected global::System.Web.UI.WebControls.Button CancelarBtn;
     }
 }

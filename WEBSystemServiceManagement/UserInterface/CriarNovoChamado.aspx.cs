@@ -26,7 +26,7 @@ namespace WEBSystemServiceManagement
             }
             if (GrupoDesignado.Items.Count == 0)
             {
-                String query = @"SELECT GRUPO_SUP_NOME FROM GRUPO_SUPORTE;";
+                String query = @"SELECT GRUPO_SUP_NOME FROM GRUPO_USUARIO;";
                 var ListaCategoria = SQLConnect.CarregaGruposSuporte(query);
                 foreach (var item in ListaCategoria)
                 {
@@ -35,7 +35,7 @@ namespace WEBSystemServiceManagement
             }            
             if (Cliente.Items.Count == 0)
             {
-                String query = @"SELECT EMPRESA_CLIENTE FROM EMPRESA_CLIENTE;";
+                String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
                 var ListaCategoria = SQLConnect.CarregaCliente(query);
                 foreach (var item in ListaCategoria)
                 {
@@ -46,8 +46,8 @@ namespace WEBSystemServiceManagement
                 ChamadoModel mChamado = new ChamadoModel();
                 mChamado.cliente = (Cliente.SelectedItem.ToString());
                 String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
-                                JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = CLI.ID_EMPRESA_CLIENTE
-                                WHERE EC.EMPRESA_CLIENTE ='"
+                                JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA_CLIENTE
+                                WHERE EC.EMPRESA_CNOME ='"
                                 + mChamado.cliente + "';";
                 var ListaCategoria = SQLConnect.CarregaRequisitante(query);
                 foreach (var item in ListaCategoria)
@@ -91,8 +91,8 @@ namespace WEBSystemServiceManagement
 
                 mChamado.cliente = (Cliente.SelectedItem.ToString());
                 String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
-                                JOIN EMPRESA_CLIENTE EC ON EC.ID_EMPRESA_CLIENTE = CLI.ID_EMPRESA_CLIENTE
-                                WHERE EC.EMPRESA_CLIENTE ="
+                                JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA
+                                WHERE EC.EMPRESA_NOME ="
                                 + mChamado.cliente + "';";
                 var ListaCategoria = SQLConnect.CarregaRequisitante(query);
                 foreach (var item in ListaCategoria)

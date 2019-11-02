@@ -158,7 +158,7 @@ namespace WEBSystemServiceManagement
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
             mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Aberto' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
-            db.AtualizaStatus(query);
+            db.Update(query);
 
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Aberto','" + DateTime.Now + "');";
             db.Inserir(queryNota);
@@ -179,7 +179,7 @@ namespace WEBSystemServiceManagement
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
             mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Em Andamento' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
-            db.AtualizaStatus(query);
+            db.Update(query);
 
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Em Andamento','" + DateTime.Now + "');";
             db.Inserir(queryNota);
@@ -199,7 +199,7 @@ namespace WEBSystemServiceManagement
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
             mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Pendente' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
-            db.AtualizaStatus(query);
+            db.Update(query);
 
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Pendente','" + DateTime.Now + "');";
             db.Inserir(queryNota);
@@ -219,7 +219,7 @@ namespace WEBSystemServiceManagement
             mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
             mChamado.num_chamado = NumChamado.Text;
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Concluído' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
-            db.AtualizaStatus(query);
+            db.Update(query);
 
             String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText  +"','" + DateTime.Now + "');";
             db.Inserir(queryNota);
@@ -251,7 +251,7 @@ namespace WEBSystemServiceManagement
                 mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
                 mChamado.num_chamado = NumChamado.Text;
                 String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
-                db.AtualizaStatus(query);
+                db.Update(query);
 
                 String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
                 db.Inserir(queryNota);
