@@ -172,20 +172,24 @@ namespace WEBSystemServiceManagement
                                             CATEGORIA = '" + pModel.NomeCategoria + "'," +
                                             "ALVO_SLA = '" + pModel.SLACategoria + "'," +
                                             "STATUS_CATEGORIA = '" + pModel.StatusCategoria + "'" +
-                                            "WHERE ID_CTAGEORIA = " + pModel.idCategoria;
+                                            "WHERE ID_CATEGORIA = " + pModel.idCategoria;
 
 
 
             db.Update(SQL);
         }
-        public void IncluirCategoria(AdminModel.Cliente pModel)
+        public void IncluirCategoria(AdminModel.Categoria pModel)
         {
             Repository db = new Repository();
 
-            String SQLConsultarMaxId = "";
+            String SQLConsultarMaxId = "SELECT MAX(ID_CATEGORIA) FROM CATEGORIA_CHAMADO";
             var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
 
-            String SQL = @"";
+            String SQL = @"INSERT INTO CATEGORIA_CHAMADO VALUES(" +
+                MaxId + ",'" +
+                pModel.NomeCategoria + "'," +
+                pModel.SLACategoria + ",'" +
+                pModel.StatusCategoria + "')";
 
             db.Inserir(SQL);
         }

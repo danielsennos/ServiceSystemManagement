@@ -37,7 +37,7 @@
                 <b>Status:</b><br />
                 <select id="Status" name="Status" runat="server" class="InputDefault">
                     <option value="A">Ativada</option>
-                    <option value="B">Inativa</option>
+                    <option value="D">Inativa</option>
                 </select>
                 <br /><br />
                 <asp:Button ID="SalvartBtn" runat="server" Text="Salvar" OnClick="AtualizaCategoria" />

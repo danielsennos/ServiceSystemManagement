@@ -31,7 +31,7 @@
                 <asp:LinkButton ID="UsuarioBtn" runat="server" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
                 <a href="./EmpresaAdmin" runat="server" class="MenuLink">Incluir Empresa</a>
                 <a href="./ClienteAdmin" runat="server" class="MenuLink">Incluir Cliente</a>
-                <a href="./" runat="server" class="MenuLink">Incluir Categoria</a>
+                <a href="./CategoriaAdmin" runat="server" class="MenuLink">Incluir Categoria</a>
                 <a href="./" runat="server" class="MenuLink">Incluir Grupos de Suporte</a>
                 <a href="./" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
                 <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>

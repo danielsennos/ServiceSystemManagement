@@ -60,8 +60,11 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.SLACategoria = SLAInput.Text;
             pModel.StatusCategoria = Status.Value;
 
-            if (pModel.idCategoria != "") { adminController.EditarCategoria(pModel); } else {  }
-
+            if (pModel.idCategoria != "") { adminController.EditarCategoria(pModel); } else { adminController.IncluirCategoria(pModel); }
+            
+            Session.Clear();
+            Session["edit"] = pModel.NomeCategoria;
+            
 
 
             Response.Redirect("~/UserInterface/CategoriaAdmin", true);
