@@ -166,6 +166,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="UserInterface\AdminIndex.aspx" />
+    <Content Include="UserInterface\CategoriaAdmin.aspx" />
     <Content Include="UserInterface\ClienteAdmin.aspx" />
     <Content Include="UserInterface\CriarNovoChamado.aspx" />
     <Content Include="UserInterface\EditarChamado.aspx" />
@@ -237,6 +238,13 @@
     </Compile>
     <Compile Include="UserInterface\AdminIndex.aspx.designer.cs">
       <DependentUpon>AdminIndex.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\CategoriaAdmin.aspx.cs">
+      <DependentUpon>CategoriaAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInterface\CategoriaAdmin.aspx.designer.cs">
+      <DependentUpon>CategoriaAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\ClienteAdmin.aspx.cs">
       <DependentUpon>ClienteAdmin.aspx</DependentUpon>

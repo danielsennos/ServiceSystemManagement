@@ -74,3 +74,7 @@ WEBSystemServiceManagement/packages/System.Text.Encodings.Web.4.5.0/useSharedDes
 *.cache
 *.dll
 *.dll
+
+WEBSystemServiceManagement/.vs/WEBSystemServiceManagement/v16/
+
+WEBSystemServiceManagement/bin/WEBSystemServiceManagement.dll.config

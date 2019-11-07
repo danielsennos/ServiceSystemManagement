@@ -272,7 +272,7 @@ namespace WEBSystemServiceManagement
             return dt;
         }
 
-        
+
 
         public DataTable Procurar(String SQLQuery)
         {
@@ -289,8 +289,8 @@ namespace WEBSystemServiceManagement
 
             return dt;
         }
-       
-        public AdminModel.Empresa EditEmpresa(String SQLQuery)
+
+        public AdminModel.Empresa ExibirEmpresa(String SQLQuery)
         {
             AdminModel.Empresa pModel = new AdminModel.Empresa();
 
@@ -317,7 +317,61 @@ namespace WEBSystemServiceManagement
             return pModel;
         }
 
-        public ArrayList CarregaCidades(String SQLQuery)
+        public AdminModel.Cliente ExibirCliente(String SQLQuery)
+        {
+            AdminModel.Cliente pModel = new AdminModel.Cliente();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    pModel.IdCliente = row["ID_CLIENTE"].ToString();
+                    pModel.NomeCliente = row["NOME_CLIENTE"].ToString();
+                    pModel.CidadeCliente = row["CIDADE_CLIENTE"].ToString();
+                    pModel.EstadoCliente = row["ESTADO_CLIENTE"].ToString();
+                    pModel.TelefoneCliente = row["TELEFONE_CLIENTE"].ToString();
+                    pModel.EmailCliente = row["EMAIL_CLIENTE"].ToString();
+                    pModel.EmpresaCliente = row["EMPRESA_NOME"].ToString();
+                    pModel.StatusCliente = row["STATUS_CLIENTE"].ToString();
+
+                }
+            }
+            return pModel;
+        }
+
+        public AdminModel.Categoria ExibirCategoria(String SQLQuery)
+        {
+            AdminModel.Categoria pModel = new AdminModel.Categoria();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    pModel.idCategoria = row["ID_CATEGORIA"].ToString();
+                    pModel.NomeCategoria = row["CATEGORIA"].ToString();
+                    pModel.SLACategoria = row["ALVO_SLA"].ToString();
+                    pModel.StatusCategoria = row["STATUS_CATEGORIA"].ToString();
+
+
+                }
+            }
+            return pModel;
+        }
+
+
+        public ArrayList CarregaCidadeEstados(String SQLQuery)
         {
             ArrayList lista = new ArrayList();
 

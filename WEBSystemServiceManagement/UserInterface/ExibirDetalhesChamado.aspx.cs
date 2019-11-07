@@ -14,20 +14,18 @@ namespace WEBSystemServiceManagement.UserInterface
             ChamadoModel mChamado = new ChamadoModel();
             ChamadoController chamadoController = new ChamadoController();
 
-            HttpCookie cookie;
-            cookie = Request.Cookies["nomeCookie"];
-            string numChamado = null;
 
-            if (cookie != null)
+            if (Session.Count > 0)
             {
-                numChamado = cookie.Value;
+                string numChamado = (Session["edit"]).ToString();
                 mChamado = chamadoController.EditarChamado(numChamado);
+                Session.Clear();
             }
             else
             {
                 throw new Exception("O servidor demorou a reponder. Verifique sua conexão e tente novamente.");
 
-                Response.Redirect("~/UserInterface/Pesquisar", true);
+                //Response.Redirect("~/UserInterface/Pesquisar", true);
             }
 
             if (mChamado.tipo_chamado == "REQ") { TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }

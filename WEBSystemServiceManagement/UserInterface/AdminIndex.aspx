@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminIndex.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.Admin" %>
 
+
 <link href="../Content/bootstrap.css" rel="stylesheet" />
+
 
 <html>
 <body>
@@ -28,7 +30,7 @@
                 <asp:LinkButton ID="GrupoBtn" runat="server" OnClick="ExibirGrupoSuporte">Grupos de Suporte</asp:LinkButton>
                 <asp:LinkButton ID="UsuarioBtn" runat="server" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
                 <a href="./EmpresaAdmin" runat="server" class="MenuLink">Incluir Empresa</a>
-                <a href="./" runat="server" class="MenuLink">Incluir Cliente</a>
+                <a href="./ClienteAdmin" runat="server" class="MenuLink">Incluir Cliente</a>
                 <a href="./" runat="server" class="MenuLink">Incluir Categoria</a>
                 <a href="./" runat="server" class="MenuLink">Incluir Grupos de Suporte</a>
                 <a href="./" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>

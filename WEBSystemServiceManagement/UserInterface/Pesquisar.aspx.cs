@@ -25,11 +25,9 @@ namespace WEBSystemServiceManagement.UserInterface
         protected void ExibirDetalhes(object sender, EventArgs e)
         {
             GridViewRow gr = GridPesquisa.SelectedRow;
-            var numChamadoSelected = (gr.Cells[1].Text).Substring(4, 7);
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = numChamadoSelected;
-            Response.Cookies.Add(cookie);
+            string numChamadoSelected = (HttpUtility.HtmlDecode(gr.Cells[1].Text)).Substring(4, 7);
+            Session.Clear();
+            Session["edit"] = numChamadoSelected;
 
             Response.Redirect("~/UserInterface/ExibirDetalhesChamado", true);
         }

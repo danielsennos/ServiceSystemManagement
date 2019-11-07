@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -99,59 +100,49 @@ namespace WEBSystemServiceManagement.UserInterface
         public void EditarEmpresa(object sender, EventArgs e)
         {
             GridViewRow gr = GridEmpresa.SelectedRow;
-            var nome = gr.Cells[1].Text;
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = nome;
-            Response.Cookies.Add(cookie);
+            string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
+            Session.Clear();
+            Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/EmpresaAdmin", true);
         }
 
         public void EditarCliente(object sender, EventArgs e)
         {
-            GridViewRow gr = GridEmpresa.SelectedRow;
-            var nome = gr.Cells[1].Text;
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = nome;
-            Response.Cookies.Add(cookie);
+            GridViewRow gr = GridCliente.SelectedRow;
+            string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
+            Session.Clear();
+            Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/ClienteAdmin", true);
         }
 
         public void EditarCategoria(object sender, EventArgs e)
         {
-            GridViewRow gr = GridEmpresa.SelectedRow;
-            var nome = gr.Cells[1].Text;
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = nome;
-            Response.Cookies.Add(cookie);
+            GridViewRow gr = GridCategoria.SelectedRow;
+            string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
+            Session.Clear();
+            Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/CategoriaAdmin", true);
         }
 
         public void EditarGrupoSuporte(object sender, EventArgs e)
         {
-            GridViewRow gr = GridEmpresa.SelectedRow;
-            var nome = gr.Cells[1].Text;
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = nome;
-            Response.Cookies.Add(cookie);
+            GridViewRow gr = GridGrupoSuporte.SelectedRow;
+            string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
+            Session.Clear();
+            Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/SuporteAdmin", true);
         }
 
         public void EditarUsuarios(object sender, EventArgs e)
         {
-            GridViewRow gr = GridEmpresa.SelectedRow;
-            var nome = gr.Cells[1].Text;
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = nome;
-            Response.Cookies.Add(cookie);
+            GridViewRow gr = GridUsuarios.SelectedRow;
+            string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
+            Session.Clear();
+            Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/UsuarioAdmin", true);
         }

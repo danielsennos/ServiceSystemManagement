@@ -11,43 +11,42 @@ namespace WEBSystemServiceManagement.UserInterface
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (IsPostBack == false)
+         {
             AdminModel.Empresa pModel = new AdminModel.Empresa();
             AdminController adminController = new AdminController();
             Repository SQLConnect = new Repository();
 
-            HttpCookie cookie;
-            cookie = Request.Cookies["nomeCookie"];
-            string nome = null;
 
-            if (cookie != null)
+            if (Session.Count > 0)
             {
-                nome = cookie.Value;
+                string nome = (Session["edit"]).ToString();
                 pModel = adminController.ExibirEmpresa(nome);
+                Session.Clear();
             }
             else
             {
-                nome = NomeEmpresaInput.Text;
-                pModel = adminController.ExibirEmpresa(nome);
-            }
+                    pModel = new AdminModel.Empresa();
+                }
 
             if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0)
             {
                 String queryEstado = @"SELECT NOME FROM ESTADO";
-                var ListaEstado = SQLConnect.CarregaCidades(queryEstado);
+                var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
                 foreach (var item in ListaEstado)
                 {
                     EstadosList.Items.Add(item.ToString());
                 }
                 String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
                                     (SELECT ID FROM(SELECT ID AS ID FROM ESTADO WHERE NOME = '" + EstadosList.SelectedValue + "') AS TEMP) ";
-                var ListaCidade = SQLConnect.CarregaCidades(queryCidade);
+                var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
                 foreach (var item in ListaCidade)
                 {
                     CidadeList.Items.Add(item.ToString());
                 }
             }
-            if (IsPostBack == false)
-            {                
+              
 
                 idempresa.Value = pModel.IdEmpresa;
                 NomeEmpresaInput.Text = pModel.NomeEmpresa;
@@ -67,7 +66,7 @@ namespace WEBSystemServiceManagement.UserInterface
             string EstadoNome = EstadosList.SelectedItem.Value.ToString();
 
             String queryEstado = @"SELECT NOME FROM ESTADO";
-            var ListaEstado = SQLConnect.CarregaCidades(queryEstado);
+            var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
             EstadosList.Items.Clear();
             foreach (var item in ListaEstado)
             {
@@ -77,7 +76,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
             String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
                                     (SELECT ID FROM(SELECT ID AS ID FROM ESTADO WHERE NOME = '" + EstadoNome + "') AS TEMP) ";
-            var ListaCidade = SQLConnect.CarregaCidades(queryCidade);
+            var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
             CidadeList.Items.Clear();
             foreach (var item in ListaCidade)
             {
@@ -99,12 +98,10 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.StatusEmpresa = Status.Value;
 
             if(pModel.IdEmpresa != "") {adminController.EditarEmpresa(pModel); } else { adminController.IncluirEmpresa(pModel); }
-           
 
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddSeconds(8);
-            cookie.Value = pModel.NomeEmpresa;
-            Response.Cookies.Add(cookie);
+
+            Session.Clear();
+            Session["edit"] =  pModel.NomeEmpresa;
 
             Response.Redirect("~/UserInterface/EmpresaAdmin", true);
 

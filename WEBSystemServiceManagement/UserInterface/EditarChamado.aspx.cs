@@ -14,22 +14,21 @@ namespace WEBSystemServiceManagement
     {
         public void Page_Load(object sender, EventArgs e)
         {
+            
+
             ChamadoModel mChamado = new ChamadoModel();
             ChamadoController chamadoController = new ChamadoController();
 
-            HttpCookie cookie;
-            cookie = Request.Cookies["nomeCookie"];
-            string numChamado = null;
 
-            if (cookie != null)
-               {
-                numChamado = cookie.Value;
+            if (Session.Count > 0)
+            {
+                string numChamado = (Session["edit"]).ToString();
                 mChamado = chamadoController.EditarChamado(numChamado);
+                Session.Clear();
             }
             else
             {
-                numChamado = NumChamado.Text;
-                //numChamado = "1";
+                string numChamado = NumChamado.Text;
                 mChamado = chamadoController.EditarChamado(numChamado);
             }
 
@@ -148,7 +147,7 @@ namespace WEBSystemServiceManagement
             }
             #endregion
 
-            
+
         }
 
         public void StatusAbertoChange(object sender, EventArgs e)
@@ -165,10 +164,8 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.num_chamado).ToString();
-            Response.Cookies.Add(cookie);
+            Session.Clear();
+            Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
 
@@ -186,10 +183,8 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.num_chamado).ToString();
-            Response.Cookies.Add(cookie);
+            Session.Clear();
+            Session["edit"] = (mChamado.num_chamado).ToString(); ;
             Page_Load(sender, e);
         }
         public void StatusPendenteChange(object sender, EventArgs e)
@@ -206,10 +201,8 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.num_chamado).ToString();
-            Response.Cookies.Add(cookie);
+            Session.Clear();
+            Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
         public void StatusConcluidoChange(object sender, EventArgs e)
@@ -221,15 +214,13 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Concluído' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText  +"','" + DateTime.Now + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
 
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.num_chamado).ToString();
-            Response.Cookies.Add(cookie);
+            Session.Clear();
+            Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
         public void StatusCanceladoChange(object sender, EventArgs e)
@@ -237,33 +228,20 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             ChamadoModel mChamado = new ChamadoModel();
 
-            //if (AnotacaoEdit.InnerText == "" || AnotacaoEdit.InnerText.Count() < 10)
-            //{
-                
-            //    HttpCookie cookie = new HttpCookie("nomeCookie");
-            //    cookie.Expires = DateTime.Now.AddMinutes(1);
-            //    cookie.Value = NumChamado.Text;
-            //    Response.Cookies.Add(cookie);
-            //    Page_Load(sender, e);
-            //}
-            //else
-            //{
-                mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
-                mChamado.num_chamado = NumChamado.Text;
-                String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
-                db.Update(query);
+            mChamado.id_chamado = Convert.ToInt32(ID_Chamado.Text);
+            mChamado.num_chamado = NumChamado.Text;
+            String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
+            db.Update(query);
 
-                String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
-                db.Inserir(queryNota);
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
+            db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
 
-                HttpCookie cookie = new HttpCookie("nomeCookie");
-                cookie.Expires = DateTime.Now.AddMinutes(1);
-                cookie.Value = (mChamado.num_chamado).ToString();
-                Response.Cookies.Add(cookie);
-                Page_Load(sender, e);
-            //}
+            Session.Clear();
+            Session["edit"] = (mChamado.num_chamado).ToString();
+            Page_Load(sender, e);
+            
         }
         public void InsereAnotacao(object sender, EventArgs e)
         {
@@ -276,10 +254,8 @@ namespace WEBSystemServiceManagement
                 + mChamado.anotacao + "','" + DateTime.Now + "');";
             db.Inserir(query);
 
-            HttpCookie cookie = new HttpCookie("nomeCookie");
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = (mChamado.num_chamado).ToString();
-            Response.Cookies.Add(cookie);
+            Session.Clear();
+            Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
     }

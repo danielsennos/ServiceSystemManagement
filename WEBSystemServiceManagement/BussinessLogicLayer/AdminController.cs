@@ -31,7 +31,8 @@ namespace WEBSystemServiceManagement
         public DataTable ExibirCategoria()
         {
             Repository db = new Repository();
-            String query = @"SELECT CATEGORIA AS 'Categoria', ALVO_SLA AS 'SLA de Resolução (hora)' FROM CATEGORIA_CHAMADO";
+            String query = @"SELECT CATEGORIA AS 'Categoria', ALVO_SLA AS 'SLA de Resolução (hora)', STATUS_CATEGORIA AS 'Status'
+                            FROM CATEGORIA_CHAMADO";
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
@@ -65,7 +66,7 @@ namespace WEBSystemServiceManagement
             AdminModel.Empresa pModel = new AdminModel.Empresa();
             
             string Sql = @"SELECT * FROM EMPRESAS WHERE EMPRESA_NOME ='" + nome + "';";
-            pModel = db.EditEmpresa(Sql);
+            pModel = db.ExibirEmpresa(Sql);
 
             return pModel;
         }
@@ -101,6 +102,93 @@ namespace WEBSystemServiceManagement
             
             db.Inserir(SQL);
         }
+        public AdminModel.Cliente ExibirCliente(string nome)
+        {
+            Repository db = new Repository();
+            AdminModel.Cliente pModel = new AdminModel.Cliente();
 
+            string Sql = @"SELECT CLI.ID_CLIENTE, CLI.NOME_CLIENTE, CLI.CIDADE_CLIENTE, CLI.TELEFONE_CLIENTE, CLI.EMAIL_CLIENTE, CLI.ESTADO_CLIENTE, CLI.STATUS_CLIENTE, EM.EMPRESA_NOME
+                        FROM CLIENTE CLI
+                        JOIN EMPRESAS EM ON EM.ID_EMPRESA = CLI.ID_EMPRESA
+                        WHERE CLI.NOME_CLIENTE = '" + nome + "';";
+                        pModel = db.ExibirCliente(Sql);
+
+            return pModel;
+        }
+
+        public void EditarCliente(AdminModel.Cliente pModel)
+        {
+            Repository db = new Repository();
+
+            String SQL = @"UPDATE CLIENTE SET
+                            NOME_CLIENTE = '"+ pModel.NomeCliente +"'," + 
+                            "CIDADE_CLIENTE = '" + pModel.CidadeCliente + "'," +
+                            "TELEFONE_CLIENTE = '" + pModel.TelefoneCliente + "'," +
+                            "EMAIL_CLIENTE = '" + pModel.EmailCliente+ "'," + 
+                            "ID_EMPRESA = (select ID FROM(SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.EmpresaCliente + "') AS TEMP)," + 
+                            "ESTADO_CLIENTE = '" + pModel.EstadoCliente +"'," +
+                            "STATUS_CLIENTE = '" + pModel.StatusCliente +"'" +
+                            "WHERE ID_CLIENTE = " + pModel.IdCliente ;
+            db.Update(SQL);
+        }
+        public void IncluirCliente(AdminModel.Cliente pModel)
+        {
+            Repository db = new Repository();
+            
+            String SQLConsultarMaxId = "SELECT MAX(ID_CLIENTE) FROM CLIENTE";
+            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
+
+
+
+            String SQL = @"INSERT INTO CLIENTE VALUES ( " +
+                                                    MaxId + ",'" +
+                                                    pModel.NomeCliente + "','" +
+                                                    pModel.CidadeCliente + "','" +
+                                                    pModel.TelefoneCliente + "','" +
+                                                    pModel.EmailCliente + "'," +
+                                                    "(select ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '"+ pModel.EmpresaCliente  +"') AS TEMP),'" +
+                                                    pModel.EstadoCliente + "','" +
+                                                    pModel.StatusCliente+ "')";
+
+            db.Inserir(SQL);
+        }
+
+        public AdminModel.Categoria ExibirCategoria(string nome)
+        {
+            Repository db = new Repository();
+            AdminModel.Categoria pModel = new AdminModel.Categoria();
+
+            string Sql = @"SELECT * FROM CATEGORIA_CHAMADO WHERE CATEGORIA ='" + nome + "'";
+            pModel = db.ExibirCategoria(Sql);
+
+            return pModel;
+        }
+
+        public void EditarCategoria(AdminModel.Categoria pModel)
+        {
+            Repository db = new Repository();
+
+            String SQL = @"UPDATE CATEGORIA_CHAMADO SET
+                                            CATEGORIA = '" + pModel.NomeCategoria + "'," +
+                                            "ALVO_SLA = '" + pModel.SLACategoria + "'," +
+                                            "STATUS_CATEGORIA = '" + pModel.StatusCategoria + "'" +
+                                            "WHERE ID_CTAGEORIA = " + pModel.idCategoria;
+
+
+
+            db.Update(SQL);
+        }
+        public void IncluirCategoria(AdminModel.Cliente pModel)
+        {
+            Repository db = new Repository();
+
+            String SQLConsultarMaxId = "";
+            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
+
+            String SQL = @"";
+
+            db.Inserir(SQL);
+        }
+        
     }
 }

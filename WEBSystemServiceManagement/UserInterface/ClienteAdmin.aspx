@@ -48,7 +48,7 @@
                     <option value="B">Inativa</option>
                 </select>
                 <br /><br />
-                <asp:Button ID="SalvartBtn" runat="server" Text="Salvar" OnClick="Cancelar" />
+                <asp:Button ID="SalvartBtn" runat="server" Text="Salvar" OnClick="AtualizaCliente" />
                 <asp:Button ID="CancelarBtn" runat="server" Text="Cancelar" OnClick="Cancelar" />
 
 

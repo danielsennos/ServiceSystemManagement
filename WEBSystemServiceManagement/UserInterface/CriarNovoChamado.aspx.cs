@@ -73,11 +73,10 @@ namespace WEBSystemServiceManagement
 
            ChamadoController ChamadoController = new ChamadoController();
             var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
+
+            Session.Clear();
+            Session["edit"] = NewNumChamado;
             
-            HttpCookie cookie = new HttpCookie("nomeCookie");            
-            cookie.Expires = DateTime.Now.AddMinutes(1);
-            cookie.Value = NewNumChamado;
-            Response.Cookies.Add(cookie);
            
 
             Response.Redirect("~/UserInterface/EditarChamado", true);
