@@ -370,6 +370,28 @@ namespace WEBSystemServiceManagement
             return pModel;
         }
 
+        public AdminModel.GrupoUsuario ExibirGrupoUsuario(String SQLQuery)
+        {
+            AdminModel.GrupoUsuario pModel = new AdminModel.GrupoUsuario();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    pModel.idGrupo = row["ID_GRUPO"].ToString();
+                    pModel.NomeGrupo = row["GRUPO_NOME"].ToString();
+                    pModel.StatusGrupo = row["STATUS_GRUPO"].ToString();
+
+                }
+            }
+            return pModel;
+        }
 
         public ArrayList CarregaCidadeEstados(String SQLQuery)
         {

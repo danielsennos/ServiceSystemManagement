@@ -62,7 +62,7 @@ namespace WEBSystemServiceManagement.UserInterface
             GridCategoria.DataSource = adminController.ExibirCategoria();
             GridCategoria.DataBind();
         }
-        public void ExibirGrupoSuporte(object sender, EventArgs e)
+        public void ExibirGrupoUsuario(object sender, EventArgs e)
         {
             AdminController adminController = new AdminController();
 
@@ -127,14 +127,14 @@ namespace WEBSystemServiceManagement.UserInterface
             Response.Redirect("~/UserInterface/CategoriaAdmin", true);
         }
 
-        public void EditarGrupoSuporte(object sender, EventArgs e)
+        public void EditarGrupoUsuario(object sender, EventArgs e)
         {
             GridViewRow gr = GridGrupoSuporte.SelectedRow;
             string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
             Session.Clear();
             Session["edit"] = nome;
 
-            Response.Redirect("~/UserInterface/SuporteAdmin", true);
+            Response.Redirect("~/UserInterface/GrupoUsuarioAdmin", true);
         }
 
         public void EditarUsuarios(object sender, EventArgs e)
@@ -146,6 +146,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
             Response.Redirect("~/UserInterface/UsuarioAdmin", true);
         }
+
 
     }
 }

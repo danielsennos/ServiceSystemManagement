@@ -27,12 +27,12 @@
                 <asp:LinkButton ID="EmpresaBtn" runat="server" OnClick="ExibirEmpresa">Empresas</asp:LinkButton>
                 <asp:LinkButton ID="ClienteBtn" runat="server" OnClick="ExibirCliente">Clientes</asp:LinkButton>
                 <asp:LinkButton ID="CategoriaBtn" runat="server" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
-                <asp:LinkButton ID="GrupoBtn" runat="server" OnClick="ExibirGrupoSuporte">Grupos de Suporte</asp:LinkButton>
+                <asp:LinkButton ID="GrupoBtn" runat="server" OnClick="ExibirGrupoUsuario">Grupos de Suporte</asp:LinkButton>
                 <asp:LinkButton ID="UsuarioBtn" runat="server" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
                 <a href="./EmpresaAdmin" runat="server" class="MenuLink">Incluir Empresa</a>
                 <a href="./ClienteAdmin" runat="server" class="MenuLink">Incluir Cliente</a>
                 <a href="./CategoriaAdmin" runat="server" class="MenuLink">Incluir Categoria</a>
-                <a href="./" runat="server" class="MenuLink">Incluir Grupos de Suporte</a>
+                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink">Incluir Grupos de Suporte</a>
                 <a href="./" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
                 <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
                 <a href="../" runat="server" class="MenuLink">Sair</a>
@@ -89,7 +89,7 @@
                       </Columns>
                 </asp:GridView>
 
-                <asp:GridView ID="GridGrupoSuporte" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarGrupoSuporte" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
+                <asp:GridView ID="GridGrupoSuporte" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarGrupoUsuario" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
                     <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#CCCC99" />
                     <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />

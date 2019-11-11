@@ -41,7 +41,7 @@ namespace WEBSystemServiceManagement
         public DataTable ExibirGrupoSuporte()
         {
             Repository db = new Repository();
-            String query = @"SELECT GRUPO_SUP_NOME AS 'Grupo de Suporte' FROM GRUPO_USUARIO";
+            String query = @"SELECT GRUPO_NOME AS 'Grupo de Suporte' FROM GRUPO_USUARIO";
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
@@ -49,10 +49,10 @@ namespace WEBSystemServiceManagement
         public DataTable ExibirUsuarios()
         {
             Repository db = new Repository();
-            String query = @"SELECT US.NOME_USUARIO AS 'Nome', US.STATUS_USUARIO AS 'Status',US.EMAIL_USUARIO, GS.GRUPO_SUP_NOME, CLI.EMPRESA_NOME AS 'Empresa',
+            String query = @"SELECT US.NOME_USUARIO AS 'Nome', US.STATUS_USUARIO AS 'Status',US.EMAIL_USUARIO, GS.GRUPO_NOME, CLI.EMPRESA_NOME AS 'Empresa',
                             PU.NOME_PERMISSAO AS 'Tipo de Permissão'
                             FROM USUARIOS US
-                            LEFT JOIN GRUPO_USUARIO GS ON US.ID_GRUPO_SUP = GS.ID_GRUPO_SUP
+                            LEFT JOIN GRUPO_USUARIO GS ON US.ID_GRUPO = GS.ID_GRUPO
                             LEFT JOIN EMPRESAS CLI ON US.ID_EMPRESA = CLI.ID_EMPRESA
                             LEFT JOIN PERMISSOES_USUARIOS PU ON PU.ID_PERMISSAO = US.ID_PERMISSAO ";
             DataTable dt = db.RetornaTabela(query);
@@ -193,6 +193,76 @@ namespace WEBSystemServiceManagement
 
             db.Inserir(SQL);
         }
-        
+        public AdminModel.GrupoUsuario ExibirGrupoUsuario(string nome)
+        {
+            Repository db = new Repository();
+            AdminModel.GrupoUsuario pModel = new AdminModel.GrupoUsuario();
+
+            string Sql = @"SELECT ID_GRUPO, GRUPO_NOME,STATUS_GRUPO FROM GRUPO_USUARIO WHERE GRUPO_NOME ='" + nome + "'";
+            pModel = db.ExibirGrupoUsuario(Sql);
+
+            return pModel;
+        }
+
+        public void EditarGrupoUsuario(AdminModel.GrupoUsuario pModel)
+        {
+            Repository db = new Repository();
+
+            String SQL = @"UPDATE GRUPO_USUARIO SET GRUPO_NOME ='" +
+                            pModel.NomeGrupo + "'," + "STATUS_GRUPO='" + pModel.StatusGrupo + 
+                            "' WHERE ID_GRUPO =" + pModel.idGrupo;
+
+
+
+            db.Update(SQL);
+        }
+        public void IncluirGrupoUsuario(AdminModel.GrupoUsuario pModel)
+        {
+            Repository db = new Repository();
+
+            String SQLConsultarMaxId = "SELECT MAX(ID_GRUPO) FROM GRUPO_USUARIO";
+            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
+
+            String SQL = @"INSERT INTO GRUPO_USUARIO VALUES ("+
+                MaxId + ",'" + 
+                pModel.NomeGrupo + "','" +
+                pModel.StatusGrupo + "')";
+            db.Inserir(SQL);
+        }
+
+        public AdminModel.GrupoUsuario ExibirUsuario(string nome)
+        {
+            Repository db = new Repository();
+            AdminModel.Usuario pModel = new AdminModel.Usuario();
+
+            string Sql = @"SELECT ID_GRUPO, GRUPO_NOME,STATUS_GRUPO FROM USUARIOS WHERE NOME_USUARIO ='" + nome + "'";
+            pModel = db.ExibirUsuario(Sql);
+
+            return pModel;
+        }
+
+        public void EditarUsuario(AdminModel.Usuario pModel)
+        {
+            Repository db = new Repository();
+
+            String SQL = @"UPDATE GRUPO_USUARIO SET GRUPO_NOME ='" +
+                            pModel.NomeGrupo + "'," + "STATUS_GRUPO='" + pModel.StatusGrupo +
+                            "' WHERE ID_GRUPO =" + pModel.idGrupo;
+
+
+
+            db.Update(SQL);
+        }
+        public void IncluirUsuario(AdminModel.Usuario pModel)
+        {
+            Repository db = new Repository();
+
+            String SQLConsultarMaxId = "SELECT MAX(ID_USUARIO) FROM USUARIOs";
+            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
+
+            String SQL = @"INSERT INTO usuarios VALUES (";
+            db.Inserir(SQL);
+        }
+
     }
 }

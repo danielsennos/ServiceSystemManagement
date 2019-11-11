@@ -173,6 +173,7 @@
     <Content Include="UserInterface\EmpresaAdmin.aspx" />
     <Content Include="UserInterface\ExibirChamados.aspx" />
     <Content Include="UserInterface\ExibirDetalhesChamado.aspx" />
+    <Content Include="UserInterface\GrupoUsuarioAdmin.aspx" />
     <Content Include="UserInterface\Login.aspx" />
     <Content Include="UserInterface\Pesquisar.aspx" />
     <Content Include="UserInterface\Relatorios.aspx" />
@@ -287,6 +288,13 @@
     </Compile>
     <Compile Include="UserInterface\ExibirDetalhesChamado.aspx.designer.cs">
       <DependentUpon>ExibirDetalhesChamado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\GrupoUsuarioAdmin.aspx.cs">
+      <DependentUpon>GrupoUsuarioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInterface\GrupoUsuarioAdmin.aspx.designer.cs">
+      <DependentUpon>GrupoUsuarioAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
