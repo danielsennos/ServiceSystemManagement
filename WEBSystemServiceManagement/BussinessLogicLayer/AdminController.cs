@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Web;
+using System.Net.Mail;
+using System.Data;
 
 namespace WEBSystemServiceManagement
 {
@@ -230,13 +232,16 @@ namespace WEBSystemServiceManagement
             db.Inserir(SQL);
         }
 
-        public AdminModel.GrupoUsuario ExibirUsuario(string nome)
+        public AdminModel.Usuario ExibirUsuario(string nome)
         {
             Repository db = new Repository();
             AdminModel.Usuario pModel = new AdminModel.Usuario();
 
-            string Sql = @"SELECT ID_GRUPO, GRUPO_NOME,STATUS_GRUPO FROM USUARIOS WHERE NOME_USUARIO ='" + nome + "'";
-            pModel = db.ExibirUsuario(Sql);
+            string Sql = @"SELECT US.ID_USUARIO, US.LOGIN, US.NOME_USUARIO, US.EMAIL_USUARIO, GP.GRUPO_NOME, PU.NOME_PERMISSAO, US.STATUS_USUARIO FROM USUARIOS US
+                            JOIN GRUPO_USUARIO GP ON US.ID_GRUPO = GP.ID_GRUPO
+                            LEFT JOIN EMPRESAS EM ON EM.ID_EMPRESA = US.ID_EMPRESA
+                            LEFT JOIN PERMISSOES_USUARIOS PU ON PU.ID_PERMISSAO = US.ID_PERMISSAO WHERE US.NOME_USUARIO ='" + nome + "'";
+            pModel = db.ExibirUsuarios(Sql);
 
             return pModel;
         }
@@ -245,9 +250,16 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-            String SQL = @"UPDATE GRUPO_USUARIO SET GRUPO_NOME ='" +
-                            pModel.NomeGrupo + "'," + "STATUS_GRUPO='" + pModel.StatusGrupo +
-                            "' WHERE ID_GRUPO =" + pModel.idGrupo;
+            String SQL = @"UPDATE USUARIOS SET " +
+                                              "LOGIN = '" + pModel.Login + "'," +
+                                              "NOME_USUARIO = '" + pModel.NomeUsuario + "'," +
+                                              "STATUS_USUARIO = '" + pModel.StatusUsuario + "'," +
+                                              "LOGIN = '" + pModel.Login + "'," +
+                                              "ID_GRUPO = (SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + pModel.Grupo + "') AS TEMP)" + "," +
+                                              "ID_EMPRESA = (SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.Empresa + "') AS TEMP1)" + "," +
+                                              "ID_PERMISSAO = (SELECT ID FROM (SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao  +"') AS TEMP2)" + "," +
+                                              "EMAIL_USUARIO = '" + pModel.EmailUsuario + "' " +
+                                              " WHERE ID_USUARIO = " +pModel.idUsuario;
 
 
 
@@ -256,12 +268,62 @@ namespace WEBSystemServiceManagement
         public void IncluirUsuario(AdminModel.Usuario pModel)
         {
             Repository db = new Repository();
+            
 
-            String SQLConsultarMaxId = "SELECT MAX(ID_USUARIO) FROM USUARIOs";
+            String SQLConsultarMaxId = "SELECT MAX(ID_USUARIO) FROM USUARIOS";
             var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
 
-            String SQL = @"INSERT INTO usuarios VALUES (";
+            pModel.Senha = RandomString(8);
+
+            String SQL = @"INSERT INTO USUARIOS VALUES (" +
+                            MaxId + ",'" +
+                            pModel.Login + "','" +
+                            pModel.Senha + "','" +
+                            pModel.NomeUsuario + "','" +
+                            pModel.StatusUsuario + "'," +
+                            "(SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + pModel.Grupo + "') AS TEMP)" + "," +
+                            "(SELECT ID FROM(SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.Empresa + "') AS TEMP1)" + "," +
+                            "(SELECT ID FROM(SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao  +"') AS TEMP2)" + ",'" +
+                            pModel.EmailUsuario + "')";
+
             db.Inserir(SQL);
+            #region Envio de Email dados de Login
+            string remetenteEmail = "ssmoperacao@gmail.com";
+            MailMessage mail = new MailMessage();
+            mail.To.Add(pModel.EmailUsuario);
+            mail.From = new MailAddress(remetenteEmail, "SSM", System.Text.Encoding.UTF8);
+            mail.Subject = "SSM - Seu Novo Usuário";
+            mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            mail.Body = @"Olá! Seu novo usuário ao System Service Management foi criado. Seguem abaixo os dados de Login. <br />
+                        Seu Login é: <b>" +pModel.Login + "</b> <br />" +
+                        "Sua senha é: <b>" + pModel.Senha + "</b> <br />" +
+                        "http://www.sitedosistema.com.br";
+
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential(remetenteEmail, "est@ciotcc2");
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            try
+            {
+                client.Send(mail);
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro com envio do e-mail" + ex);
+            }
+            #endregion
+        }
+
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
     }

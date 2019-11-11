@@ -48,7 +48,7 @@ namespace WEBSystemServiceManagement.UserInterface
                 }
 
                 String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
-                var ListaCliente = SQLConnect.CarregaCliente(query);
+                var ListaCliente = SQLConnect.CarregaEmpresa(query);
                 foreach (var item in ListaCliente)
                 {
                     EmpresaList.Items.Add(item.ToString());

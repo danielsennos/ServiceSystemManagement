@@ -33,7 +33,7 @@
                 <a href="./ClienteAdmin" runat="server" class="MenuLink">Incluir Cliente</a>
                 <a href="./CategoriaAdmin" runat="server" class="MenuLink">Incluir Categoria</a>
                 <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink">Incluir Grupos de Suporte</a>
-                <a href="./" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
+                <a href="./UsuariosAdmin" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
                 <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
                 <a href="../" runat="server" class="MenuLink">Sair</a>
 

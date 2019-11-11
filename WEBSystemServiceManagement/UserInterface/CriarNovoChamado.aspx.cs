@@ -27,7 +27,7 @@ namespace WEBSystemServiceManagement
             if (GrupoDesignado.Items.Count == 0)
             {
                 String query = @"SELECT GRUPO_SUP_NOME FROM GRUPO_USUARIO;";
-                var ListaCategoria = SQLConnect.CarregaGruposSuporte(query);
+                var ListaCategoria = SQLConnect.CarregaGrupoUsuario(query);
                 foreach (var item in ListaCategoria)
                 {
                     GrupoDesignado.Items.Add(item.ToString());
@@ -36,7 +36,7 @@ namespace WEBSystemServiceManagement
             if (Cliente.Items.Count == 0)
             {
                 String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
-                var ListaCategoria = SQLConnect.CarregaCliente(query);
+                var ListaCategoria = SQLConnect.CarregaEmpresa(query);
                 foreach (var item in ListaCategoria)
                 {
                     Cliente.Items.Add(item.ToString());

@@ -136,6 +136,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\WEBSystemServiceManagement - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="OrcamentoForm.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -177,6 +178,7 @@
     <Content Include="UserInterface\Login.aspx" />
     <Content Include="UserInterface\Pesquisar.aspx" />
     <Content Include="UserInterface\Relatorios.aspx" />
+    <Content Include="UserInterface\UsuariosAdmin.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -206,6 +208,13 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrcamentoForm.aspx.cs">
+      <DependentUpon>OrcamentoForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrcamentoForm.aspx.designer.cs">
+      <DependentUpon>OrcamentoForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Default.aspx.cs">
@@ -316,6 +325,13 @@
     </Compile>
     <Compile Include="UserInterface\Relatorios.aspx.designer.cs">
       <DependentUpon>Relatorios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\UsuariosAdmin.aspx.cs">
+      <DependentUpon>UsuariosAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInterface\UsuariosAdmin.aspx.designer.cs">
+      <DependentUpon>UsuariosAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

@@ -48,18 +48,18 @@ namespace WEBSystemServiceManagement
 
         public class Usuario
         {
-            public string idUsuario { get; set; }
-            public string Login { get; set; }
-            public string Senha { get; set; }
-            public string NomeUsuario { get; set; }
-            public string StatusUsuario { get; set; }
+            public string idUsuario { get; set; } 
+            public string Login { get; set; } 
+            public string Senha { get; set; } 
+            public string NomeUsuario { get; set; } 
+            public string StatusUsuario { get; set; } 
             public string idGrupo { get; set; }
-            public string Grupo { get; set; }
+            public string Grupo { get; set; } 
             public string idEmpresa { get; set; }
-            public string Empresa { get; set; }
+            public string Empresa { get; set; } 
             public string idPermissao { get; set; }
-            public string Permissao { get; set; }
-            public string EmailUsuario { get; set; }
+            public string Permissao { get; set; } 
+            public string EmailUsuario { get; set; } 
         }
 
 

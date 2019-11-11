@@ -115,25 +115,7 @@ namespace WEBSystemServiceManagement
             }
             return lista;
         }
-        public ArrayList CarregaGruposSuporte(String SQLQuery)
-        {
-            ArrayList lista = new ArrayList();
 
-            using (var conn = new MySqlConnection(PATH))
-            {
-                MySqlDataAdapter adapter = new MySqlDataAdapter();
-                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
-
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-
-                foreach (DataRow row in dt.Rows)
-                {
-                    lista.Add(row["grupo_sup_nome"].ToString());
-                }
-            }
-            return lista;
-        }
         public ArrayList CarregaRequisitante(String SQLQuery)
         {
             ArrayList lista = new ArrayList();
@@ -153,7 +135,7 @@ namespace WEBSystemServiceManagement
             }
             return lista;
         }
-        public ArrayList CarregaCliente(String SQLQuery)
+        public ArrayList CarregaEmpresa(String SQLQuery) 
         {
             ArrayList lista = new ArrayList();
 
@@ -168,6 +150,46 @@ namespace WEBSystemServiceManagement
                 foreach (DataRow row in dt.Rows)
                 {
                     lista.Add(row["empresa_nome"].ToString());
+                }
+            }
+            return lista;
+        }
+
+        public ArrayList CarregaGrupoUsuario(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["GRUPO_NOME"].ToString());
+                }
+            }
+            return lista;
+        }
+
+        public ArrayList CarregaPermissoes(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["NOME_PERMISSAO"].ToString());
                 }
             }
             return lista;
@@ -388,6 +410,32 @@ namespace WEBSystemServiceManagement
                     pModel.NomeGrupo = row["GRUPO_NOME"].ToString();
                     pModel.StatusGrupo = row["STATUS_GRUPO"].ToString();
 
+                }
+            }
+            return pModel;
+        } //ExibirUsuario
+
+        public AdminModel.Usuario ExibirUsuarios(String SQLQuery)
+        {
+            AdminModel.Usuario pModel = new AdminModel.Usuario();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    pModel.idUsuario = row["ID_USUARIO"].ToString();
+                    pModel.Login = row["LOGIN"].ToString();
+                    pModel.NomeUsuario = row["NOME_USUARIO"].ToString();
+                    pModel.EmailUsuario = row["EMAIL_USUARIO"].ToString();
+                    pModel.Grupo = row["GRUPO_NOME"].ToString();
+                    pModel.Permissao = row["NOME_PERMISSAO"].ToString();
+                    pModel.StatusUsuario = row["STATUS_USUARIO"].ToString();
                 }
             }
             return pModel;
