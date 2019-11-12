@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WEBSystemServiceManagement {
-    
-    
-    public partial class CriarNovoChamado {
-        
+namespace WEBSystemServiceManagement
+{
+
+
+    public partial class CriarNovoChamado
+    {
+
         /// <summary>
         /// FormCriarNovo control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm FormCriarNovo;
-        
+
         /// <summary>
         /// TipoSolicitacao control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect TipoSolicitacao;
-        
+
         /// <summary>
         /// Cliente control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Cliente;
-        
+
         /// <summary>
         /// Requisitante control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Requisitante;
-        
+
         /// <summary>
         /// Categoria control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Categoria;
-        
+
         /// <summary>
         /// Resumo control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea Resumo;
-        
+
         /// <summary>
         /// Urgencia control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlSelect Urgencia;
-        
+
         /// <summary>
         /// GrupoDesignado control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList GrupoDesignado;
-        
+
         /// <summary>
         /// Designado control.
         /// </summary>
@@ -91,8 +93,8 @@ namespace WEBSystemServiceManagement {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText Designado;
-        
+        protected global::System.Web.UI.WebControls.DropDownList Designado;
+
         /// <summary>
         /// SalvarBtn control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace WEBSystemServiceManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button SalvarBtn;
-        
+
         /// <summary>
         /// CancelarBtn control.
         /// </summary>

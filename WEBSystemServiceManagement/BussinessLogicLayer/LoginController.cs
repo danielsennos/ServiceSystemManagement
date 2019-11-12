@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Net.Mail;
+using MySqlX.XDevAPI;
 
 namespace WEBSystemServiceManagement
 {
@@ -25,6 +26,8 @@ namespace WEBSystemServiceManagement
                 string ConsultarStatus = @"SELECT STATUS_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
                 string UserStatus = db.Consultar(ConsultarStatus);
                 string UserPassword = db.Consultar(ConsultarSenha);
+
+                
 
                 if (UserStatus == "D" || UserPassword != pModel.Password)
                 {

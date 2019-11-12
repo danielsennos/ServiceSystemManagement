@@ -42,7 +42,7 @@
                </select>
 
                     Cliente:
-                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server"></asp:DropDownList>
+                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaRequisitantes" AutoPostBack="true" ></asp:DropDownList>
 
                     <br />
                     Requisitante:
@@ -66,11 +66,11 @@
 
                     <br />
                     Grupo Designado: <br />
-               <asp:DropDownList ID="GrupoDesignado" class="InputDefault" runat="server"></asp:DropDownList>
+               <asp:DropDownList ID="GrupoDesignado" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaDesignados" AutoPostBack="true"></asp:DropDownList>
 
                     <br />
                     Designado:<br />
-              <input id="Designado" class="InputDefault" runat="server" type="text" />
+                 <asp:DropDownList ID="Designado" class="InputDefault" runat="server"></asp:DropDownList>
 
 
                     <asp:Button ID="SalvarBtn" runat="server" Text="Salvar" OnClick="SalvarChamado" />

@@ -155,6 +155,45 @@ namespace WEBSystemServiceManagement
             return lista;
         }
 
+        public ArrayList CarregaCliente(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["NOME_CLIENTE"].ToString());
+                }
+            }
+            return lista;
+        }
+        public ArrayList CarregaDesignado(String SQLQuery)
+        {
+            ArrayList lista = new ArrayList();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    lista.Add(row["NOME_USUARIO"].ToString());
+                }
+            }
+            return lista;
+        }
+
         public ArrayList CarregaGrupoUsuario(String SQLQuery)
         {
             ArrayList lista = new ArrayList();
@@ -273,6 +312,8 @@ namespace WEBSystemServiceManagement
                     pModel.data_alvo_resolucao = row["DATA_ALVO_RESOLUCAO"].ToString();
                     pModel.data_conclusao = row["DATA_CONCLUSAO"].ToString();
                     pModel.resumo_chamado = row["RESUMO_CHAMADO"].ToString();
+                    pModel.designado = row["NOME_USUARIO"].ToString();
+                    pModel.grupo_designado = row["GRUPO_NOME"].ToString();
 
                 }
             }
