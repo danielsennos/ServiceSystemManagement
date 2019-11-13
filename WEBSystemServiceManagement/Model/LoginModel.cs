@@ -10,5 +10,6 @@ namespace WEBSystemServiceManagement
         public string LoginName { get; set; }
         public string Password { get; set; }
         public string EmailUsuario { get; set; }
+        public string NomeUsuario { get; set; }
     }
 }

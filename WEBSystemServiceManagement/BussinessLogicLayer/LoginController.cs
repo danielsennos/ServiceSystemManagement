@@ -43,17 +43,12 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-            string ConsultarNome = @"SELECT LOGIN FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
-            string NomeUser = db.Consultar(ConsultarNome);
-            string ConsultarEmail = @"SELECT EMAIL_USUARIO FROM USUARIOS WHERE LOGIN = '" +
-                pModel.LoginName + "';";
-            pModel.EmailUsuario = db.Consultar(ConsultarEmail);
-            string ConsultarSenha = @"SELECT SENHA FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
-            pModel.Password = db.Consultar(ConsultarSenha);
+            pModel.EmailUsuario = db.Consultar("SELECT EMAIL_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'");
+            pModel.Password = db.Consultar("SELECT SENHA FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'");
 
             if (pModel.EmailUsuario == "" || pModel.EmailUsuario  == null)
             {
-                throw new Exception("E-mail não cadastrado");
+                throw new Exception("E-mail não cadastrado, procure o adminstrador do sistema.");
             }
             else
             {

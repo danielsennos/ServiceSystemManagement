@@ -15,7 +15,7 @@
                 Um sistema criado para que você tenha controle total dos seus serviços de TI.
             </p>
             <p>
-                <a class="btn btn-default" href="#">Saiba Mais &roplus;</a>
+                <a class="btn btn-default" href="/AboutSSM">Saiba Mais &roplus;</a>
             </p>
         </div>
         <div class="col-md-4">

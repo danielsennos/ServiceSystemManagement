@@ -102,22 +102,6 @@ namespace WEBSystemServiceManagement
 
 
         }
-        protected void CarregaRequisitante(object sender, EventArgs e)
-        {
-            ChamadoModel mChamado = new ChamadoModel();
-
-                mChamado.cliente = (Cliente.SelectedItem.ToString());
-                String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
-                                JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA
-                                WHERE EC.EMPRESA_NOME ="
-                                + mChamado.cliente + "';";
-                var ListaCategoria = SQLConnect.CarregaRequisitante(query);
-                foreach (var item in ListaCategoria)
-                {
-                    Requisitante.Items.Add(item.ToString());
-                }
-            
-        }
 
         protected void ExibeChamadosLoad(object sender, EventArgs e)
         {

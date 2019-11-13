@@ -373,6 +373,7 @@ namespace WEBSystemServiceManagement
                     pModel.CidadeEmpresa = row["CIDADE_EMPRESA"].ToString();
                     pModel.EstadoEmpresa = row["ESTADO_EMPRESA"].ToString();
                     pModel.EnderecoEmpresa = row["ENDERECO_EMPRESA"].ToString();
+                    pModel.StatusEmpresa = row["STATUS_EMPRESA"].ToString();
 
 
                 }

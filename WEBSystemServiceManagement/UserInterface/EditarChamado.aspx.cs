@@ -27,8 +27,8 @@ namespace WEBSystemServiceManagement
                 }
                 else
                 {
-                    string numChamado = "56";
-                    //string numChamado = NumChamado.Text;
+                    //string numChamado = "56";
+                    string numChamado = NumChamado.Text;
                     mChamado = chamadoController.EditarChamado(numChamado);
                 }
 
@@ -197,7 +197,7 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Pendente' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Pendente','" + DateTime.Now + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Pendente','" + DateTime.Now + "')";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
@@ -254,6 +254,7 @@ namespace WEBSystemServiceManagement
             String query = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'"
                 + mChamado.anotacao + "','" + DateTime.Now + "');";
             db.Inserir(query);
+            AnotacaoEdit.InnerText = "";
 
             Session.Clear();
             Session["edit"] = (mChamado.num_chamado).ToString();

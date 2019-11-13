@@ -82,7 +82,8 @@ namespace WEBSystemServiceManagement
                                             "CNPJ_EMPRESA = '" + pModel.CNPJEmpresa + "'," +
                                             "CIDADE_EMPRESA = '" + pModel.CidadeEmpresa + "'," +
                                             "ESTADO_EMPRESA = '" + pModel.EstadoEmpresa + "'," +
-                                            "STATUS_EMPRESA = '" + pModel.StatusEmpresa + "'" +
+                                            "STATUS_EMPRESA = '" + pModel.StatusEmpresa + "'," +
+                                            "ENDERECO_EMPRESA = '" + pModel.EnderecoEmpresa + "'" +
                                             " WHERE ID_EMPRESA = " + pModel.IdEmpresa;
             db.Update(SQL);
         }
@@ -90,11 +91,10 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-            String SQLConsultarMaxId = "SELECT MAX(ID_EMPRESA) FROM EMPRESAS";
-            var MaxId  = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
+           // String SQLConsultarMaxId = "SELECT MAX(ID_EMPRESA) AS MAXID FROM EMPRESAS";
+            //var MaxId  = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
 
-            String SQL = @"INSERT INTO EMPRESAS VALUES ( " +
-                                                    MaxId + ",'" +
+            String SQL = @"INSERT INTO EMPRESAS VALUES ( (SELECT MAXID FROM (SELECT MAX(ID_EMPRESA) + 1 AS MAXID FROM EMPRESAS) AS T1), '" +
                                                     pModel.NomeEmpresa + "','" +
                                                     pModel.CNPJEmpresa + "','" +
                                                     pModel.EnderecoEmpresa + "','" +
@@ -137,13 +137,12 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
             
-            String SQLConsultarMaxId = "SELECT MAX(ID_CLIENTE) FROM CLIENTE";
-            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
+            //String SQLConsultarMaxId = "(SELECT MAXID FROM (SELECT MAX(ID_CLIENTE) + 1 AS MAXID FROM CLIENTE)AS T1)";
+            //var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
 
 
 
-            String SQL = @"INSERT INTO CLIENTE VALUES ( " +
-                                                    MaxId + ",'" +
+            String SQL = @"INSERT INTO CLIENTE VALUES ( (SELECT MAXID FROM (SELECT MAX(ID_CLIENTE) + 1 AS MAXID FROM CLIENTE)AS T1),'" +
                                                     pModel.NomeCliente + "','" +
                                                     pModel.CidadeCliente + "','" +
                                                     pModel.TelefoneCliente + "','" +
