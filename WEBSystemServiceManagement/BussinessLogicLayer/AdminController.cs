@@ -91,9 +91,6 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-           // String SQLConsultarMaxId = "SELECT MAX(ID_EMPRESA) AS MAXID FROM EMPRESAS";
-            //var MaxId  = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
-
             String SQL = @"INSERT INTO EMPRESAS VALUES ( (SELECT MAXID FROM (SELECT MAX(ID_EMPRESA) + 1 AS MAXID FROM EMPRESAS) AS T1), '" +
                                                     pModel.NomeEmpresa + "','" +
                                                     pModel.CNPJEmpresa + "','" +
@@ -137,11 +134,6 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
             
-            //String SQLConsultarMaxId = "(SELECT MAXID FROM (SELECT MAX(ID_CLIENTE) + 1 AS MAXID FROM CLIENTE)AS T1)";
-            //var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
-
-
-
             String SQL = @"INSERT INTO CLIENTE VALUES ( (SELECT MAXID FROM (SELECT MAX(ID_CLIENTE) + 1 AS MAXID FROM CLIENTE)AS T1),'" +
                                                     pModel.NomeCliente + "','" +
                                                     pModel.CidadeCliente + "','" +
@@ -183,11 +175,7 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-            String SQLConsultarMaxId = "SELECT MAX(ID_CATEGORIA) FROM CATEGORIA_CHAMADO";
-            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
-
-            String SQL = @"INSERT INTO CATEGORIA_CHAMADO VALUES(" +
-                MaxId + ",'" +
+            String SQL = @"INSERT INTO CATEGORIA_CHAMADO VALUES( (SELECT MAXID FROM (SELECT MAX(ID_CATEGORIA) + 1 AS MAXID FROM CATEGORIA_CHAMADO) AS T1),'" +
                 pModel.NomeCategoria + "'," +
                 pModel.SLACategoria + ",'" +
                 pModel.StatusCategoria + "')";
@@ -221,11 +209,8 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-            String SQLConsultarMaxId = "SELECT MAX(ID_GRUPO) FROM GRUPO_USUARIO";
-            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
-
-            String SQL = @"INSERT INTO GRUPO_USUARIO VALUES ("+
-                MaxId + ",'" + 
+           
+            String SQL = @"INSERT INTO GRUPO_USUARIO VALUES ((SELECT MAXID FROM(SELECT MAX(ID_GRUPO) + 1 AS MAXID FROM GRUPO_USUARIO) AS T1),'" + 
                 pModel.NomeGrupo + "','" +
                 pModel.StatusGrupo + "')";
             db.Inserir(SQL);
@@ -269,21 +254,27 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             
 
-            String SQLConsultarMaxId = "SELECT MAX(ID_USUARIO) FROM USUARIOS";
-            var MaxId = Convert.ToInt32(db.Consultar(SQLConsultarMaxId)) + 1;
 
             pModel.Senha = RandomString(8);
 
-            String SQL = @"INSERT INTO USUARIOS VALUES (" +
-                            MaxId + ",'" +
-                            pModel.Login + "','" +
-                            pModel.Senha + "','" +
-                            pModel.NomeUsuario + "','" +
-                            pModel.StatusUsuario + "'," +
-                            "(SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + pModel.Grupo + "') AS TEMP)" + "," +
-                            "(SELECT ID FROM(SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.Empresa + "') AS TEMP1)" + "," +
-                            "(SELECT ID FROM(SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao  +"') AS TEMP2)" + ",'" +
-                            pModel.EmailUsuario + "')";
+            String SQL = @"INSERT INTO USUARIOS (ID_USUARIO, 
+                                                 LOGIN,
+                                                 SENHA,
+                                                 NOME_USUARIO,
+                                                 STATUS_USUARIO,
+                                                 ID_GRUPO,
+                                                 ID_EMPRESA,
+                                                 ID_PERMISSAO,
+                                                 EMAIL_USUARIO)  
+                            VALUES (( SELECT MAXID FROM (SELECT MAX(ID_USUARIO) + 1 AS MAXID FROM USUARIOS) AS T1),'" + //ID_USUARIO
+                            pModel.Login + "','" + //LOGIN
+                            pModel.Senha + "','" + //SENNHA
+                            pModel.NomeUsuario + "','" + //NOME_USUARIO
+                            pModel.StatusUsuario + "'," + //STATUS_USUARIO
+                            "(SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + pModel.Grupo + "') AS TEMP)" + "," + //ID_GRUPO
+                            "(SELECT ID FROM(SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.Empresa + "') AS TEMP1)" + "," + //ID_EMPRESA
+                            "(SELECT ID FROM(SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao  +"') AS TEMP2)" + ",'" + //ID_PERMISSAO
+                            pModel.EmailUsuario + "')"; //EMAIL_USUARIO
 
             db.Inserir(SQL);
             #region Envio de Email dados de Login

@@ -156,3 +156,4 @@ C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagem
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csproj.CopyComplete
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.dll
 C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.pdb
+C:\Users\Daniel\Documents\GitHub\ServiceSystemManagement\WEBSystemServiceManagement\obj\Debug\WEBSystemServiceManagement.csprojAssemblyReference.cache

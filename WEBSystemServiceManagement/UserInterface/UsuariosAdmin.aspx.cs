@@ -57,31 +57,7 @@ namespace WEBSystemServiceManagement.UserInterface
                 EmpresaList.Text = pModel.Empresa;
                 GrupoList.Text = pModel.Grupo;
                 PermissaoList.Text = pModel.Permissao;
-            }
-
-        }
-
-        protected void CarregaItens(object sender, EventArgs e)
-        {
-            Repository SQLConnect = new Repository();
-
-            String queryEmpresa = @"SELECT EMPRESA_NOME FROM EMPRESAS";
-            var ListaEmpresa = SQLConnect.CarregaEmpresa(queryEmpresa);
-            foreach (var item in ListaEmpresa)
-            {
-                EmpresaList.Items.Add(item.ToString());
-            }
-            String queryGrupoUsuario = @"SELECT GRUPO_NOME FROM GRUPO_USUARIO";
-            var ListaGrupo = SQLConnect.CarregaGrupoUsuario(queryGrupoUsuario);
-            foreach (var item in ListaGrupo)
-            {
-                GrupoList.Items.Add(item.ToString());
-            }
-            String queryPermissao = @"SELECT NOME_PERMISSAO FROM PERMISSOES_USUARIOS";
-            var ListaPermissao = SQLConnect.CarregaPermissoes(queryPermissao);
-            foreach (var item in ListaPermissao)
-            {
-                PermissaoList.Items.Add(item.ToString());
+                Status.Value = pModel.StatusUsuario;
             }
 
         }
