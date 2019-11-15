@@ -41,14 +41,13 @@ namespace WEBSystemServiceManagement
             }
 
             pModel.LoginName = LoginName.Value;
-            string ConsultarNome = @"SELECT LOGIN FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
-            string NomeUser = db.Consultar(ConsultarNome);
-            if (NomeUser == "" || NomeUser == null)
+            pModel.NomeUsuario = db.Consultar("SELECT NOME_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';");
+            if (pModel.NomeUsuario == "" || pModel.NomeUsuario == null)
             {
                 throw new Exception("Usuário inexistente.");
             }
             else
-            {
+            {                
                 loginController.EsqueciMinhaSenha(pModel);
             }
         }

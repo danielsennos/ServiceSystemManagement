@@ -9,7 +9,7 @@
             <div class="navbar-collapse collapse">
                 <div class="navbar-nav">
                     <a href="../" runat="server" class="navbar-brand">Página Inicial</a>
-                    <a href="../" runat="server" class="navbar-brand">Ajuda</a>
+                    <a href="~/Contact" runat="server" class="navbar-brand">Ajuda</a>
                 </div>
             </div>
         </div>

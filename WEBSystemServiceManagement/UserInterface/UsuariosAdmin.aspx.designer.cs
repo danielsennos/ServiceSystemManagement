@@ -7,102 +7,102 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WEBSystemServiceManagement
+namespace WEBSystemServiceManagement.UserInterface
 {
 
 
-    public partial class CriarNovoChamado
+    public partial class UsuariosAdmin
     {
 
         /// <summary>
-        /// FormCriarNovo control.
+        /// UsuariosForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm FormCriarNovo;
+        protected global::System.Web.UI.HtmlControls.HtmlForm UsuariosForm;
 
         /// <summary>
-        /// TipoSolicitacao control.
+        /// idusuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect TipoSolicitacao;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText idusuario;
 
         /// <summary>
-        /// Cliente control.
+        /// NomeUsuarioInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Cliente;
+        protected global::System.Web.UI.WebControls.TextBox NomeUsuarioInput;
 
         /// <summary>
-        /// Requisitante control.
+        /// LoginUsuarioInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Requisitante;
+        protected global::System.Web.UI.WebControls.TextBox LoginUsuarioInput;
 
         /// <summary>
-        /// Categoria control.
+        /// EmailUusarioInput control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Categoria;
+        protected global::System.Web.UI.WebControls.TextBox EmailUusarioInput;
 
         /// <summary>
-        /// Resumo control.
+        /// EmpresaList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTextArea Resumo;
+        protected global::System.Web.UI.WebControls.DropDownList EmpresaList;
 
         /// <summary>
-        /// Urgencia control.
+        /// GrupoList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect Urgencia;
+        protected global::System.Web.UI.WebControls.DropDownList GrupoList;
 
         /// <summary>
-        /// GrupoDesignado control.
+        /// PermissaoList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList GrupoDesignado;
+        protected global::System.Web.UI.WebControls.DropDownList PermissaoList;
 
         /// <summary>
-        /// Designado control.
+        /// Status control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Designado;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect Status;
 
         /// <summary>
-        /// SalvarBtn control.
+        /// SalvartBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SalvarBtn;
+        protected global::System.Web.UI.WebControls.Button SalvartBtn;
 
         /// <summary>
         /// CancelarBtn control.

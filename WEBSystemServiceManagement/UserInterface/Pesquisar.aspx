@@ -26,7 +26,7 @@
             <a href="./CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
             <a href="./Relatorios" runat="server" class="MenuLink">Relatórios</a>
             <a href="./Pesquisar" runat="server" class="MenuLink">Pesquisar Solicitações</a>
-            <a href="./Admin" runat="server" class="MenuLink">Admin</a>
+            <a href="./AdminIndex" runat="server" class="MenuLink">Admin</a>
             <a href="../" runat="server" class="MenuLink">Sair</a>
         </div>
         <!--FIM DO MENU LATERAL-->
