@@ -24,16 +24,16 @@
         <div class="BodyContent">
             <!--INÍCIO DO MENU LATERAL-->
             <div class="Menu-Left-Bar">
-                <asp:LinkButton ID="EmpresaBtn" runat="server" OnClick="ExibirEmpresa">Empresas</asp:LinkButton>
-                <asp:LinkButton ID="ClienteBtn" runat="server" OnClick="ExibirCliente">Clientes</asp:LinkButton>
-                <asp:LinkButton ID="CategoriaBtn" runat="server" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
-                <asp:LinkButton ID="GrupoBtn" runat="server" OnClick="ExibirGrupoUsuario">Grupos de Suporte</asp:LinkButton>
-                <asp:LinkButton ID="UsuarioBtn" runat="server" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
+                <asp:LinkButton ID="EmpresaBtn" runat="server" class="MenuLink" OnClick="ExibirEmpresa">Empresas</asp:LinkButton>
+                <asp:LinkButton ID="ClienteBtn" runat="server" class="MenuLink" OnClick="ExibirCliente">Clientes</asp:LinkButton>
+                <asp:LinkButton ID="CategoriaBtn" runat="server" class="MenuLink" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
+                <asp:LinkButton ID="GrupoBtn" runat="server" class="MenuLink" OnClick="ExibirGrupoUsuario">Grupos de Usuario</asp:LinkButton>
+                <asp:LinkButton ID="UsuarioBtn" runat="server" class="MenuLink" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
                 <a href="./EmpresaAdmin" runat="server" class="MenuLink">Incluir Empresa</a>
                 <a href="./ClienteAdmin" runat="server" class="MenuLink">Incluir Cliente</a>
                 <a href="./CategoriaAdmin" runat="server" class="MenuLink">Incluir Categoria</a>
-                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink">Incluir Grupos de Suporte</a>
-                <a href="./" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
+                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink">Incluir Grupos de Usuario</a>
+                <a href="./UsuariosAdmin" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
                 <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
                 <a href="../" runat="server" class="MenuLink">Sair</a>
 

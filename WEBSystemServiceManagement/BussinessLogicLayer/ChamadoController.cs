@@ -12,12 +12,8 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-            String selectDataAlvo = @"SELECT LIMITE_EXECUCAO FROM ALVO_SLA AL
-                                    JOIN CATEGORIA_CHAMADO CC ON CC.ID_CATEGORIA = AL.ID_CATEGORIA
-                                    JOIN EMPRESAS EC ON EC.ID_EMPRESA = AL.ID_EMPRESA
-                                    WHERE EC.EMPRESA_NOME ='" + mChamado.cliente
-                                    + "' AND CC.CATEGORIA ='"
-                                    + mChamado.categoria + "';";
+            String selectDataAlvo = @"SELECT ALVO_SLA FROM CATEGORIA_CHAMADO WHERE CATEGORIA = '" +
+                                    mChamado.categoria + "'";
             Int16 AlvoSLA = Convert.ToInt16(db.Consultar(selectDataAlvo));
 
 
@@ -25,20 +21,31 @@ namespace WEBSystemServiceManagement
 
             String InsertSql = @"INSERT INTO CHAMADOS (TIPO_CHAMADO,
                                                       NUM_CHAMADO, 
-                                                      ID_CLIENTE,  
+                                                      ID_CLIENTE,
+                                                      ID_EMPRESA,  
                                                       ID_CATEGORIA, 
                                                       URGENCIA,         
                                                       DATA_ABERTURA,
                                                       DATA_ALVO_RESOLUCAO,
-                                                      STATUS_CHAMADO) VALUES ('"
-                                      + mChamado.tipo_chamado + "',"
-                                      + "(SELECT NUM FROM(SELECT MAX(NUM_CHAMADO) +1 AS NUM FROM chamados) AS TEMP)" + ","
-                                      + "(SELECT ID_CLIENTE FROM(SELECT ID_CLIENTE FROM CLIENTE WHERE NOME_CLIENTE ='" + mChamado.requisitante + "') AS TEMP),"
-                                      + "(SELECT ID_CATEGORIA FROM(SELECT ID_CATEGORIA FROM CATEGORIA_CHAMADO WHERE CATEGORIA ='" + mChamado.categoria + "')AS TEMP),'"
-                                      + mChamado.urgencia + "','"
-                                      + (DateTime.Now) + "','"
-                                      + DateTime.Now.AddHours(AlvoSLA) + "',"
-                                      + "'Aberto');";
+                                                      STATUS_CHAMADO,
+                                                      RESUMO_CHAMADO,
+                                                      ID_GRUPO,
+                                                      ID_DESIGNADO) VALUES ('"
+                                      + mChamado.tipo_chamado + "'," //TIPO_CHAMADO
+                                      + "(SELECT NUM FROM(SELECT MAX(NUM_CHAMADO) +1 AS NUM FROM chamados) AS T1)" + "," //NUM_CHAMADO
+                                      + "(SELECT ID_CLIENTE FROM(SELECT ID_CLIENTE FROM CLIENTE WHERE NOME_CLIENTE ='" + mChamado.requisitante + "') AS T2)," //ID_CLIENTE
+                                      + "(SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + mChamado.cliente + "') AS T3)," //ID_EMPRESA
+                                      + "(SELECT ID_CATEGORIA FROM(SELECT ID_CATEGORIA FROM CATEGORIA_CHAMADO WHERE CATEGORIA ='" + mChamado.categoria + "')AS T4),'" //ID_CATEGORIA
+                                      + mChamado.urgencia + "','" //URGENCIA
+                                      + (DateTime.Now) + "','" //DATA_ABERTURA
+                                      + DateTime.Now.AddHours(AlvoSLA) + "'," //DATA_ALVO_RESOLUCAO
+                                      + "'Aberto','" //STATUS_CHAMADO
+                                      + mChamado.resumo_chamado + "'," //RESUMO_CHAMADO
+                                      + "(SELECT ID FROM(SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + mChamado.grupo_designado + "') AS T5),"  //ID_GRUPO
+                                      + "(SELECT ID FROM(SELECT ID_USUARIO AS ID FROM USUARIOS WHERE NOME_USUARIO = '" + mChamado.designado +"') AS T6))" ;  //ID_DESIGANDO
+
+
+
             String ConsultarSql = "SELECT MAX(NUM_CHAMADO) FROM CHAMADOS;";
 
             var NewNumChamado = db.InserirChamado(InsertSql, ConsultarSql);
@@ -55,16 +62,15 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             ChamadoModel pModel = new ChamadoModel();
 
-            string SqlIdChamado = @"SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NumChamado + ";";
-            pModel.id_chamado = Convert.ToInt32(db.Consultar(SqlIdChamado));
-
             string SqlChamado = @"SELECT CS.ID_CHAMADO, CS.TIPO_CHAMADO, CS.NUM_CHAMADO, CS.STATUS_CHAMADO, CC.CATEGORIA, CLI.NOME_CLIENTE, EMCLI.EMPRESA_NOME, CS.URGENCIA, CS.DATA_ABERTURA, 
-            CS.DATA_ALVO_RESOLUCAO, CS.DATA_CONCLUSAO, CS.RESUMO_CHAMADO
+            CS.DATA_ALVO_RESOLUCAO, CS.DATA_CONCLUSAO, CS.RESUMO_CHAMADO, GU.GRUPO_NOME, US.NOME_USUARIO
             FROM CHAMADOS CS
             LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
             LEFT JOIN EMPRESAS EMCLI ON EMCLI.ID_EMPRESA = CS.ID_EMPRESA
             LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA
-            WHERE CS.ID_CHAMADO = " + pModel.id_chamado + ";";
+			LEFT JOIN GRUPO_USUARIO GU ON GU.ID_GRUPO = CS.ID_GRUPO
+            LEFT JOIN USUARIOS US ON US.ID_USUARIO = CS.ID_DESIGNADO
+            WHERE CS.NUM_CHAMADO = " + NumChamado + ";";
             pModel = db.EditChamados(SqlChamado);
 
             return pModel;

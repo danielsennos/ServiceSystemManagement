@@ -87,13 +87,13 @@ namespace WEBSystemServiceManagement.UserInterface
             GridEmpresa.Visible = false;
             GridCliente.Visible = false;
             GridCategoria.Visible = false;
-            GridGrupoSuporte.Visible = true;
-            GridUsuarios.Visible = false;
+            GridGrupoSuporte.Visible = false;
+            GridUsuarios.Visible = true;
             #endregion
 
             GridCliente.Visible = false;
-            GridGrupoSuporte.DataSource = adminController.ExibirUsuarios();
-            GridGrupoSuporte.DataBind();
+            GridUsuarios.DataSource = adminController.ExibirUsuarios();
+            GridUsuarios.DataBind();
 
         }
 
@@ -144,7 +144,7 @@ namespace WEBSystemServiceManagement.UserInterface
             Session.Clear();
             Session["edit"] = nome;
 
-            Response.Redirect("~/UserInterface/UsuarioAdmin", true);
+            Response.Redirect("~/UserInterface/UsuariosAdmin", true);
         }
 
 

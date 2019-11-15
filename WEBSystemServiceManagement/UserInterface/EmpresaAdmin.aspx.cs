@@ -24,37 +24,58 @@ namespace WEBSystemServiceManagement.UserInterface
                 string nome = (Session["edit"]).ToString();
                 pModel = adminController.ExibirEmpresa(nome);
                 Session.Clear();
-            }
+                    if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0)
+                    {
+
+                        String queryEstado = @"SELECT NOME FROM ESTADO";
+                        var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
+                        foreach (var item in ListaEstado)
+                        {
+                            EstadosList.Items.Add(item.ToString());
+                        }
+
+                        String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
+                                    (SELECT ID FROM(SELECT ID AS ID FROM ESTADO WHERE NOME = '" + pModel.EstadoEmpresa + "') AS TEMP) ";
+                        var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
+                        foreach (var item in ListaCidade)
+                        {
+                            CidadeList.Items.Add(item.ToString());
+                        }
+                    }
+                }
             else
             {
                     pModel = new AdminModel.Empresa();
+                    if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0)
+                    {
+
+                        String queryEstado = @"SELECT NOME FROM ESTADO";
+                        var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
+                        foreach (var item in ListaEstado)
+                        {
+                            EstadosList.Items.Add(item.ToString());
+                        }
+
+                        String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
+                                    (SELECT ID FROM(SELECT ID AS ID FROM ESTADO WHERE NOME = '" + EstadosList.SelectedValue + "') AS TEMP) ";
+                        var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
+                        foreach (var item in ListaCidade)
+                        {
+                            CidadeList.Items.Add(item.ToString());
+                        }
+                    }
                 }
 
-            if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0)
-            {
-                String queryEstado = @"SELECT NOME FROM ESTADO";
-                var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
-                foreach (var item in ListaEstado)
-                {
-                    EstadosList.Items.Add(item.ToString());
-                }
-                String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
-                                    (SELECT ID FROM(SELECT ID AS ID FROM ESTADO WHERE NOME = '" + EstadosList.SelectedValue + "') AS TEMP) ";
-                var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
-                foreach (var item in ListaCidade)
-                {
-                    CidadeList.Items.Add(item.ToString());
-                }
-            }
+            
               
 
                 idempresa.Value = pModel.IdEmpresa;
                 NomeEmpresaInput.Text = pModel.NomeEmpresa;
                 CNPJEmpresaInput.Text = pModel.CNPJEmpresa;
-                EnderecoInput.Text = pModel.EnderecoEmpresa;
-                CidadeList.Text = pModel.CidadeEmpresa;
-                EstadosList.Text = pModel.EstadoEmpresa;
+                EnderecoInput.Text = pModel.EnderecoEmpresa;                
+                EstadosList.Text = pModel.EstadoEmpresa;                
                 Status.Value = pModel.StatusEmpresa;
+                CidadeList.Text = pModel.CidadeEmpresa;
             }
             
         }

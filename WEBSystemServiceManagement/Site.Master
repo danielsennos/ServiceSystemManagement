@@ -51,7 +51,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/UserInterface/Login">Acessar Sistema</a></li>
-                        <li><a runat="server" href="~/About">Suporte</a></li>
+                        <li><a runat="server" href="~/Contact">Suporte</a></li>
                     </ul>
                 </div>
             </div>

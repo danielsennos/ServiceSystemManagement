@@ -12,63 +12,82 @@ namespace WEBSystemServiceManagement
         Repository SQLConnect = new Repository();
         
         protected void Page_Load(object sender, EventArgs e)
-        {   
-
-            if (Categoria.Items.Count == 0)
+        {
+            if (IsPostBack == false)
             {
-                String query = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO;";
-                var ListaCategoria = SQLConnect.CarregaCategorias(query);
+                String queryCategoria = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO";
+                var ListaCategoria = SQLConnect.CarregaCategorias(queryCategoria);
                 foreach (var item in ListaCategoria)
                 {
                     Categoria.Items.Add(item.ToString());
-                    
+
                 }
-            }
-            if (GrupoDesignado.Items.Count == 0)
-            {
-                String query = @"SELECT GRUPO_SUP_NOME FROM GRUPO_USUARIO;";
-                var ListaCategoria = SQLConnect.CarregaGruposSuporte(query);
-                foreach (var item in ListaCategoria)
+                String queryGrupo = @"SELECT GRUPO_NOME FROM GRUPO_USUARIO";
+                var ListaGrupo = SQLConnect.CarregaGrupoUsuario(queryGrupo);
+                foreach (var item in ListaGrupo)
                 {
                     GrupoDesignado.Items.Add(item.ToString());
                 }
-            }            
-            if (Cliente.Items.Count == 0)
-            {
-                String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
-                var ListaCategoria = SQLConnect.CarregaCliente(query);
-                foreach (var item in ListaCategoria)
+                String queryEmpresa = @"SELECT EMPRESA_NOME FROM EMPRESAS";
+                var ListaEmpresa = SQLConnect.CarregaEmpresa(queryEmpresa);
+                foreach (var item in ListaEmpresa)
                 {
                     Cliente.Items.Add(item.ToString());
                 }
-            }
-            /*{
-                ChamadoModel mChamado = new ChamadoModel();
-                mChamado.cliente = (Cliente.SelectedItem.ToString());
-                String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
-                                JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA_CLIENTE
-                                WHERE EC.EMPRESA_CNOME ='"
-                                + mChamado.cliente + "';";
-                var ListaCategoria = SQLConnect.CarregaRequisitante(query);
-                foreach (var item in ListaCategoria)
+                String queryRequisitante = @"SELECT NOME_CLIENTE FROM CLIENTE WHERE ID_EMPRESA = (SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME ='" + Cliente.SelectedValue + "') AS TEMP)";
+                var ListaRequisitante = SQLConnect.CarregaCliente(queryRequisitante);
+                foreach (var item in ListaRequisitante)
                 {
                     Requisitante.Items.Add(item.ToString());
                 }
-            }*/
+                String queryDesignado = @"SELECT NOME_USUARIO FROM USUARIOS WHERE ID_GRUPO = (SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + GrupoDesignado.SelectedValue + "') AS TEMP);";
+                var ListaDesignado = SQLConnect.CarregaDesignado(queryDesignado);
+                foreach (var item in ListaDesignado)
+                {
+                    Designado.Items.Add(item.ToString());
+                }
+            }
 
         }
 
-        protected void SalvarChamado(object sender, EventArgs e)
+        
+        protected void CarregaRequisitantes(object sender, EventArgs e)
+        {             
+
+            Requisitante.Items.Clear();
+
+            String queryRequisitante = @"SELECT NOME_CLIENTE FROM CLIENTE WHERE ID_EMPRESA = (SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME ='" + Cliente.SelectedValue + "') AS TEMP);";
+            var ListaRequisitante = SQLConnect.CarregaCliente(queryRequisitante);
+            foreach (var item in ListaRequisitante)
+            {
+                Requisitante.Items.Add(item.ToString());
+            }
+        }
+
+        protected void CarregaDesignados(object sender, EventArgs e)
+        {
+            Designado.Items.Clear();
+
+            String queryDesignado = @"SELECT NOME_USUARIO FROM USUARIOS WHERE ID_GRUPO = (SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + GrupoDesignado.SelectedValue + "') AS TEMP);";
+            var ListaDesignado = SQLConnect.CarregaDesignado(queryDesignado);
+            foreach (var item in ListaDesignado)
+            {
+                Designado.Items.Add(item.ToString());
+            }
+        }
+
+            protected void SalvarChamado(object sender, EventArgs e)
         {
             ChamadoModel mChamado = new ChamadoModel();
 
             mChamado.tipo_chamado = TipoSolicitacao.Value.ToString();
             mChamado.cliente = (Cliente.SelectedItem.ToString()); 
-            //mChamado.requisitante = (Requisitante.SelectedItem.ToString());
+            mChamado.requisitante = (Requisitante.SelectedItem.ToString());
             mChamado.categoria = (Categoria.SelectedItem.ToString());
             mChamado.resumo_chamado = Resumo.Value;
             mChamado.urgencia = Urgencia.Value;
-            mChamado.grupo_designado = (GrupoDesignado.SelectedItem.ToString());
+            mChamado.grupo_designado = GrupoDesignado.SelectedItem.ToString();
+            mChamado.designado = Designado.SelectedItem.ToString();
 
 
            ChamadoController ChamadoController = new ChamadoController();
@@ -82,23 +101,6 @@ namespace WEBSystemServiceManagement
             Response.Redirect("~/UserInterface/EditarChamado", true);
 
 
-
-        }
-        protected void CarregaRequisitante(object sender, EventArgs e)
-        {
-            ChamadoModel mChamado = new ChamadoModel();
-
-                mChamado.cliente = (Cliente.SelectedItem.ToString());
-                String query = @"SELECT NOME_CLIENTE FROM CLIENTE CLI
-                                JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA
-                                WHERE EC.EMPRESA_NOME ="
-                                + mChamado.cliente + "';";
-                var ListaCategoria = SQLConnect.CarregaRequisitante(query);
-                foreach (var item in ListaCategoria)
-                {
-                    Requisitante.Items.Add(item.ToString());
-                }
-            
         }
 
         protected void ExibeChamadosLoad(object sender, EventArgs e)
