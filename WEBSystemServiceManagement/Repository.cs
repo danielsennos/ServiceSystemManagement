@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
 
 namespace WEBSystemServiceManagement
 {
@@ -12,28 +13,39 @@ namespace WEBSystemServiceManagement
     {
 
         private MySqlConnection conexao;
-//DESENVOLVIMENTO:
+        #region Path de Desenvolvimento     
         private readonly string PATH = "SERVER=den1.mysql6.gear.host; DATABASE=ssmdesenv; UID=ssmdesenv; PASSWORD=Ib2l?~K2ZEsR"; // Banco de DESENVOLVIMENTO
-//PRODUÇÃO:
-      //private readonly string PATH = "SERVER=den1.mysql2.gear.host; DATABASE=ssmproducao; UID=ssmproducao; PASSWORD=Jk4P2Bh?~aA0"; // Banco de DESENVOLVIMENTO
+        #endregion
+        #region Path de Produção
+        // private readonly string PATH = "SERVER=den1.mysql2.gear.host; DATABASE=ssmproducao; UID=ssmproducao; PASSWORD=Jk4P2Bh?~aA0"; // Banco de DESENVOLVIMENTO
+        #endregion
 
         #region MetodosUniversais
         public void Inserir(String InsertSql)
         {
+            conexao = new MySqlConnection(PATH);
+
+            MySqlTransaction trans = null;
+
             try
             {
-                conexao = new MySqlConnection(PATH);
                 conexao.Open();
-
-                MySqlCommand comandos = new MySqlCommand(InsertSql, conexao);
+                MySqlCommand comandos = new MySqlCommand();
+            
+                trans = conexao.BeginTransaction();
+                comandos = new MySqlCommand(InsertSql, conexao);
+                comandos.Connection = conexao;
+                comandos.Transaction = trans;
                 comandos.ExecuteNonQuery();
+                trans.Commit();
 
-                conexao.Close();
             }
             catch (Exception ex)
             {
+                trans.Rollback();
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
+            finally { conexao.Close(); }
         }
         public string Consultar(String ConsultarSql)
         {
@@ -85,6 +97,8 @@ namespace WEBSystemServiceManagement
                 trans = conexao.BeginTransaction();
                 MySqlCommand comandos = new MySqlCommand();
                 comandos = new MySqlCommand(UpdateSQL, conexao);
+                comandos.Connection = conexao;
+                comandos.Transaction = trans;
                 comandos.ExecuteNonQuery();
                 trans.Commit();
 
@@ -248,8 +262,12 @@ namespace WEBSystemServiceManagement
                 trans = conexao.BeginTransaction();
                 MySqlCommand comandos = new MySqlCommand();
                 comandos = new MySqlCommand(InsertSql, conexao);
+                comandos.Connection = conexao;
+                comandos.Transaction = trans;
                 comandos.ExecuteNonQuery();
                 comandos = new MySqlCommand(ConsultarSql, conexao);
+                comandos.Connection = conexao;
+                comandos.Transaction = trans;
                 comandos.ExecuteNonQuery();
                 MySqlDataReader dr;
                 dr = comandos.ExecuteReader();
