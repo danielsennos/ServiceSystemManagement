@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Net.Mail;
-using MySqlX.XDevAPI;
 
 namespace WEBSystemServiceManagement
 {
