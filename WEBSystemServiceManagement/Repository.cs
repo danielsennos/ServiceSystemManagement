@@ -254,87 +254,55 @@ namespace WEBSystemServiceManagement
         public String InserirChamado(String InsertSql, String ConsultarSql)
         {
             String Result = "";
-
-            MySqlConnection conexao = new MySqlConnection(PATH);
             
-            MySqlCommand cmd1 = conexao.CreateCommand();
-            MySqlCommand cmd2 = conexao.CreateCommand();
+            using (MySqlConnection conexao = new MySqlConnection(PATH)) {
+                MySqlTransaction trans = null;
 
-            cmd1.CommandText = InsertSql;
-            cmd2.CommandText = ConsultarSql;
-
-            MySqlTransaction trans = null;
-            try
-            {
-                conexao.Open();
-                trans = conexao.BeginTransaction();
-
-                cmd1.Transaction = trans;
-                cmd1.ExecuteNonQuery();
-                Console.WriteLine("Comando 1 Executado");
-
-                cmd2.Transaction = trans;
-                cmd2.ExecuteNonQuery();
-                Console.WriteLine("Comando 2 Executado");
-
-                MySqlDataReader dr;
-                dr = cmd2.ExecuteReader();
-                dr.Read();
-                if (dr.HasRows)
+                try
                 {
-                    Result = dr.GetString(0);
+                    MySqlCommand cmd1 = conexao.CreateCommand();
+                    MySqlCommand cmd2 = conexao.CreateCommand();
+
+                    cmd1.CommandText = InsertSql;
+                    cmd2.CommandText = ConsultarSql;
+                    conexao.Open();
+
+                    trans = conexao.BeginTransaction();
+
+                    cmd1.Transaction = trans;
+                    cmd1.Connection = conexao;
+                    cmd1.ExecuteNonQuery();
+                    Console.WriteLine("Comando 1 Executado");
+
+                    cmd2.Transaction = trans;
+                    cmd2.Connection = conexao;
+                    cmd2.ExecuteNonQuery();
+                    Console.WriteLine("Comando 2 Executado");
+
+                    MySqlDataReader dr;
+                    dr = cmd2.ExecuteReader();
+                    dr.Read();
+                    if (dr.HasRows)
+                    {
+                        Result = dr.GetString(0);
+                    }
+                    dr.Close();
+
+                    trans.Commit();
+
+
+
+                } catch (SqlException ex)
+                {
+                    trans.Rollback();
+                    throw new Exception("Erro de comando SQL" + ex.Message);
                 }
-
-                trans.Commit();
-
-
-            } catch (SqlException ex)
-            {
-                trans.Rollback();
-                throw new Exception("Erro de comando SQL" + ex.Message);
+                finally { conexao.Close(); }
             }
-            finally { conexao.Close(); }
-
-            return null;
+            return Result;
 
 
 
-            //conexao = new MySqlConnection(PATH);
-            //MySqlTransaction trans = null;
-            //String Result = null;
-            //try
-            //{
-            //    conexao.Open();
-            //    trans = conexao.BeginTransaction();
-            //    MySqlCommand comando1 = new MySqlCommand();
-            //    comando1 = new MySqlCommand(InsertSql, conexao);
-            //    comando1.Connection = conexao;
-            //    comando1.Transaction = trans;
-            //    comando1.ExecuteNonQuery();
-            //    MySqlCommand comando2 = new MySqlCommand();
-            //    comando2 = new MySqlCommand(ConsultarSql, conexao);
-            //    comando2.Connection = conexao;
-            //    comando2.Transaction = trans;
-            //    comando2.ExecuteNonQuery();
-            //    MySqlDataReader dr;
-            //    dr = comando2.ExecuteReader();
-            //    dr.Read();
-            //    if (dr.HasRows)
-            //    {
-            //        Result = dr.GetString(0);
-            //    }
-            //    dr.Close();
-            //    trans.Commit();
-            //}
-            //catch (Exception ex)
-            //{
-            //    trans.Rollback();
-            //    throw new Exception("Erro de comando SQL" + ex.Message);
-            //}
-            //finally { conexao.Close(); }
-
-
-            //return Result;
         }
 
         public DataTable ExibeChamados(String SQLQuery)
