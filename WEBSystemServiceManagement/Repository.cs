@@ -284,7 +284,7 @@ namespace WEBSystemServiceManagement
                     dr.Read();
                     if (dr.HasRows)
                     {
-                        Result = dr.GetString(0);
+                        Result = (dr.GetUInt32(0)).ToString();
                     }
                     dr.Close();
 

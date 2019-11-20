@@ -91,7 +91,7 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-            String SQL = @"INSERT INTO EMPRESAS VALUES ( (SELECT MAXID FROM (SELECT MAX(ID_EMPRESA) + 1 AS MAXID FROM EMPRESAS) AS T1), '" +
+            String SQL = @"INSERT INTO EMPRESAS VALUES ( (SELECT MAXID FROM (SELECT (COALESCE(MAX(ID_EMPRESA),0) + 1) AS MAXID FROM EMPRESAS) AS T1), '" +
                                                     pModel.NomeEmpresa + "','" +
                                                     pModel.CNPJEmpresa + "','" +
                                                     pModel.EnderecoEmpresa + "','" +
@@ -134,7 +134,7 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
             
-            String SQL = @"INSERT INTO CLIENTE VALUES ( (SELECT MAXID FROM (SELECT MAX(ID_CLIENTE) + 1 AS MAXID FROM CLIENTE)AS T1),'" +
+            String SQL = @"INSERT INTO CLIENTE VALUES ( (SELECT MAXID FROM (SELECT (COALESCE(MAX(ID_CLIENTE),0) + 1) AS MAXID FROM CLIENTE)AS T1),'" +
                                                     pModel.NomeCliente + "','" +
                                                     pModel.CidadeCliente + "','" +
                                                     pModel.TelefoneCliente + "','" +
@@ -210,7 +210,7 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
 
            
-            String SQL = @"INSERT INTO GRUPO_USUARIO VALUES ((SELECT MAXID FROM(SELECT MAX(ID_GRUPO) + 1 AS MAXID FROM GRUPO_USUARIO) AS T1),'" + 
+            String SQL = @"INSERT INTO GRUPO_USUARIO VALUES ((SELECT MAXID FROM(SELECT (COALESCE(MAX(ID_GRUPO),0) + 1) AS MAXID FROM GRUPO_USUARIO) AS T1),'" + 
                 pModel.NomeGrupo + "','" +
                 pModel.StatusGrupo + "')";
             db.Inserir(SQL);

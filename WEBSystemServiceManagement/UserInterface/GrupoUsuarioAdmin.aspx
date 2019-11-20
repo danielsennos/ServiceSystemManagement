@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="GrupoUsuarioAdmin.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.GrupoUsuarioAdmin" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
-
+<head>
+<title>SSM Software</title>
+</head>
 
 <html>
 <body>

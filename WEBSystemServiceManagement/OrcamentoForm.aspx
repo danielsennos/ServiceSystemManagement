@@ -1,4 +1,4 @@
-﻿<%@ Page Title="OrcamentoForm" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrcamentoForm.aspx.cs" Inherits="WEBSystemServiceManagement.OrcamentoForm" %>
+﻿<%@ Page Title="Personalizar" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OrcamentoForm.aspx.cs" Inherits="WEBSystemServiceManagement.OrcamentoForm" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Personalize sua ferramenta de gestão de serviços de TI.</h3>

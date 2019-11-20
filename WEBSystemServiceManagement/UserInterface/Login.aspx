@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WEBSystemServiceManagement.Login" %>
 <link href="../Content/bootstrap.css" rel="stylesheet" />
+<head>
+<title>Login - SSM Software</title>
+</head>
 
 <html>
     <body>
