@@ -32,7 +32,7 @@ namespace WEBSystemServiceManagement
                                                       ID_GRUPO,
                                                       ID_DESIGNADO) VALUES ('"
                                       + mChamado.tipo_chamado + "'," //TIPO_CHAMADO
-                                      + "(SELECT NUM FROM(SELECT MAX(NUM_CHAMADO) +1 AS NUM FROM chamados) AS T1)" + "," //NUM_CHAMADO
+                                      + "(SELECT NUM FROM(SELECT COALESCE(MAX(NUM_CHAMADO),0) +1 AS NUM FROM chamados) AS T1)" + "," //NUM_CHAMADO
                                       + "(SELECT ID_CLIENTE FROM(SELECT ID_CLIENTE FROM CLIENTE WHERE NOME_CLIENTE ='" + mChamado.requisitante + "') AS T2)," //ID_CLIENTE
                                       + "(SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + mChamado.cliente + "') AS T3)," //ID_EMPRESA
                                       + "(SELECT ID_CATEGORIA FROM(SELECT ID_CATEGORIA FROM CATEGORIA_CHAMADO WHERE CATEGORIA ='" + mChamado.categoria + "')AS T4),'" //ID_CATEGORIA
