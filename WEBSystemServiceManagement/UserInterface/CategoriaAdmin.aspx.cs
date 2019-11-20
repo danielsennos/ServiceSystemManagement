@@ -38,7 +38,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
                 idcategoria.Value = pModel.idCategoria;
                 NomeCategoriaInput.Text = pModel.NomeCategoria;
-                SLAInput.Text = pModel.SLACategoria;  
+                SLAInput.Value = pModel.SLACategoria;  
                 Status.Value = pModel.StatusCategoria;
             }
 
@@ -57,7 +57,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
             pModel.idCategoria = idcategoria.Value;
             pModel.NomeCategoria = NomeCategoriaInput.Text;
-            pModel.SLACategoria = SLAInput.Text;
+            pModel.SLACategoria = SLAInput.Value;
             pModel.StatusCategoria = Status.Value;
 
             if (pModel.idCategoria != "") { adminController.EditarCategoria(pModel); } else { adminController.IncluirCategoria(pModel); }
