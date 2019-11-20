@@ -253,41 +253,88 @@ namespace WEBSystemServiceManagement
 
         public String InserirChamado(String InsertSql, String ConsultarSql)
         {
-            conexao = new MySqlConnection(PATH);
+            String Result = "";
+
+            MySqlConnection conexao = new MySqlConnection(PATH);
+            
+            MySqlCommand cmd1 = conexao.CreateCommand();
+            MySqlCommand cmd2 = conexao.CreateCommand();
+
+            cmd1.CommandText = InsertSql;
+            cmd2.CommandText = ConsultarSql;
+
             MySqlTransaction trans = null;
-            String Result = null;
             try
             {
                 conexao.Open();
                 trans = conexao.BeginTransaction();
-                MySqlCommand comandos = new MySqlCommand();
-                comandos = new MySqlCommand(InsertSql, conexao);
-                comandos.Connection = conexao;
-                comandos.Transaction = trans;
-                comandos.ExecuteNonQuery();
-                comandos = new MySqlCommand(ConsultarSql, conexao);
-                comandos.Connection = conexao;
-                comandos.Transaction = trans;
-                comandos.ExecuteNonQuery();
+
+                cmd1.Transaction = trans;
+                cmd1.ExecuteNonQuery();
+                Console.WriteLine("Comando 1 Executado");
+
+                cmd2.Transaction = trans;
+                cmd2.ExecuteNonQuery();
+                Console.WriteLine("Comando 2 Executado");
+
                 MySqlDataReader dr;
-                dr = comandos.ExecuteReader();
+                dr = cmd2.ExecuteReader();
                 dr.Read();
                 if (dr.HasRows)
                 {
                     Result = dr.GetString(0);
                 }
-                dr.Close();
+
                 trans.Commit();
-            }
-            catch (Exception ex)
+
+
+            } catch (SqlException ex)
             {
                 trans.Rollback();
                 throw new Exception("Erro de comando SQL" + ex.Message);
             }
             finally { conexao.Close(); }
 
+            return null;
 
-            return Result;
+
+
+            //conexao = new MySqlConnection(PATH);
+            //MySqlTransaction trans = null;
+            //String Result = null;
+            //try
+            //{
+            //    conexao.Open();
+            //    trans = conexao.BeginTransaction();
+            //    MySqlCommand comando1 = new MySqlCommand();
+            //    comando1 = new MySqlCommand(InsertSql, conexao);
+            //    comando1.Connection = conexao;
+            //    comando1.Transaction = trans;
+            //    comando1.ExecuteNonQuery();
+            //    MySqlCommand comando2 = new MySqlCommand();
+            //    comando2 = new MySqlCommand(ConsultarSql, conexao);
+            //    comando2.Connection = conexao;
+            //    comando2.Transaction = trans;
+            //    comando2.ExecuteNonQuery();
+            //    MySqlDataReader dr;
+            //    dr = comando2.ExecuteReader();
+            //    dr.Read();
+            //    if (dr.HasRows)
+            //    {
+            //        Result = dr.GetString(0);
+            //    }
+            //    dr.Close();
+            //    trans.Commit();
+            //}
+            //catch (Exception ex)
+            //{
+            //    trans.Rollback();
+            //    throw new Exception("Erro de comando SQL" + ex.Message);
+            //}
+            //finally { conexao.Close(); }
+
+
+            //return Result;
         }
 
         public DataTable ExibeChamados(String SQLQuery)
