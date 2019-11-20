@@ -1,6 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ClienteAdmin.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.ClienteAdmin" %>
 <link href="../Content/bootstrap.css" rel="stylesheet" />
-
+<head>
+<title>SSM Software</title>
+</head>
 <html>
 <body>
     <!--INICIO DO CABEÇALHO CONTENDO OS LINKS DE ACESSO RÁPIDO-->

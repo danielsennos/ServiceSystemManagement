@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AboutSSM.aspx.cs" Inherits="WEBSystemServiceManagement._Default" %>
+﻿<%@ Page Title="Sobre" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AboutSSM.aspx.cs" Inherits="WEBSystemServiceManagement._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Service System Management</h3>

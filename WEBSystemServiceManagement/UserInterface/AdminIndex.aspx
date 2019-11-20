@@ -1,8 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminIndex.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.Admin" %>
-
-
 <link href="../Content/bootstrap.css" rel="stylesheet" />
-
+<head>
+<title>SSM Software</title>
+</head>
 
 <html>
 <body>

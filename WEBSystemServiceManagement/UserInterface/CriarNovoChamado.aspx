@@ -1,6 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CriarNovoChamado.aspx.cs" Inherits="WEBSystemServiceManagement.CriarNovoChamado" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
+<head>
+<title>SSM Software</title>
+</head>
+<head>
+<title>SSM Software</title>
+</head>
 
 <html>
 <body>

@@ -1,6 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Pesquisar.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.Pesquisar" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
+<head>
+<title>SSM Software</title>
+</head>
 
 <html>
 <body>

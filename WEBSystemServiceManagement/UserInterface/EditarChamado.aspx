@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditarChamado.aspx.cs" Inherits="WEBSystemServiceManagement.EditarChamado" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
-
+<head>
+<title>SSM Software</title>
+</head>
 <html>
 
 <body>

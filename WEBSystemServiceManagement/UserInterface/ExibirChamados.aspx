@@ -2,6 +2,10 @@
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
 
+<head>
+<title>SSM Software</title>
+</head>
+
 <html>
 
 <body>

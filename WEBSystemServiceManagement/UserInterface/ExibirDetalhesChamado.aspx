@@ -1,7 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ExibirDetalhesChamado.aspx.cs" Inherits="WEBSystemServiceManagement.UserInterface.ExibirDetalhesChamado" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
-
+<head>
+<title>SSM Software</title>
+</head>
 <html>
 
 <body>
