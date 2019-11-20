@@ -21,7 +21,7 @@ namespace WEBSystemServiceManagement
                 return false;                
             } else
             {
-                string ConsultarSenha = @"SELECT LOGIN FROM USUARIOS WHERE LOGIN = '" + pModel.Password + "';";
+                string ConsultarSenha = @"SELECT SENHA FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
                 string ConsultarStatus = @"SELECT STATUS_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
                 string UserStatus = db.Consultar(ConsultarStatus);
                 string UserPassword = db.Consultar(ConsultarSenha);

@@ -255,7 +255,7 @@ namespace WEBSystemServiceManagement
             
 
 
-            pModel.Senha = RandomString(8);
+            pModel.Senha = RandomString(6);
 
             String SQL = @"INSERT INTO USUARIOS (ID_USUARIO, 
                                                  LOGIN,
