@@ -33,7 +33,7 @@
                 <b>Categoria:</b><br />
                 <asp:TextBox ID="NomeCategoriaInput" runat="server" class="InputDefault"></asp:TextBox><br />
                 <b>SLA de Resolução:</b><br />
-                <asp:TextBox ID="SLAInput" runat="server" class="InputDefault"></asp:TextBox><br />
+                <input type="number" id="SLAInput" runat="server" class="InputDefault"/><br />
                 <b>Status:</b><br />
                 <select id="Status" name="Status" runat="server" class="InputDefault">
                     <option value="A">Ativada</option>
