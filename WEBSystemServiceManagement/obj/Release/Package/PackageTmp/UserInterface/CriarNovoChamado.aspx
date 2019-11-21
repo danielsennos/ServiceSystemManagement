@@ -1,6 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CriarNovoChamado.aspx.cs" Inherits="WEBSystemServiceManagement.CriarNovoChamado" %>
 
 <link href="../Content/bootstrap.css" rel="stylesheet" />
+<head>
+<title>SSM Software</title>
+</head>
+<head>
+<title>SSM Software</title>
+</head>
 
 <html>
 <body>
@@ -9,10 +15,10 @@
         <div class="container">
             <div class="navbar-collapse collapse">
                 <div class="navbar-nav">
-                    <a href="~/UserInterface/ExibirChamados" runat="server" class="navbar-brand">Painel</a>
-                    <a href="~/UserInterface/CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
-                    <a href="./" runat="server" class="navbar-brand">Relatórios</a>
-                    <a href="./" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="./ExibirChamados" runat="server" class="navbar-brand">Painel</a>
+                    <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
+                    <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
+                    <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
                 </div>
             </div>
         </div>
@@ -23,33 +29,34 @@
     <div class="BodyContent">
         <!--INÍCIO DO MENU LATERAL-->
         <div class="Menu-Left-Bar">
-            <a href="~/UserInterface/ExibirChamados" runat="server" class="MenuLink">Exibir Solicitações</a>
-            <a href="~/UserInterface/CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
-            <a href="./" runat="server" class="MenuLink">Pesquisar Solicitações</a>
-            <a href="./" runat="server" class="MenuLink">Consultar Clientes</a>
-            <a href="./" runat="server" class="MenuLink">Relatórios</a>
-            <a href="./" runat="server" class="MenuLink">Admin</a>
-            <a href="./" runat="server" class="MenuLink">Sair</a>
+            <a href="./ExibirChamados" runat="server" class="MenuLink">Exibir Solicitações</a>
+            <a href="./CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
+            <a href="./Relatorios" runat="server" class="MenuLink">Relatórios</a>
+            <a href="./Pesquisar" runat="server" class="MenuLink">Pesquisar Solicitações</a>
+            <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
+            <a href="../" runat="server" class="MenuLink">Sair</a>
         </div>
         <!--FIM DO MENU LATERAL-->
         <div class="BodyContent-Center">
 
             <form id="FormCriarNovo" runat="server">
                 <div class="ColumFixedLeft">
-                    Número da Solicitação:
-                <input id="num_chamado" class="InputDefault" runat="server" type="text" readonly />
+                    Tipo da Solicitação:
+                               <select id="TipoSolicitacao" name="TipoSolicitacao" runat="server" class="InputDefault">
+                   <option value="REQ">Solicitação</option>
+                   <option value="INC">Falha ou Erro</option>
+               </select>
 
-                    <br />
                     Cliente:
-            <input id="Cliente" class="InputDefault" runat="server" type="text" />
+                    <asp:DropDownList ID="Cliente" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaRequisitantes" AutoPostBack="true" ></asp:DropDownList>
 
                     <br />
                     Requisitante:
-                <input id="Requisitante" class="InputDefault" runat="server" type="text" />
+                    <asp:DropDownList ID="Requisitante" class="InputDefault" runat="server"></asp:DropDownList>
 
                     <br />
                     Categoria:
-              <input id="Categoria" class="InputDefault" runat="server" type="text" />
+              <asp:DropDownList ID="Categoria" class="InputDefault" runat="server"></asp:DropDownList>
 
                     <br />
                     Resumo:
@@ -63,21 +70,21 @@
                    <option value="Crítica">Crítica</option>
                </select>
 
-                    Grupo Designado:
-              <input id="GrupoDesignado" class="InputDefault" runat="server" type="text" />
+                    <br />
+                    Grupo Designado: <br />
+               <asp:DropDownList ID="GrupoDesignado" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaDesignados" AutoPostBack="true"></asp:DropDownList>
 
-                    Designado:
-              <input id="Designado" class="InputDefault" runat="server" type="text" />
-                
-                  Anotações de Trabalho:
-              <input id="Anotacoes" class="InputDefault" runat="server" type="text" />
-                                 
-                    
-                    <asp:Button ID="Salvar" runat="server" Text="Salvar" OnClick="SalvarChamado" />
+                    <br />
+                    Designado:<br />
+                 <asp:DropDownList ID="Designado" class="InputDefault" runat="server"></asp:DropDownList>
 
-                    </div>
-                    
-                    </form>
+
+                    <asp:Button ID="SalvarBtn" runat="server" Text="Salvar" OnClick="SalvarChamado" />
+                    <asp:Button ID="CancelarBtn" runat="server" Text="Cancelar" OnClick="ExibeChamadosLoad"/>
+
+                </div>
+
+            </form>
 
         </div>
     </div>

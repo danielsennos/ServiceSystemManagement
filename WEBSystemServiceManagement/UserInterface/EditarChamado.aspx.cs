@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -160,7 +161,7 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Aberto' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Aberto','" + DateTime.Now + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Aberto','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "');";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
@@ -179,7 +180,7 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Em Andamento' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Em Andamento','" + DateTime.Now + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Em Andamento','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "');";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
@@ -197,7 +198,7 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Pendente' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Pendente','" + DateTime.Now + "')";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Pendente','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "')";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
@@ -215,7 +216,7 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Concluído' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText + "','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "');";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
@@ -234,7 +235,7 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Cancelado' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + "','" + DateTime.Now + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Solicitação Cancelada - Motivo:" + AnotacaoEdit.InnerText + "','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "');";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";

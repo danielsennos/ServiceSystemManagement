@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -15,9 +16,6 @@ namespace WEBSystemServiceManagement
             String selectDataAlvo = @"SELECT ALVO_SLA FROM CATEGORIA_CHAMADO WHERE CATEGORIA = '" +
                                     mChamado.categoria + "'";
             Int16 AlvoSLA = Convert.ToInt16(db.Consultar(selectDataAlvo));
-
-
-
 
             String InsertSql = @"INSERT INTO CHAMADOS (TIPO_CHAMADO,
                                                       NUM_CHAMADO, 
@@ -37,8 +35,8 @@ namespace WEBSystemServiceManagement
                                       + "(SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + mChamado.cliente + "') AS T3)," //ID_EMPRESA
                                       + "(SELECT ID_CATEGORIA FROM(SELECT ID_CATEGORIA FROM CATEGORIA_CHAMADO WHERE CATEGORIA ='" + mChamado.categoria + "')AS T4),'" //ID_CATEGORIA
                                       + mChamado.urgencia + "','" //URGENCIA
-                                      + (DateTime.Now) + "','" //DATA_ABERTURA
-                                      + DateTime.Now.AddHours(AlvoSLA) + "'," //DATA_ALVO_RESOLUCAO
+                                      + (DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR"))) + "','" //DATA_ABERTURA
+                                      + (DateTime.Now.AddHours(AlvoSLA)).ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "'," //DATA_ALVO_RESOLUCAO
                                       + "'Aberto','" //STATUS_CHAMADO
                                       + mChamado.resumo_chamado + "'," //RESUMO_CHAMADO
                                       + "(SELECT ID FROM(SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + mChamado.grupo_designado + "') AS T5),"  //ID_GRUPO
@@ -50,7 +48,7 @@ namespace WEBSystemServiceManagement
 
             var NewNumChamado = db.InserirChamado(InsertSql, ConsultarSql);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES((SELECT ID_CHAMADO FROM (SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NewNumChamado + ") AS TEMP),'Aberto','" + DateTime.Now + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES((SELECT ID_CHAMADO FROM (SELECT ID_CHAMADO FROM CHAMADOS WHERE NUM_CHAMADO =" + NewNumChamado + ") AS TEMP),'Aberto','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "');";
             db.Inserir(queryNota);
 
 
@@ -67,7 +65,7 @@ namespace WEBSystemServiceManagement
             FROM CHAMADOS CS
             LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
             LEFT JOIN EMPRESAS EMCLI ON EMCLI.ID_EMPRESA = CS.ID_EMPRESA
-            LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA
+            LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA 
 			LEFT JOIN GRUPO_USUARIO GU ON GU.ID_GRUPO = CS.ID_GRUPO
             LEFT JOIN USUARIOS US ON US.ID_USUARIO = CS.ID_DESIGNADO
             WHERE CS.NUM_CHAMADO = " + NumChamado + ";";

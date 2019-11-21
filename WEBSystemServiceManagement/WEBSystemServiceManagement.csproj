@@ -298,6 +298,7 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Model\MaintainUrls.cs" />
     <Compile Include="OrcamentoForm.aspx.cs">
       <DependentUpon>OrcamentoForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
