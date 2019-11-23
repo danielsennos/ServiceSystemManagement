@@ -11,7 +11,15 @@ namespace WEBSystemServiceManagement.UserInterface
     public partial class Admin : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {      
+        {
+            if (Session["user_authenticated"] != null)
+            {
+                if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                {
+                    Session.Timeout = 20;
+
+                } else { throw new Exception("Permissões insuficientes"); }
+            } else { Response.Redirect("~/UserInterface/Logout", true); }
 
         }
         public void ExibirEmpresa(object sender, EventArgs e)

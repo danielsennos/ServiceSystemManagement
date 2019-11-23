@@ -14,33 +14,43 @@ namespace WEBSystemServiceManagement.UserInterface
 
             if (IsPostBack == false)
             {
-                AdminModel.Categoria pModel = new AdminModel.Categoria();
-            AdminController adminController = new AdminController();
-            Repository SQLConnect = new Repository();         
+
+                if (Session["user_authenticated"] != null)
+                {
+                    if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                    {
+                        AdminModel.Categoria pModel = new AdminModel.Categoria();
+                        AdminController adminController = new AdminController();
+                        Repository SQLConnect = new Repository();
 
 
 
-                if (Session.Count > 0)
-            {
-                string nome = (Session["edit"]).ToString();
-                pModel = adminController.ExibirCategoria(nome);
-                Session.Clear();
+                        if (Session.Count > 0)
+                        {
+                            string nome = (Session["edit"]).ToString();
+                            pModel = adminController.ExibirCategoria(nome);
+                            Session.Clear();
+                            
+                        }
+                        else
+                        {
+                            pModel = new AdminModel.Categoria();
+                        }
 
 
-            }
-            else
-            {
-                    pModel = new AdminModel.Categoria();
-            }
+                        idcategoria.Value = pModel.idCategoria;
+                        NomeCategoriaInput.Text = pModel.NomeCategoria;
+                        SLAInput.Value = pModel.SLACategoria;
+                        Status.Value = pModel.StatusCategoria;
+                    }
 
-            
-            
+                    Session.Timeout = 20;
 
-                idcategoria.Value = pModel.idCategoria;
-                NomeCategoriaInput.Text = pModel.NomeCategoria;
-                SLAInput.Value = pModel.SLACategoria;  
-                Status.Value = pModel.StatusCategoria;
-            }
+                    }
+                    else { throw new Exception("Permissões insuficientes"); }
+                }
+                else { Response.Redirect("~/UserInterface/Logout", true); }
+                
 
         }
 

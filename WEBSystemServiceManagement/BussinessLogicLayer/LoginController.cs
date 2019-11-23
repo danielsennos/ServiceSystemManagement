@@ -29,7 +29,7 @@ namespace WEBSystemServiceManagement
                 
 
                 if (UserStatus == "D" || UserPassword != pModel.Password)
-                {
+                {                    
                     return false;
                 } else
                 {
@@ -80,6 +80,17 @@ namespace WEBSystemServiceManagement
                 }
             }
 
+        }
+
+        public int ConsultarPermissao(LoginModel pModel)
+        {
+            Repository db = new Repository();
+            String ConsultaPermissao = @"SELECT us.id_permissao FROM permissoes_usuarios pu
+                                            join usuarios us on us.id_permissao = pu.id_permissao
+                                            where pu.status_permissao = 'A' and us.login = '" + pModel.LoginName + "'";
+            pModel.idPermissao = db.ConsultaInt(ConsultaPermissao);
+
+            return pModel.idPermissao;
         }
         
     }

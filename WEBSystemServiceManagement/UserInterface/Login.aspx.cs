@@ -22,9 +22,16 @@ namespace WEBSystemServiceManagement
             bool AcessGranted = loginController.GrantAccess(pModel);
             if(AcessGranted == false)
             {
+                Session["user_authenticated"] = "false";
                 throw new Exception("Dados incorretos.");
             } else
             {
+                _ = Session.IsNewSession;
+                Session["user_authenticated"] = "true";
+                Session["user_name"] = pModel.NomeUsuario;
+                Session["user_login"] = pModel.LoginName;
+                Session["user_id_permisson"] = loginController.ConsultarPermissao(pModel);
+
                 Response.Redirect("~/UserInterface/ExibirChamados", true);
             }
 
