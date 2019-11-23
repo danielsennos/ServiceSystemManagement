@@ -22,12 +22,12 @@ namespace WEBSystemServiceManagement.UserInterface
                         AdminController adminController = new AdminController();
                         Repository SQLConnect = new Repository();
 
-
-                        if (Session.Count > 0)
+                        if (Session["edit"] != null)
                         {
                             string nome = (Session["edit"]).ToString();
                             pModel = adminController.ExibirCliente(nome);
-                            Session.Clear();
+                            Session["edit"] = null;
+
 
                             if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0 || EmpresaList.Items.Count == 0)
                             {
@@ -55,8 +55,8 @@ namespace WEBSystemServiceManagement.UserInterface
                         }
                         else
                         {
-
                             pModel = new AdminModel.Cliente();
+
                             if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0 || EmpresaList.Items.Count == 0)
                             {
                                 String queryEstado = @"SELECT NOME FROM ESTADO";
@@ -91,14 +91,16 @@ namespace WEBSystemServiceManagement.UserInterface
                         EstadosList.Text = pModel.EstadoCliente;
                         CidadeList.Text = pModel.CidadeCliente;
                         Status.Value = pModel.StatusCliente;
-                    }
 
-                    Session.Timeout = 20;
-
+                        Session.Timeout = 20;
                     }
                     else { throw new Exception("Permissões insuficientes"); }
+
+
                 }
-                else { Response.Redirect("~/UserInterface/Logout", true); }
+                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
+
+            }                
                
         }
 
@@ -150,7 +152,7 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.StatusCliente = Status.Value;
             if (pModel.IdCliente != "") { adminController.EditarCliente(pModel); } else { adminController.IncluirCliente(pModel); }
 
-            Session.Clear();
+            
             Session["edit"] = pModel.NomeCliente;
 
 

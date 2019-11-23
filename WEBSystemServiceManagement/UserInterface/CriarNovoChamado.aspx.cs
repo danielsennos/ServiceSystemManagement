@@ -57,7 +57,7 @@ namespace WEBSystemServiceManagement
                         throw new Exception("Permissões insuficientes");
                     }
                 }
-                else { Response.Redirect("~/UserInterface/Logout", true); }
+                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
             }
 
         }
@@ -105,7 +105,7 @@ namespace WEBSystemServiceManagement
            ChamadoController ChamadoController = new ChamadoController();
             var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
 
-            Session.Clear();
+            
             Session["edit"] = NewNumChamado;
             
            

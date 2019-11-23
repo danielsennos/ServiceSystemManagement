@@ -11,6 +11,7 @@ namespace WEBSystemServiceManagement.UserInterface
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (IsPostBack == false)
             {
                 if (Session["user_authenticated"] != null)
@@ -22,11 +23,11 @@ namespace WEBSystemServiceManagement.UserInterface
                         Repository SQLConnect = new Repository();
 
 
-                        if (Session.Count > 0)
+                        if (Session["edit"] != null)
                         {
                             string nome = (Session["edit"]).ToString();
                             pModel = adminController.ExibirGrupoUsuario(nome);
-                            Session.Clear();
+                            Session["edit"] = null;
                         }
                         else
                         {
@@ -43,7 +44,7 @@ namespace WEBSystemServiceManagement.UserInterface
                     }
                     else { throw new Exception("Permissões insuficientes"); }
                 }
-                else { Response.Redirect("~/UserInterface/Logout", true); }
+                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
                 
             }
 
@@ -67,8 +68,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
             if (pModel.idGrupo != "") { adminController.EditarGrupoUsuario(pModel); } else { adminController.IncluirGrupoUsuario(pModel); }
 
-            Session.Clear();
-            Session["edit"] = pModel.NomeGrupo;
+             Session["edit"] = pModel.NomeGrupo;
 
 
             Response.Redirect("~/UserInterface/GrupoUsuarioAdmin", true);

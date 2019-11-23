@@ -24,11 +24,11 @@ namespace WEBSystemServiceManagement.UserInterface
                         Repository SQLConnect = new Repository();
 
 
-                        if (Session.Count > 0)
+                        if (Session["edit"] != null)
                         {
                             string nome = (Session["edit"]).ToString();
                             pModel = adminController.ExibirUsuario(nome);
-                            Session.Clear();
+                            Session["edit"] = null;
                         }
                         else
                         {
@@ -70,7 +70,7 @@ namespace WEBSystemServiceManagement.UserInterface
                     }
                     else { throw new Exception("Permissões insuficientes"); }
                 }
-                else { Response.Redirect("~/UserInterface/Logout", true); }
+                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
                 
             }
 
@@ -98,7 +98,7 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.StatusUsuario = Status.Value;
             if (pModel.idUsuario != "") { adminController.EditarUsuario(pModel); } else { adminController.IncluirUsuario(pModel); }
 
-            Session.Clear();
+            
             Session["edit"] = pModel.NomeUsuario;
 
 

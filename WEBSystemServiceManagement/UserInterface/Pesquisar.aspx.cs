@@ -11,6 +11,11 @@ namespace WEBSystemServiceManagement.UserInterface
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_authenticated"] != null)
+            {                
+                    Session.Timeout = 20;                
+            }
+            else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
         }
         protected void PesquisarAction(object sender, EventArgs e)
@@ -26,7 +31,7 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridPesquisa.SelectedRow;
             string numChamadoSelected = (HttpUtility.HtmlDecode(gr.Cells[1].Text)).Substring(4, 7);
-            Session.Clear();
+            
             Session["edit"] = numChamadoSelected;
 
             Response.Redirect("~/UserInterface/ExibirDetalhesChamado", true);

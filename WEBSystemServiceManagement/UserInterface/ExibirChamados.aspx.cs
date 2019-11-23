@@ -28,11 +28,11 @@ namespace WEBSystemServiceManagement.UserInterface
                         GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
                         GridChamados.DataBind();
                     }
-                    else { Response.Redirect("~/UserInterface/Logout", true); }
+                    else { Response.Redirect("~/UserInterface/SessionExpired", true); }
                 }
                 else
                 {
-                    Response.Redirect("~/UserInterface/Logout", true);
+                    Response.Redirect("~/UserInterface/SessionExpired", true);
                 }
 
 
@@ -90,7 +90,7 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridChamados.SelectedRow;
             var numChamadoSelected = (HttpUtility.HtmlDecode(gr.Cells[1].Text)).Substring(4, 7);
-            Session.Clear();
+            
             Session["edit"] = numChamadoSelected;
 
             Response.Redirect("~/UserInterface/EditarChamado", true);

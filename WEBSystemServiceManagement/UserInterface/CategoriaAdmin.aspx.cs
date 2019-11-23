@@ -25,12 +25,13 @@ namespace WEBSystemServiceManagement.UserInterface
 
 
 
-                        if (Session.Count > 0)
+                        if (Session["edit"] != null)
                         {
                             string nome = (Session["edit"]).ToString();
                             pModel = adminController.ExibirCategoria(nome);
-                            Session.Clear();
-                            
+                            Session["edit"] = null;
+
+
                         }
                         else
                         {
@@ -42,14 +43,17 @@ namespace WEBSystemServiceManagement.UserInterface
                         NomeCategoriaInput.Text = pModel.NomeCategoria;
                         SLAInput.Value = pModel.SLACategoria;
                         Status.Value = pModel.StatusCategoria;
-                    }
 
-                    Session.Timeout = 20;
-
+                        Session.Timeout = 20;
                     }
                     else { throw new Exception("Permissões insuficientes"); }
+                   
+
+                    }
+                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
+                    
                 }
-                else { Response.Redirect("~/UserInterface/Logout", true); }
+                
                 
 
         }
@@ -72,9 +76,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
             if (pModel.idCategoria != "") { adminController.EditarCategoria(pModel); } else { adminController.IncluirCategoria(pModel); }
             
-            Session.Clear();
-            Session["edit"] = pModel.NomeCategoria;
-            
+           Session["edit"] = pModel.NomeCategoria;          
 
 
             Response.Redirect("~/UserInterface/CategoriaAdmin", true);
