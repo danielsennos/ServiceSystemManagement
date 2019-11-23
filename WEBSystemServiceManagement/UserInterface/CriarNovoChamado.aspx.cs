@@ -15,37 +15,49 @@ namespace WEBSystemServiceManagement
         {
             if (IsPostBack == false)
             {
-                String queryCategoria = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO";
-                var ListaCategoria = SQLConnect.CarregaCategorias(queryCategoria);
-                foreach (var item in ListaCategoria)
+                if (Session["user_authenticated"] != null)
                 {
-                    Categoria.Items.Add(item.ToString());
+                    if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 3 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                    {
+                        String queryCategoria = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO";
+                        var ListaCategoria = SQLConnect.CarregaCategorias(queryCategoria);
+                        foreach (var item in ListaCategoria)
+                        {
+                            Categoria.Items.Add(item.ToString());
 
+                        }
+                        String queryGrupo = @"SELECT GRUPO_NOME FROM GRUPO_USUARIO";
+                        var ListaGrupo = SQLConnect.CarregaGrupoUsuario(queryGrupo);
+                        foreach (var item in ListaGrupo)
+                        {
+                            GrupoDesignado.Items.Add(item.ToString());
+                        }
+                        String queryEmpresa = @"SELECT EMPRESA_NOME FROM EMPRESAS";
+                        var ListaEmpresa = SQLConnect.CarregaEmpresa(queryEmpresa);
+                        foreach (var item in ListaEmpresa)
+                        {
+                            Cliente.Items.Add(item.ToString());
+                        }
+                        String queryRequisitante = @"SELECT NOME_CLIENTE FROM CLIENTE WHERE ID_EMPRESA = (SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME ='" + Cliente.SelectedValue + "') AS TEMP)";
+                        var ListaRequisitante = SQLConnect.CarregaCliente(queryRequisitante);
+                        foreach (var item in ListaRequisitante)
+                        {
+                            Requisitante.Items.Add(item.ToString());
+                        }
+                        String queryDesignado = @"SELECT NOME_USUARIO FROM USUARIOS WHERE ID_GRUPO = (SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + GrupoDesignado.SelectedValue + "') AS TEMP);";
+                        var ListaDesignado = SQLConnect.CarregaDesignado(queryDesignado);
+                        foreach (var item in ListaDesignado)
+                        {
+                            Designado.Items.Add(item.ToString());
+                        }
+                        Session.Timeout = 20;
+                    }
+                    else
+                    {
+                        throw new Exception("Permissões insuficientes");
+                    }
                 }
-                String queryGrupo = @"SELECT GRUPO_NOME FROM GRUPO_USUARIO";
-                var ListaGrupo = SQLConnect.CarregaGrupoUsuario(queryGrupo);
-                foreach (var item in ListaGrupo)
-                {
-                    GrupoDesignado.Items.Add(item.ToString());
-                }
-                String queryEmpresa = @"SELECT EMPRESA_NOME FROM EMPRESAS";
-                var ListaEmpresa = SQLConnect.CarregaEmpresa(queryEmpresa);
-                foreach (var item in ListaEmpresa)
-                {
-                    Cliente.Items.Add(item.ToString());
-                }
-                String queryRequisitante = @"SELECT NOME_CLIENTE FROM CLIENTE WHERE ID_EMPRESA = (SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME ='" + Cliente.SelectedValue + "') AS TEMP)";
-                var ListaRequisitante = SQLConnect.CarregaCliente(queryRequisitante);
-                foreach (var item in ListaRequisitante)
-                {
-                    Requisitante.Items.Add(item.ToString());
-                }
-                String queryDesignado = @"SELECT NOME_USUARIO FROM USUARIOS WHERE ID_GRUPO = (SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + GrupoDesignado.SelectedValue + "') AS TEMP);";
-                var ListaDesignado = SQLConnect.CarregaDesignado(queryDesignado);
-                foreach (var item in ListaDesignado)
-                {
-                    Designado.Items.Add(item.ToString());
-                }
+                else { Response.Redirect("~/UserInterface/Logout", true); }
             }
 
         }

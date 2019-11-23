@@ -14,82 +14,92 @@ namespace WEBSystemServiceManagement.UserInterface
 
             if (IsPostBack == false)
             {
-                AdminModel.Cliente pModel = new AdminModel.Cliente();
-                AdminController adminController = new AdminController();
-                Repository SQLConnect = new Repository();
-
-
-                if (Session.Count > 0)
+                if (Session["user_authenticated"] != null)
                 {
-                    string nome = (Session["edit"]).ToString();
-                    pModel = adminController.ExibirCliente(nome);
-                    Session.Clear();
-
-                    if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0 || EmpresaList.Items.Count == 0)
+                    if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
                     {
-                        String queryEstado = @"SELECT NOME FROM ESTADO";
-                        var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
-                        foreach (var item in ListaEstado)
+                        AdminModel.Cliente pModel = new AdminModel.Cliente();
+                        AdminController adminController = new AdminController();
+                        Repository SQLConnect = new Repository();
+
+
+                        if (Session.Count > 0)
                         {
-                            EstadosList.Items.Add(item.ToString());
-                        }
-                        String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
+                            string nome = (Session["edit"]).ToString();
+                            pModel = adminController.ExibirCliente(nome);
+                            Session.Clear();
+
+                            if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0 || EmpresaList.Items.Count == 0)
+                            {
+                                String queryEstado = @"SELECT NOME FROM ESTADO";
+                                var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
+                                foreach (var item in ListaEstado)
+                                {
+                                    EstadosList.Items.Add(item.ToString());
+                                }
+                                String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
                                     (SELECT ID FROM(SELECT ID AS ID FROM ESTADO WHERE NOME = '" + pModel.EstadoCliente + "') AS TEMP) ";
-                        var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
-                        foreach (var item in ListaCidade)
-                        {
-                            CidadeList.Items.Add(item.ToString());
-                        }
-                        String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
-                        var ListaCliente = SQLConnect.CarregaEmpresa(query);
-                        foreach (var item in ListaCliente)
-                        {
-                            EmpresaList.Items.Add(item.ToString());
-                        }
+                                var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
+                                foreach (var item in ListaCidade)
+                                {
+                                    CidadeList.Items.Add(item.ToString());
+                                }
+                                String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
+                                var ListaCliente = SQLConnect.CarregaEmpresa(query);
+                                foreach (var item in ListaCliente)
+                                {
+                                    EmpresaList.Items.Add(item.ToString());
+                                }
 
-                    }
-                }
-                else
-                {
-
-                    pModel = new AdminModel.Cliente();
-                    if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0 || EmpresaList.Items.Count == 0)
-                    {
-                        String queryEstado = @"SELECT NOME FROM ESTADO";
-                        var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
-                        foreach (var item in ListaEstado)
-                        {
-                            EstadosList.Items.Add(item.ToString());
+                            }
                         }
-                        String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
+                        else
+                        {
+
+                            pModel = new AdminModel.Cliente();
+                            if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0 || EmpresaList.Items.Count == 0)
+                            {
+                                String queryEstado = @"SELECT NOME FROM ESTADO";
+                                var ListaEstado = SQLConnect.CarregaCidadeEstados(queryEstado);
+                                foreach (var item in ListaEstado)
+                                {
+                                    EstadosList.Items.Add(item.ToString());
+                                }
+                                String queryCidade = @"SELECT NOME FROM CIDADE WHERE ESTADO = 
                                     (SELECT ID FROM(SELECT ID AS ID FROM ESTADO WHERE NOME = '" + EstadosList.SelectedValue + "') AS TEMP) ";
-                        var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
-                        foreach (var item in ListaCidade)
-                        {
-                            CidadeList.Items.Add(item.ToString());
+                                var ListaCidade = SQLConnect.CarregaCidadeEstados(queryCidade);
+                                foreach (var item in ListaCidade)
+                                {
+                                    CidadeList.Items.Add(item.ToString());
+                                }
+                                String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
+                                var ListaCliente = SQLConnect.CarregaEmpresa(query);
+                                foreach (var item in ListaCliente)
+                                {
+                                    EmpresaList.Items.Add(item.ToString());
+                                }
+
+                            }
                         }
-                        String query = @"SELECT EMPRESA_NOME FROM EMPRESAS;";
-                        var ListaCliente = SQLConnect.CarregaEmpresa(query);
-                        foreach (var item in ListaCliente)
-                        {
-                            EmpresaList.Items.Add(item.ToString());
-                        }
+
+
+                        idcliente.Value = pModel.IdCliente;
+                        NomeClienteInput.Text = pModel.NomeCliente;
+                        TelefoneInput.Text = pModel.TelefoneCliente;
+                        EmailInput.Text = pModel.EmailCliente;
+                        EmpresaList.Text = pModel.EmpresaCliente;
+                        EstadosList.Text = pModel.EstadoCliente;
+                        CidadeList.Text = pModel.CidadeCliente;
+                        Status.Value = pModel.StatusCliente;
+                    }
+
+                    Session.Timeout = 20;
 
                     }
+                    else { throw new Exception("Permissões insuficientes"); }
                 }
-
-
-
-
-                idcliente.Value = pModel.IdCliente;
-                NomeClienteInput.Text = pModel.NomeCliente;
-                TelefoneInput.Text = pModel.TelefoneCliente;
-                EmailInput.Text = pModel.EmailCliente;
-                EmpresaList.Text = pModel.EmpresaCliente;
-                EstadosList.Text = pModel.EstadoCliente;
-                CidadeList.Text = pModel.CidadeCliente;
-                Status.Value = pModel.StatusCliente;
-            }
+                else { Response.Redirect("~/UserInterface/Logout", true); }
+               
         }
 
         protected void CarregaItens(object sender, EventArgs e)

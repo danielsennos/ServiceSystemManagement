@@ -13,26 +13,38 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             if (IsPostBack == false)
             {
-                AdminModel.GrupoUsuario pModel = new AdminModel.GrupoUsuario();
-                AdminController adminController = new AdminController();
-                Repository SQLConnect = new Repository();
-
-
-                if (Session.Count > 0)
+                if (Session["user_authenticated"] != null)
                 {
-                    string nome = (Session["edit"]).ToString();
-                    pModel = adminController.ExibirGrupoUsuario(nome);
-                    Session.Clear();
-                }
-                else
-                {
+                    if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                    {
+                        AdminModel.GrupoUsuario pModel = new AdminModel.GrupoUsuario();
+                        AdminController adminController = new AdminController();
+                        Repository SQLConnect = new Repository();
 
-                    pModel = new AdminModel.GrupoUsuario();
-                }
 
-                idgrupo.Value = pModel.idGrupo;
-                NomeGrupoInput.Text = pModel.NomeGrupo;
-                Status.Value = pModel.StatusGrupo;
+                        if (Session.Count > 0)
+                        {
+                            string nome = (Session["edit"]).ToString();
+                            pModel = adminController.ExibirGrupoUsuario(nome);
+                            Session.Clear();
+                        }
+                        else
+                        {
+
+                            pModel = new AdminModel.GrupoUsuario();
+                        }
+
+                        idgrupo.Value = pModel.idGrupo;
+                        NomeGrupoInput.Text = pModel.NomeGrupo;
+                        Status.Value = pModel.StatusGrupo;
+
+                        Session.Timeout = 20;
+
+                    }
+                    else { throw new Exception("Permissões insuficientes"); }
+                }
+                else { Response.Redirect("~/UserInterface/Logout", true); }
+                
             }
 
         }

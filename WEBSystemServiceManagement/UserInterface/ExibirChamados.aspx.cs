@@ -13,15 +13,31 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             if (IsPostBack == false)
             {
-                ChamadoController chamadoController = new ChamadoController();
-                ChamadoModel mChamado = new ChamadoModel();
-                String StatusChamado = "Aberto";
+
+                if (Session["user_authenticated"] != null) 
+                {
+                    if (Session["user_authenticated"].ToString() == "true")
+                    {
+                        Session.Timeout = 20;
+
+                        ChamadoController chamadoController = new ChamadoController();
+                        ChamadoModel mChamado = new ChamadoModel();
+                        String StatusChamado = "Aberto";
 
 
-                GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
-                GridChamados.DataBind();
+                        GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
+                        GridChamados.DataBind();
+                    }
+                    else { Response.Redirect("~/UserInterface/Logout", true); }
+                }
+                else
+                {
+                    Response.Redirect("~/UserInterface/Logout", true);
+                }
+
+
             }
-           
+
         }
         protected void ExibeChamadosAbertos(object sender, EventArgs e)
         {
@@ -29,7 +45,7 @@ namespace WEBSystemServiceManagement.UserInterface
             ChamadoModel mChamado = new ChamadoModel();
             String StatusChamado = "Aberto";
 
-            GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);            
+            GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
             GridChamados.DataBind();
         }
 
@@ -39,7 +55,7 @@ namespace WEBSystemServiceManagement.UserInterface
             ChamadoModel mChamado = new ChamadoModel();
             String StatusChamado = "Pendente";
 
-            GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);            
+            GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
             GridChamados.DataBind();
         }
 
@@ -73,7 +89,7 @@ namespace WEBSystemServiceManagement.UserInterface
         public void EditSelectChamado(object sender, EventArgs e)
         {
             GridViewRow gr = GridChamados.SelectedRow;
-            var numChamadoSelected = (HttpUtility.HtmlDecode(gr.Cells[1].Text)).Substring(4,7);
+            var numChamadoSelected = (HttpUtility.HtmlDecode(gr.Cells[1].Text)).Substring(4, 7);
             Session.Clear();
             Session["edit"] = numChamadoSelected;
 

@@ -71,6 +71,30 @@ namespace WEBSystemServiceManagement
 
             return Result;
         }
+
+        public int ConsultaInt(String ConsultarSql)
+        {
+            int Result = 0;
+
+            conexao = new MySqlConnection(PATH);
+            conexao.Open();
+
+            MySqlCommand comandos = new MySqlCommand(ConsultarSql, conexao);
+            comandos.ExecuteNonQuery();
+
+            MySqlDataReader dr;
+            dr = comandos.ExecuteReader();
+            dr.Read();
+
+            if (dr.HasRows)
+            {
+                Result = dr.GetInt32(0);
+            }
+
+            conexao.Close();
+
+            return Result;
+        }
         public DataTable RetornaTabela(String SQLQuery)
         {
             DataTable dt = new DataTable();
@@ -491,7 +515,7 @@ namespace WEBSystemServiceManagement
                 }
             }
             return pModel;
-        } //ExibirUsuario
+        } 
 
         public AdminModel.Usuario ExibirUsuarios(String SQLQuery)
         {
