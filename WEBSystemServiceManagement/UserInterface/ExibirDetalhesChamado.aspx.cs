@@ -15,11 +15,11 @@ namespace WEBSystemServiceManagement.UserInterface
             ChamadoController chamadoController = new ChamadoController();
 
 
-            if (Session.Count > 0)
+            if (Session["edit"] != null)
             {
                 string numChamado = (Session["edit"]).ToString();
                 mChamado = chamadoController.EditarChamado(numChamado);
-                Session.Clear();
+                Session["edit"] = null;
             }
             else
             {

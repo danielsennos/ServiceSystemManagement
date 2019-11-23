@@ -23,11 +23,12 @@ namespace WEBSystemServiceManagement.UserInterface
                         Repository SQLConnect = new Repository();
 
 
-                        if (Session.Count > 0)
+                        if (Session["edit"] != null)
                         {
                             string nome = (Session["edit"]).ToString();
                             pModel = adminController.ExibirEmpresa(nome);
-                            Session.Clear();
+                            Session["edit"] = null;
+
                             if (EstadosList.Items.Count == 0 || CidadeList.Items.Count == 0)
                             {
 
@@ -80,14 +81,16 @@ namespace WEBSystemServiceManagement.UserInterface
                         EstadosList.Text = pModel.EstadoEmpresa;
                         Status.Value = pModel.StatusEmpresa;
                         CidadeList.Text = pModel.CidadeEmpresa;
-                    }
 
-                    Session.Timeout = 20;
-
+                        Session.Timeout = 20;
                     }
                     else { throw new Exception("Permissões insuficientes"); }
+
                 }
-                else { Response.Redirect("~/UserInterface/Logout", true); }
+                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
+
+            }
+                
                 
             
         }
@@ -133,7 +136,6 @@ namespace WEBSystemServiceManagement.UserInterface
             if(pModel.IdEmpresa != "") {adminController.EditarEmpresa(pModel); } else { adminController.IncluirEmpresa(pModel); }
 
 
-            Session.Clear();
             Session["edit"] =  pModel.NomeEmpresa;
 
             Response.Redirect("~/UserInterface/EmpresaAdmin", true);

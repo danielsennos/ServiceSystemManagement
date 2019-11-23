@@ -19,7 +19,7 @@ namespace WEBSystemServiceManagement.UserInterface
                     Session.Timeout = 20;
 
                 } else { throw new Exception("Permissões insuficientes"); }
-            } else { Response.Redirect("~/UserInterface/Logout", true); }
+            } else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
         }
         public void ExibirEmpresa(object sender, EventArgs e)
@@ -109,7 +109,6 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridEmpresa.SelectedRow;
             string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
-            Session.Clear();
             Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/EmpresaAdmin", true);
@@ -119,7 +118,6 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridCliente.SelectedRow;
             string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
-            Session.Clear();
             Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/ClienteAdmin", true);
@@ -129,7 +127,6 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridCategoria.SelectedRow;
             string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
-            Session.Clear();
             Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/CategoriaAdmin", true);
@@ -139,7 +136,6 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridGrupoSuporte.SelectedRow;
             string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
-            Session.Clear();
             Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/GrupoUsuarioAdmin", true);
@@ -149,7 +145,6 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridUsuarios.SelectedRow;
             string nome = HttpUtility.HtmlDecode(gr.Cells[1].Text);
-            Session.Clear();
             Session["edit"] = nome;
 
             Response.Redirect("~/UserInterface/UsuariosAdmin", true);

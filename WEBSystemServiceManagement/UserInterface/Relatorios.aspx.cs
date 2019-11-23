@@ -11,7 +11,11 @@ namespace WEBSystemServiceManagement.UserInterface
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["user_authenticated"] != null)
+            {
+                Session.Timeout = 20;
+            }
+            else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
         }
 

@@ -19,134 +19,147 @@ namespace WEBSystemServiceManagement
                 ChamadoModel mChamado = new ChamadoModel();
                 ChamadoController chamadoController = new ChamadoController();
 
+            if (Session["user_authenticated"] != null)
+            {
+                if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                {
+                    if (Session["edit"] != null)
+                    {
+                        string numChamado = (Session["edit"]).ToString();
+                        mChamado = chamadoController.EditarChamado(numChamado);
+                        Session["edit"] = null;
+                    }
+                    else
+                    {
+                        //string numChamado = "56";
+                        string numChamado = NumChamado.Text;
+                        mChamado = chamadoController.EditarChamado(numChamado);
+                    }
 
-                if (Session.Count > 0)
-                {
-                    string numChamado = (Session["edit"]).ToString();
-                    mChamado = chamadoController.EditarChamado(numChamado);
-                    Session.Clear();
-                }
-                else
-                {
-                    //string numChamado = "56";
-                    string numChamado = NumChamado.Text;
-                    mChamado = chamadoController.EditarChamado(numChamado);
-                }
+                    if (mChamado.tipo_chamado == "REQ") { TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }
+                    NumChamadoEdit.Text = mChamado.tipo_chamado + mChamado.num_chamado.PadLeft((8 - mChamado.num_chamado.Count()), '0');
+                    ClienteEdit.Text = mChamado.cliente;
+                    RequisitanteEdit.Text = mChamado.requisitante;
+                    CategoriaEdit.Text = mChamado.categoria;
+                    UrgenciaEdit.Text = mChamado.urgencia;
+                    GrupoDesignadoEdit.Text = mChamado.grupo_designado;
+                    DesignadoEdit.Text = mChamado.designado;
+                    ResumoEdit.InnerText = mChamado.resumo_chamado;
+                    StatusEdit.Text = mChamado.status_chamado;
+                    ID_Chamado.Text = (mChamado.id_chamado).ToString();
+                    NumChamado.Text = mChamado.num_chamado;
 
-                if (mChamado.tipo_chamado == "REQ") { TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }
-                NumChamadoEdit.Text = mChamado.tipo_chamado + mChamado.num_chamado.PadLeft((8 - mChamado.num_chamado.Count()), '0');
-                ClienteEdit.Text = mChamado.cliente;
-                RequisitanteEdit.Text = mChamado.requisitante;
-                CategoriaEdit.Text = mChamado.categoria;
-                UrgenciaEdit.Text = mChamado.urgencia;
-                GrupoDesignadoEdit.Text = mChamado.grupo_designado;
-                DesignadoEdit.Text = mChamado.designado;
-                ResumoEdit.InnerText = mChamado.resumo_chamado;
-                StatusEdit.Text = mChamado.status_chamado;
-                ID_Chamado.Text = (mChamado.id_chamado).ToString();
-                NumChamado.Text = mChamado.num_chamado;
+                    GridAnotacoes.DataSource = chamadoController.RetornaAnotacoes(mChamado.id_chamado);
+                    GridAnotacoes.DataBind();
 
-                GridAnotacoes.DataSource = chamadoController.RetornaAnotacoes(mChamado.id_chamado);
-                GridAnotacoes.DataBind();
+                    #region Controle Fluxo de Status
+                    if (StatusEdit.Text == "Aberto")
+                    {
+                        AbertoChange.ForeColor = Color.Red;
+                        AbertoChange.Visible = true;
+                        AbertoChange.Enabled = false;
+                        AbertoChange.Text = "Aberto";
+                        AndamentoChange.ForeColor = Color.Blue;
+                        AndamentoChange.Visible = true;
+                        AndamentoChange.Enabled = true;
+                        PendenteChange.ForeColor = Color.Blue;
+                        PendenteChange.Visible = true;
+                        PendenteChange.Enabled = true;
+                        ConcluidoChange.ForeColor = Color.Blue;
+                        ConcluidoChange.Visible = false;
+                        ConcluidoChange.Enabled = false;
+                        CanceladoChange.ForeColor = Color.Blue;
+                        CanceladoChange.Visible = true;
+                        CanceladoChange.Enabled = true;
+                    }
+                    else if (StatusEdit.Text == "Em Andamento")
+                    {
+                        AbertoChange.ForeColor = Color.Blue;
+                        AbertoChange.Visible = false;
+                        AbertoChange.Enabled = false;
+                        AbertoChange.Text = "Aberto";
+                        AndamentoChange.ForeColor = Color.Red;
+                        AndamentoChange.Visible = true;
+                        AndamentoChange.Enabled = true;
+                        PendenteChange.ForeColor = Color.Blue;
+                        PendenteChange.Visible = true;
+                        PendenteChange.Enabled = true;
+                        ConcluidoChange.ForeColor = Color.Blue;
+                        ConcluidoChange.Visible = true;
+                        ConcluidoChange.Enabled = true;
+                        CanceladoChange.ForeColor = Color.Blue;
+                        CanceladoChange.Visible = true;
+                        CanceladoChange.Enabled = true;
+                    }
+                    else if (StatusEdit.Text == "Pendente")
+                    {
+                        AbertoChange.ForeColor = Color.Blue;
+                        AbertoChange.Visible = false;
+                        AbertoChange.Enabled = false;
+                        AbertoChange.Text = "Aberto";
+                        AndamentoChange.ForeColor = Color.Blue;
+                        AndamentoChange.Visible = true;
+                        AndamentoChange.Enabled = true;
+                        PendenteChange.ForeColor = Color.Red;
+                        PendenteChange.Visible = true;
+                        PendenteChange.Enabled = false;
+                        ConcluidoChange.ForeColor = Color.Blue;
+                        ConcluidoChange.Visible = false;
+                        ConcluidoChange.Enabled = false;
+                        CanceladoChange.ForeColor = Color.Blue;
+                        CanceladoChange.Visible = true;
+                        CanceladoChange.Enabled = true;
+                    }
+                    else if (StatusEdit.Text == "Concluído")
+                    {
+                        AbertoChange.ForeColor = Color.Blue;
+                        AbertoChange.Visible = true;
+                        AbertoChange.Enabled = true;
+                        AbertoChange.Text = "Reabrir";
+                        AndamentoChange.ForeColor = Color.Blue;
+                        AndamentoChange.Visible = false;
+                        AndamentoChange.Enabled = false;
+                        PendenteChange.ForeColor = Color.Blue;
+                        PendenteChange.Visible = false;
+                        PendenteChange.Enabled = false;
+                        ConcluidoChange.ForeColor = Color.Red;
+                        ConcluidoChange.Visible = true;
+                        ConcluidoChange.Enabled = false;
+                        CanceladoChange.ForeColor = Color.Blue;
+                        CanceladoChange.Visible = false;
+                        CanceladoChange.Enabled = false;
+                    }
+                    else if (StatusEdit.Text == "Cancelado")
+                    {
+                        AbertoChange.ForeColor = Color.Blue;
+                        AbertoChange.Visible = false;
+                        AbertoChange.Enabled = false;
+                        AbertoChange.Text = "Aberto";
+                        AndamentoChange.ForeColor = Color.Blue;
+                        AndamentoChange.Visible = false;
+                        AndamentoChange.Enabled = false;
+                        PendenteChange.ForeColor = Color.Blue;
+                        PendenteChange.Visible = false;
+                        PendenteChange.Enabled = false;
+                        ConcluidoChange.ForeColor = Color.Blue;
+                        ConcluidoChange.Visible = false;
+                        ConcluidoChange.Enabled = false;
+                        CanceladoChange.ForeColor = Color.Red;
+                        CanceladoChange.Visible = true;
+                        CanceladoChange.Enabled = false;
+                        CanceladoChange.Text = "Cancelado";
+                    }
+                    #endregion
 
-                #region Controle Fluxo de Status
-                if (StatusEdit.Text == "Aberto")
-                {
-                    AbertoChange.ForeColor = Color.Red;
-                    AbertoChange.Visible = true;
-                    AbertoChange.Enabled = false;
-                    AbertoChange.Text = "Aberto";
-                    AndamentoChange.ForeColor = Color.Blue;
-                    AndamentoChange.Visible = true;
-                    AndamentoChange.Enabled = true;
-                    PendenteChange.ForeColor = Color.Blue;
-                    PendenteChange.Visible = true;
-                    PendenteChange.Enabled = true;
-                    ConcluidoChange.ForeColor = Color.Blue;
-                    ConcluidoChange.Visible = false;
-                    ConcluidoChange.Enabled = false;
-                    CanceladoChange.ForeColor = Color.Blue;
-                    CanceladoChange.Visible = true;
-                    CanceladoChange.Enabled = true;
+                    Session.Timeout = 20;
+
                 }
-                else if (StatusEdit.Text == "Em Andamento")
-                {
-                    AbertoChange.ForeColor = Color.Blue;
-                    AbertoChange.Visible = false;
-                    AbertoChange.Enabled = false;
-                    AbertoChange.Text = "Aberto";
-                    AndamentoChange.ForeColor = Color.Red;
-                    AndamentoChange.Visible = true;
-                    AndamentoChange.Enabled = true;
-                    PendenteChange.ForeColor = Color.Blue;
-                    PendenteChange.Visible = true;
-                    PendenteChange.Enabled = true;
-                    ConcluidoChange.ForeColor = Color.Blue;
-                    ConcluidoChange.Visible = true;
-                    ConcluidoChange.Enabled = true;
-                    CanceladoChange.ForeColor = Color.Blue;
-                    CanceladoChange.Visible = true;
-                    CanceladoChange.Enabled = true;
-                }
-                else if (StatusEdit.Text == "Pendente")
-                {
-                    AbertoChange.ForeColor = Color.Blue;
-                    AbertoChange.Visible = false;
-                    AbertoChange.Enabled = false;
-                    AbertoChange.Text = "Aberto";
-                    AndamentoChange.ForeColor = Color.Blue;
-                    AndamentoChange.Visible = true;
-                    AndamentoChange.Enabled = true;
-                    PendenteChange.ForeColor = Color.Red;
-                    PendenteChange.Visible = true;
-                    PendenteChange.Enabled = false;
-                    ConcluidoChange.ForeColor = Color.Blue;
-                    ConcluidoChange.Visible = false;
-                    ConcluidoChange.Enabled = false;
-                    CanceladoChange.ForeColor = Color.Blue;
-                    CanceladoChange.Visible = true;
-                    CanceladoChange.Enabled = true;
-                }
-                else if (StatusEdit.Text == "Concluído")
-                {
-                    AbertoChange.ForeColor = Color.Blue;
-                    AbertoChange.Visible = true;
-                    AbertoChange.Enabled = true;
-                    AbertoChange.Text = "Reabrir";
-                    AndamentoChange.ForeColor = Color.Blue;
-                    AndamentoChange.Visible = false;
-                    AndamentoChange.Enabled = false;
-                    PendenteChange.ForeColor = Color.Blue;
-                    PendenteChange.Visible = false;
-                    PendenteChange.Enabled = false;
-                    ConcluidoChange.ForeColor = Color.Red;
-                    ConcluidoChange.Visible = true;
-                    ConcluidoChange.Enabled = false;
-                    CanceladoChange.ForeColor = Color.Blue;
-                    CanceladoChange.Visible = false;
-                    CanceladoChange.Enabled = false;
-                }
-                else if (StatusEdit.Text == "Cancelado")
-                {
-                    AbertoChange.ForeColor = Color.Blue;
-                    AbertoChange.Visible = false;
-                    AbertoChange.Enabled = false;
-                    AbertoChange.Text = "Aberto";
-                    AndamentoChange.ForeColor = Color.Blue;
-                    AndamentoChange.Visible = false;
-                    AndamentoChange.Enabled = false;
-                    PendenteChange.ForeColor = Color.Blue;
-                    PendenteChange.Visible = false;
-                    PendenteChange.Enabled = false;
-                    ConcluidoChange.ForeColor = Color.Blue;
-                    ConcluidoChange.Visible = false;
-                    ConcluidoChange.Enabled = false;
-                    CanceladoChange.ForeColor = Color.Red;
-                    CanceladoChange.Visible = true;
-                    CanceladoChange.Enabled = false;
-                    CanceladoChange.Text = "Cancelado";
-                }
-                #endregion
+                else { throw new Exception("Permissões insuficientes"); }
+            }
+            else { Response.Redirect("~/UserInterface/SessionExpired", true); }
+
+        
+                
      
 
 
@@ -166,7 +179,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            Session.Clear();
+            
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
@@ -185,7 +198,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            Session.Clear();
+            
             Session["edit"] = (mChamado.num_chamado).ToString(); ;
             Page_Load(sender, e);
         }
@@ -203,7 +216,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            Session.Clear();
+            
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
@@ -221,7 +234,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            Session.Clear();
+            
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
@@ -240,7 +253,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            Session.Clear();
+            
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
             
@@ -257,7 +270,7 @@ namespace WEBSystemServiceManagement
             db.Inserir(query);
             AnotacaoEdit.InnerText = "";
 
-            Session.Clear();
+            
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
