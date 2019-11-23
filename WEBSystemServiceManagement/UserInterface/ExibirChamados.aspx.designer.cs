@@ -24,6 +24,15 @@ namespace WEBSystemServiceManagement.UserInterface
         protected global::System.Web.UI.HtmlControls.HtmlForm TelaForm;
 
         /// <summary>
+        /// Controle AdminBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor AdminBtn;
+
+        /// <summary>
         /// Controle AbertoLink.
         /// </summary>
         /// <remarks>

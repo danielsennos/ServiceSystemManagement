@@ -15,6 +15,7 @@
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="./Logout" runat="server" class="navbar-brand">Sair</a>
                 </div>
             </div>
         </div>
@@ -29,17 +30,19 @@
                 <asp:LinkButton ID="CategoriaBtn" runat="server" class="MenuLink" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
                 <asp:LinkButton ID="GrupoBtn" runat="server" class="MenuLink" OnClick="ExibirGrupoUsuario">Grupos de Usuario</asp:LinkButton>
                 <asp:LinkButton ID="UsuarioBtn" runat="server" class="MenuLink" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
-                <a href="./EmpresaAdmin" runat="server" class="MenuLink">Incluir Empresa</a>
-                <a href="./ClienteAdmin" runat="server" class="MenuLink">Incluir Cliente</a>
-                <a href="./CategoriaAdmin" runat="server" class="MenuLink">Incluir Categoria</a>
-                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink">Incluir Grupos de Usuario</a>
-                <a href="./UsuariosAdmin" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
-                <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
-                <a href="../" runat="server" class="MenuLink">Sair</a>
+
+                <a href="./ExibirChamados" runat="server" class="MenuLink" style="padding-left: 30px;">Voltar</a>
 
             </div>
             <!--FIM DO MENU LATERAL-->
             <div class="BodyContent-Center">
+                <a href="./EmpresaAdmin" runat="server" class="MenuLink" id="IncluirEmpresaBtn">Incluir Empresa</a>
+                <a href="./ClienteAdmin" runat="server" class="MenuLink" id="IncluirClienteBtn">Incluir Cliente</a>
+                <a href="./CategoriaAdmin" runat="server" class="MenuLink" id="IncluirCategoriaBtn">Incluir Categoria</a>
+                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink" id="IncluirGrupoBtn">Incluir Grupos de Usuario</a>
+                <a href="./UsuariosAdmin" runat="server" class="MenuLink" id="IncluirUsuarioBtn">Incluir Usuário do Sistema</a>
+
+
                 <asp:GridView ID="GridEmpresa" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarEmpresa" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
                     <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#CCCC99" />
