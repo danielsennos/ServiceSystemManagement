@@ -16,6 +16,12 @@ namespace WEBSystemServiceManagement.UserInterface
             {
                 if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
                 {
+                    IncluirEmpresaBtn.Visible = false;
+                    IncluirClienteBtn.Visible = false;
+                    IncluirCategoriaBtn.Visible = false;
+                    IncluirGrupoBtn.Visible = false;
+                    IncluirUsuarioBtn.Visible = false;
+
                     Session.Timeout = 20;
 
                 } else { throw new Exception("Permissões insuficientes"); }
@@ -25,12 +31,18 @@ namespace WEBSystemServiceManagement.UserInterface
         public void ExibirEmpresa(object sender, EventArgs e)
         {
             AdminController adminController = new AdminController();
-            #region Visibilidade_das_Grids
+            #region Visibilidade_das_Grids_e_Buttons
                         GridEmpresa.Visible = true;
                         GridCliente.Visible = false;
                         GridCategoria.Visible = false;
                         GridGrupoSuporte.Visible = false;
                         GridUsuarios.Visible = false;
+                        IncluirEmpresaBtn.Visible = true;
+                        IncluirClienteBtn.Visible = false;
+                        IncluirCategoriaBtn.Visible = false;
+                        IncluirGrupoBtn.Visible = false;
+                        IncluirUsuarioBtn.Visible = false;
+
             #endregion
 
 

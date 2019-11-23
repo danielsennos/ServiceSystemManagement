@@ -69,6 +69,51 @@ namespace WEBSystemServiceManagement.UserInterface
         protected global::System.Web.UI.WebControls.LinkButton UsuarioBtn;
 
         /// <summary>
+        /// Controle IncluirEmpresaBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor IncluirEmpresaBtn;
+
+        /// <summary>
+        /// Controle IncluirClienteBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor IncluirClienteBtn;
+
+        /// <summary>
+        /// Controle IncluirCategoriaBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor IncluirCategoriaBtn;
+
+        /// <summary>
+        /// Controle IncluirGrupoBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor IncluirGrupoBtn;
+
+        /// <summary>
+        /// Controle IncluirUsuarioBtn.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor IncluirUsuarioBtn;
+
+        /// <summary>
         /// Controle GridEmpresa.
         /// </summary>
         /// <remarks>

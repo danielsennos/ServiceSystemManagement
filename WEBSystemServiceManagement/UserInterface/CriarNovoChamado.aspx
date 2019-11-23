@@ -19,6 +19,7 @@
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="./Logout" runat="server" class="navbar-brand">Sair</a>
                 </div>
             </div>
         </div>
@@ -34,7 +35,6 @@
             <a href="./Relatorios" runat="server" class="MenuLink">Relatórios</a>
             <a href="./Pesquisar" runat="server" class="MenuLink">Pesquisar Solicitações</a>
             <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
-            <a href="../" runat="server" class="MenuLink">Sair</a>
         </div>
         <!--FIM DO MENU LATERAL-->
         <div class="BodyContent-Center">
