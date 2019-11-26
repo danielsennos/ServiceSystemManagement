@@ -54,12 +54,17 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             AdminController adminController = new AdminController();
 
-            #region Visibilidade_das_Grids
+            #region Visibilidade_das_Grids_e_Buttons
             GridEmpresa.Visible = false;
             GridCliente.Visible = true;
             GridCategoria.Visible = false;
             GridGrupoSuporte.Visible = false;
             GridUsuarios.Visible = false;
+            IncluirEmpresaBtn.Visible = false;
+            IncluirClienteBtn.Visible = true;
+            IncluirCategoriaBtn.Visible = false;
+            IncluirGrupoBtn.Visible = false;
+            IncluirUsuarioBtn.Visible = false;
             #endregion
 
             GridCliente.Visible = true;
@@ -71,12 +76,17 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             AdminController adminController = new AdminController();
 
-            #region Visibilidade_das_Grids
+            #region Visibilidade_das_Grids_e_Buttons
             GridEmpresa.Visible = false;
             GridCliente.Visible = false;
             GridCategoria.Visible = true;
             GridGrupoSuporte.Visible = false;
             GridUsuarios.Visible = false;
+            IncluirEmpresaBtn.Visible = false;
+            IncluirClienteBtn.Visible = false;
+            IncluirCategoriaBtn.Visible = true;
+            IncluirGrupoBtn.Visible = false;
+            IncluirUsuarioBtn.Visible = false;
             #endregion
 
             GridCategoria.DataSource = adminController.ExibirCategoria();
@@ -86,12 +96,17 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             AdminController adminController = new AdminController();
 
-            #region Visibilidade_das_Grids
+            #region Visibilidade_das_Grids_e_Buttons
             GridEmpresa.Visible = false;
             GridCliente.Visible = false;
             GridCategoria.Visible = false;
             GridGrupoSuporte.Visible = true;
             GridUsuarios.Visible = false;
+            IncluirEmpresaBtn.Visible = false;
+            IncluirClienteBtn.Visible = false;
+            IncluirCategoriaBtn.Visible = false;
+            IncluirGrupoBtn.Visible = true;
+            IncluirUsuarioBtn.Visible = false;
             #endregion
 
             GridCliente.Visible = false;
@@ -103,12 +118,17 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             AdminController adminController = new AdminController();
 
-            #region Visibilidade_das_Grids
+            #region Visibilidade_das_Grids_e_Buttons
             GridEmpresa.Visible = false;
             GridCliente.Visible = false;
             GridCategoria.Visible = false;
             GridGrupoSuporte.Visible = false;
             GridUsuarios.Visible = true;
+            IncluirEmpresaBtn.Visible = false;
+            IncluirClienteBtn.Visible = false;
+            IncluirCategoriaBtn.Visible = false;
+            IncluirGrupoBtn.Visible = false;
+            IncluirUsuarioBtn.Visible = true;
             #endregion
 
             GridCliente.Visible = false;

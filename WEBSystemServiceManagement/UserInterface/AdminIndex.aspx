@@ -36,12 +36,12 @@
             </div>
             <!--FIM DO MENU LATERAL-->
             <div class="BodyContent-Center">
-                <a href="./EmpresaAdmin" runat="server" class="MenuLink" id="IncluirEmpresaBtn">Incluir Empresa</a>
-                <a href="./ClienteAdmin" runat="server" class="MenuLink" id="IncluirClienteBtn">Incluir Cliente</a>
-                <a href="./CategoriaAdmin" runat="server" class="MenuLink" id="IncluirCategoriaBtn">Incluir Categoria</a>
-                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink" id="IncluirGrupoBtn">Incluir Grupos de Usuario</a>
-                <a href="./UsuariosAdmin" runat="server" class="MenuLink" id="IncluirUsuarioBtn">Incluir Usuário do Sistema</a>
-
+                <a href="./EmpresaAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirEmpresaBtn">Incluir Empresa</a>
+                <a href="./ClienteAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirClienteBtn">Incluir Cliente</a>
+                <a href="./CategoriaAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirCategoriaBtn">Incluir Categoria</a>
+                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirGrupoBtn">Incluir Grupos de Usuario</a>
+                <a href="./UsuariosAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirUsuarioBtn">Incluir Usuário do Sistema</a>
+                
 
                 <asp:GridView ID="GridEmpresa" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarEmpresa" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
                     <AlternatingRowStyle BackColor="White" />
