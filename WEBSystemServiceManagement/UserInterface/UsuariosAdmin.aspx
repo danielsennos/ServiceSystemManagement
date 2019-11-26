@@ -24,12 +24,11 @@
     <!--FIM DO CABEÇALHO-->
     <div class="BodyContent">
         <!--INÍCIO DO MENU LATERAL-->
-        <div class="Menu-Left-Bar">
+<div class="Menu-Left-Bar">            
 
-            <a href="./AdminIndex" runat="server" class="MenuLink">Voltar</a>
-            <a href="../" runat="server" class="MenuLink">Sair</a>
+            <a href="./AdminIndex" runat="server" class="list-group-item list-group-item-action bg-light" id="AdminBtn">Voltar</a>
 
-        </div>
+</div>
         <!--FIM DO MENU LATERAL-->
         <div class="BodyContent-Center">
 

@@ -25,13 +25,13 @@
         <div class="BodyContent">
             <!--INÍCIO DO MENU LATERAL-->
             <div class="Menu-Left-Bar">
-                <asp:LinkButton ID="EmpresaBtn" runat="server" class="MenuLink" OnClick="ExibirEmpresa">Empresas</asp:LinkButton>
-                <asp:LinkButton ID="ClienteBtn" runat="server" class="MenuLink" OnClick="ExibirCliente">Clientes</asp:LinkButton>
-                <asp:LinkButton ID="CategoriaBtn" runat="server" class="MenuLink" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
-                <asp:LinkButton ID="GrupoBtn" runat="server" class="MenuLink" OnClick="ExibirGrupoUsuario">Grupos de Usuario</asp:LinkButton>
-                <asp:LinkButton ID="UsuarioBtn" runat="server" class="MenuLink" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
+                <asp:LinkButton ID="EmpresaBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirEmpresa">Empresas</asp:LinkButton>
+                <asp:LinkButton ID="ClienteBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirCliente">Clientes</asp:LinkButton>
+                <asp:LinkButton ID="CategoriaBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
+                <asp:LinkButton ID="GrupoBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirGrupoUsuario">Grupos de Usuario</asp:LinkButton>
+                <asp:LinkButton ID="UsuarioBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
 
-                <a href="./ExibirChamados" runat="server" class="MenuLink" style="padding-left: 30px;">Voltar</a>
+                <a href="./ExibirChamados" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left: 30px;">Voltar</a>
 
             </div>
             <!--FIM DO MENU LATERAL-->

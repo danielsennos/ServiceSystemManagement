@@ -9,6 +9,7 @@
 <html>
 
 <body>
+
 <!--INICIO DO CABEÇALHO CONTENDO OS LINKS DE ACESSO RÁPIDO-->
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -27,13 +28,16 @@
 
 <form id="TelaForm" runat="server">
 <div class="BodyContent">
+
+        
     <!--INÍCIO DO MENU LATERAL-->
-<div class="Menu-Left-Bar">
-            <a href="./ExibirChamados" runat="server" class="MenuLink">Exibir Solicitações</a>
-            <a href="./CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
-            <a href="./Relatorios" runat="server" class="MenuLink">Relatórios</a>
-            <a href="./Pesquisar" runat="server" class="MenuLink">Pesquisar Solicitações</a>
-            <a href="./AdminIndex" runat="server" class="MenuLink" id="AdminBtn">Admin</a>
+<div class="Menu-Left-Bar">            
+            <a href="./ExibirChamados" runat="server" class="list-group-item list-group-item-action bg-light">Exibir Solicitações</a>
+            <a href="./CriarNovoChamado" runat="server" class="list-group-item list-group-item-action bg-light">Criar Nova Solicitação</a>
+            <a href="./Relatorios" runat="server" class="list-group-item list-group-item-action bg-light">Relatórios</a>
+            <a href="./Pesquisar" runat="server" class="list-group-item list-group-item-action bg-light">Pesquisar Solicitações</a>
+            <a href="./AdminIndex" runat="server" class="list-group-item list-group-item-action bg-light" id="AdminBtn">Admin</a>
+
 </div>
 <!--FIM DO MENU LATERAL-->
 
