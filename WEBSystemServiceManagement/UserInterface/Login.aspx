@@ -20,13 +20,15 @@
     <!--FIM DO CABEÇALHO-->
 
         <div class="BodyContent-Center">
-            <form id="LoginForm" runat="server">
-            <b>Login:</b> <br />
-            <input id="LoginName" class="InputDefault" runat="server" type="text" /><br />
+            <form id="LoginForm" runat="server" class="form-signin">
+                <h4>SSM - Software</h4>
+                <h5>Entrar no Sistema...</h5>
+            <b>Usuário:</b> <br />
+            <input id="LoginName" class="form-control" runat="server" type="text" /><br />
             <b>Senha:</b><br />
-            <input id="LoginPassword" class="InputDefault" runat="server" type="password" /><br /><br />
-            <asp:Button ID="AcessarBtn" runat="server" Text="Acessar" OnClick="Acessar" />
-            <asp:Button ID="EsqueciSenhaBtn" runat="server" Text="Esqueci Minha Senha" OnClick="EsqueciMinhaSenha" />
+            <input id="LoginPassword" class="form-control" runat="server" type="password" /><br /><br />
+            <asp:Button ID="AcessarBtn" runat="server" Text="Acessar" OnClick="Acessar" class="btn-signin"/>
+            <asp:Button ID="EsqueciSenhaBtn" runat="server" Text="Recuperar senha" OnClick="EsqueciMinhaSenha" class="btn-forgotpassword"/>
 </form>
         </div>
     </body>

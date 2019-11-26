@@ -6915,5 +6915,80 @@ button.close {
     width: 600px;
     position: absolute;
 }
+.LoginBody {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-align: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+.form-signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+    .form-signin input[type="text"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: -20px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+.text-center {
+    text-align: center !important;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+
+}
+
+.btn-signin {
+    display: block;
+    width: 100%;
+    padding: .5rem 1rem;
+    font-size: 1.50rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+
+}
+.btn-forgotpassword {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    padding: .5rem 1rem;
+    font-size: 1.50rem;
+    line-height: 1.5;
+    border-radius: .3rem;
+    color: black;
+    background-color: lightgrey;
+    border-color: darkgrey;
+}
+
+
 
 /*# sourceMappingURL=bootstrap.css.map */
