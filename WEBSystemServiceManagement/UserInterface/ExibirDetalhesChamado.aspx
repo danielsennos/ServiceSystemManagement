@@ -16,6 +16,7 @@
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="~/" runat="server" class="navbar-brand">Sair</a>
                 </div>
             </div>
         </div>

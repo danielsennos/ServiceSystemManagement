@@ -14,7 +14,8 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             String query = @"SELECT EMPRESA_NOME AS 'EMPRESA', CNPJ_EMPRESA AS 'CNPJ', ENDERECO_EMPRESA AS 'Endereço', 
                             CIDADE_EMPRESA AS 'Cidade', ESTADO_EMPRESA AS 'Estado'
-                            FROM EMPRESAS";
+                            FROM EMPRESAS 
+                            ORDER BY EMPRESA_NOME";
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
@@ -25,7 +26,8 @@ namespace WEBSystemServiceManagement
             String query = @"SELECT CLI.NOME_CLIENTE AS 'Nome do Cliente', CLI.CIDADE_CLIENTE AS 'Cidade', CLI.TELEFONE_CLIENTE AS 'Telefone', CLI.EMAIL_CLIENTE AS 'E-mail',
                             EC.EMPRESA_NOME AS 'Empresa'
                             FROM CLIENTE CLI
-                            JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA";
+                            JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA
+                            ORDER BY CLI.NOME_CLIENTE";
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
@@ -34,7 +36,8 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
             String query = @"SELECT CATEGORIA AS 'Categoria', ALVO_SLA AS 'SLA de Resolução (hora)', STATUS_CATEGORIA AS 'Status'
-                            FROM CATEGORIA_CHAMADO";
+                            FROM CATEGORIA_CHAMADO
+                            ORDER BY CATEGORIA";
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
@@ -43,7 +46,7 @@ namespace WEBSystemServiceManagement
         public DataTable ExibirGrupoSuporte()
         {
             Repository db = new Repository();
-            String query = @"SELECT GRUPO_NOME AS 'Grupo de Suporte' FROM GRUPO_USUARIO";
+            String query = @"SELECT GRUPO_NOME AS 'Grupo de Suporte' FROM GRUPO_USUARIO ORDER BY GRUPO_NOME";
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
@@ -56,7 +59,8 @@ namespace WEBSystemServiceManagement
                             FROM USUARIOS US
                             LEFT JOIN GRUPO_USUARIO GS ON US.ID_GRUPO = GS.ID_GRUPO
                             LEFT JOIN EMPRESAS CLI ON US.ID_EMPRESA = CLI.ID_EMPRESA
-                            LEFT JOIN PERMISSOES_USUARIOS PU ON PU.ID_PERMISSAO = US.ID_PERMISSAO ";
+                            LEFT JOIN PERMISSOES_USUARIOS PU ON PU.ID_PERMISSAO = US.ID_PERMISSAO 
+                            ORDER BY US.NOME_USUARIO";
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
