@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Net.Mail;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement
 {
@@ -39,18 +41,8 @@ namespace WEBSystemServiceManagement
         }
 
         public void EsqueciMinhaSenha(LoginModel pModel)
-        {
-            Repository db = new Repository();
-
-            pModel.EmailUsuario = db.Consultar("SELECT EMAIL_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'");
-            pModel.Password = db.Consultar("SELECT SENHA FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'");
-
-            if (pModel.EmailUsuario == "" || pModel.EmailUsuario  == null)
-            {
-                throw new Exception("E-mail não cadastrado, procure o adminstrador do sistema.");
-            }
-            else
-            {
+        {                   
+            
                 string remetenteEmail = "ssmoperacao@gmail.com";
                 MailMessage mail = new MailMessage();
                 mail.To.Add(pModel.EmailUsuario);
@@ -77,8 +69,7 @@ namespace WEBSystemServiceManagement
                 catch (Exception ex)
                 {
                     throw new Exception("Ocorreu um erro com envio do e-mail" + ex);
-                }
-            }
+                }            
 
         }
 

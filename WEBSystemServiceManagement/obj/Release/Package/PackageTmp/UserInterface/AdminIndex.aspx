@@ -15,6 +15,7 @@
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="~/" runat="server" class="navbar-brand">Sair</a>
                 </div>
             </div>
         </div>
@@ -24,22 +25,24 @@
         <div class="BodyContent">
             <!--INÍCIO DO MENU LATERAL-->
             <div class="Menu-Left-Bar">
-                <asp:LinkButton ID="EmpresaBtn" runat="server" class="MenuLink" OnClick="ExibirEmpresa">Empresas</asp:LinkButton>
-                <asp:LinkButton ID="ClienteBtn" runat="server" class="MenuLink" OnClick="ExibirCliente">Clientes</asp:LinkButton>
-                <asp:LinkButton ID="CategoriaBtn" runat="server" class="MenuLink" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
-                <asp:LinkButton ID="GrupoBtn" runat="server" class="MenuLink" OnClick="ExibirGrupoUsuario">Grupos de Usuario</asp:LinkButton>
-                <asp:LinkButton ID="UsuarioBtn" runat="server" class="MenuLink" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
-                <a href="./EmpresaAdmin" runat="server" class="MenuLink">Incluir Empresa</a>
-                <a href="./ClienteAdmin" runat="server" class="MenuLink">Incluir Cliente</a>
-                <a href="./CategoriaAdmin" runat="server" class="MenuLink">Incluir Categoria</a>
-                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink">Incluir Grupos de Usuario</a>
-                <a href="./UsuariosAdmin" runat="server" class="MenuLink">Incluir Usuário do Sistema</a>
-                <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
-                <a href="../" runat="server" class="MenuLink">Sair</a>
+                <asp:LinkButton ID="EmpresaBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirEmpresa">Empresas</asp:LinkButton>
+                <asp:LinkButton ID="ClienteBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirCliente">Clientes</asp:LinkButton>
+                <asp:LinkButton ID="CategoriaBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirCategoria">Categorias</asp:LinkButton>
+                <asp:LinkButton ID="GrupoBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirGrupoUsuario">Grupos de Usuario</asp:LinkButton>
+                <asp:LinkButton ID="UsuarioBtn" runat="server" class="list-group-item list-group-item-action bg-light" OnClick="ExibirUsuarios">Usuários do Sistema</asp:LinkButton>
+
+                <a href="./ExibirChamados" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left: 30px;">Voltar</a>
 
             </div>
             <!--FIM DO MENU LATERAL-->
             <div class="BodyContent-Center">
+                <a href="./EmpresaAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirEmpresaBtn">Incluir Empresa</a>
+                <a href="./ClienteAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirClienteBtn">Incluir Cliente</a>
+                <a href="./CategoriaAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirCategoriaBtn">Incluir Categoria</a>
+                <a href="./GrupoUsuarioAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirGrupoBtn">Incluir Grupos de Usuario</a>
+                <a href="./UsuariosAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirUsuarioBtn">Incluir Usuário do Sistema</a>
+                
+
                 <asp:GridView ID="GridEmpresa" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarEmpresa" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
                     <AlternatingRowStyle BackColor="White" />
                     <FooterStyle BackColor="#CCCC99" />

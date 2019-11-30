@@ -16,6 +16,7 @@
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="~/" runat="server" class="navbar-brand">Sair</a>
                 </div>
             </div>
         </div>
@@ -25,14 +26,13 @@
 
     <div class="BodyContent">
         <!--INÍCIO DO MENU LATERAL-->
-        <div class="Menu-Left-Bar">
-            <a href="./ExibirChamados" runat="server" class="MenuLink">Exibir Solicitações</a>
-            <a href="./CriarNovoChamado" runat="server" class="MenuLink">Criar Nova Solicitação</a>
-            <a href="./Relatorios" runat="server" class="MenuLink">Relatórios</a>
-            <a href="./Pesquisar" runat="server" class="MenuLink">Pesquisar Solicitações</a>
-            <a href="./ExibirChamados" runat="server" class="MenuLink">Voltar</a>
-            <a href="../" runat="server" class="MenuLink">Sair</a>
-        </div>
+<div class="Menu-Left-Bar">            
+            <a href="./ExibirChamados" runat="server" class="list-group-item list-group-item-action bg-light">Exibir Solicitações</a>
+            <a href="./CriarNovoChamado" runat="server" class="list-group-item list-group-item-action bg-light">Criar Nova Solicitação</a>
+            <a href="./Relatorios" runat="server" class="list-group-item list-group-item-action bg-light">Relatórios</a>
+            <a href="./Pesquisar" runat="server" class="list-group-item list-group-item-action bg-light">Pesquisar Solicitações</a>
+
+</div>
         <!--FIM DO MENU LATERAL-->
         <div class="BodyContent-Center">
             <form id="FormEditChamado" runat="server">

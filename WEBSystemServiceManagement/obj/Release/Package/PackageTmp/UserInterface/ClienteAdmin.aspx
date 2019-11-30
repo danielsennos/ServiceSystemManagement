@@ -14,6 +14,7 @@
                     <a href="./CriarNovoChamado" runat="server" class="navbar-brand">Nova Solicitação</a>
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
+                    <a href="~/" runat="server" class="navbar-brand">Sair</a>
                 </div>
             </div>
         </div>
@@ -21,12 +22,11 @@
     <!--FIM DO CABEÇALHO-->
     <div class="BodyContent">
         <!--INÍCIO DO MENU LATERAL-->
-        <div class="Menu-Left-Bar">
+<div class="Menu-Left-Bar">            
 
-            <a href="./AdminIndex" runat="server" class="MenuLink">Voltar</a>
-            <a href="../" runat="server" class="MenuLink">Sair</a>
+            <a href="./AdminIndex" runat="server" class="list-group-item list-group-item-action bg-light" id="AdminBtn">Voltar</a>
 
-        </div>
+</div>
         <!--FIM DO MENU LATERAL-->
         <div class="BodyContent-Center">
 

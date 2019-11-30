@@ -41,21 +41,33 @@ namespace WEBSystemServiceManagement
             LoginController loginController = new LoginController();
             LoginModel pModel = new LoginModel();
             Repository db = new Repository();
-            
-            if(LoginName.Value == "")
-            {
-                throw new Exception("Digite o Login para envio da senha");
-            }
 
-            pModel.LoginName = LoginName.Value;
-            pModel.NomeUsuario = db.Consultar("SELECT NOME_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';");
-            if (pModel.NomeUsuario == "" || pModel.NomeUsuario == null)
-            {
-                throw new Exception("Usuário inexistente.");
+            if (LoginName.Value == "")
+            {                
+                Response.Write("<script>alert('Digite o Login para envio da senha')</script>");
+                            
             }
             else
-            {                
-                loginController.EsqueciMinhaSenha(pModel);
+            {
+
+                pModel.LoginName = LoginName.Value;
+                pModel.NomeUsuario = db.Consultar("SELECT NOME_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';");
+                if (pModel.NomeUsuario == "" || pModel.NomeUsuario == null)
+                {
+                    Response.Write("<script>alert('Usuário inexistente')</script>");
+                }
+                else
+                {
+                    pModel.EmailUsuario = db.Consultar("SELECT EMAIL_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'");
+                    pModel.Password = db.Consultar("SELECT SENHA FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'");
+
+                    if (pModel.EmailUsuario == "" || pModel.EmailUsuario == null)
+                    {
+                        Response.Write("<script>alert('E-mail não cadastrado, procure o adminstrador do sistema')</script>");
+                    }
+                    else { loginController.EsqueciMinhaSenha(pModel); }
+                    
+                }
             }
         }
 
