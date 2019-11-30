@@ -17,7 +17,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
                 if (Session["user_authenticated"] != null)
                 {
-                    if (Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                    if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
                     {
                         AdminModel.Usuario pModel = new AdminModel.Usuario();
                         AdminController adminController = new AdminController();

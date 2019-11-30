@@ -26,7 +26,7 @@ namespace WEBSystemServiceManagement
             String query = @"SELECT CLI.NOME_CLIENTE AS 'Nome do Cliente', CLI.CIDADE_CLIENTE AS 'Cidade', CLI.TELEFONE_CLIENTE AS 'Telefone', CLI.EMAIL_CLIENTE AS 'E-mail',
                             EC.EMPRESA_NOME AS 'Empresa'
                             FROM CLIENTE CLI
-                            JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA
+                            LEFT JOIN EMPRESAS EC ON EC.ID_EMPRESA = CLI.ID_EMPRESA
                             ORDER BY CLI.NOME_CLIENTE";
             DataTable dt = db.RetornaTabela(query);
 
@@ -112,7 +112,7 @@ namespace WEBSystemServiceManagement
 
             string Sql = @"SELECT CLI.ID_CLIENTE, CLI.NOME_CLIENTE, CLI.CIDADE_CLIENTE, CLI.TELEFONE_CLIENTE, CLI.EMAIL_CLIENTE, CLI.ESTADO_CLIENTE, CLI.STATUS_CLIENTE, EM.EMPRESA_NOME
                         FROM CLIENTE CLI
-                        JOIN EMPRESAS EM ON EM.ID_EMPRESA = CLI.ID_EMPRESA
+                        LEFT JOIN EMPRESAS EM ON EM.ID_EMPRESA = CLI.ID_EMPRESA
                         WHERE CLI.NOME_CLIENTE = '" + nome + "';";
                         pModel = db.ExibirCliente(Sql);
 
@@ -291,7 +291,7 @@ namespace WEBSystemServiceManagement
             mail.Body = @"Olá! Seu novo usuário ao System Service Management foi criado. Seguem abaixo os dados de Login. <br />
                         Seu Login é: <b>" +pModel.Login + "</b> <br />" +
                         "Sua senha é: <b>" + pModel.Senha + "</b> <br />" +
-                        "http://www.sitedosistema.com.br";
+                        "http://ssmenterprise.gear.host/";
 
             mail.BodyEncoding = System.Text.Encoding.UTF8;
             mail.IsBodyHtml = true;
