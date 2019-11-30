@@ -20,6 +20,7 @@
                     <a href="./Relatorios" runat="server" class="navbar-brand">Relatórios</a>
                     <a href="./Pesquisar" runat="server" class="navbar-brand">Pesquisar</a>
                     <a href="~/" runat="server" class="navbar-brand">Sair</a>
+                    
             </div>                                
         </div>
     </div>
@@ -31,7 +32,8 @@
 
         
     <!--INÍCIO DO MENU LATERAL-->
-<div class="Menu-Left-Bar">            
+    
+<div class="Menu-Left-Bar">              
             <a href="./ExibirChamados" runat="server" class="list-group-item list-group-item-action bg-light">Exibir Solicitações</a>
             <a href="./CriarNovoChamado" runat="server" class="list-group-item list-group-item-action bg-light">Criar Nova Solicitação</a>
             <a href="./Relatorios" runat="server" class="list-group-item list-group-item-action bg-light">Relatórios</a>
@@ -59,25 +61,15 @@
  </div>
         <br />
 
-
-                    <asp:GridView ID="GridChamados" runat="server" OnSelectedIndexChanged="EditSelectChamado" CellPadding="4" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
-                        <AlternatingRowStyle BackColor="White" />
-                        <FooterStyle BackColor="#CCCC99" />
-                        <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                        <RowStyle BackColor="#F7F7DE" />
-                        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                        <SortedAscendingHeaderStyle BackColor="#848384" />
-                        <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                        <SortedDescendingHeaderStyle BackColor="#575357" />
+        
+                    <asp:GridView ID="GridChamados" runat="server" OnSelectedIndexChanged="EditSelectChamado" Width="1000px" CssClass="mGrid" horizontalalign="center" HeaderStyle-HorizontalAlign="Center">
                         <columns>
-                        <asp:commandfield selecttext="Editar Chamado" showselectbutton="True"  ControlStyle-ForeColor="Blue" HeaderText="Alterar Chamado" />
-                        </columns>
-                                              
+                        <asp:commandfield selecttext="Editar" showselectbutton="True"  ControlStyle-ForeColor="Blue" HeaderText="Alterar Chamado" >
+<ControlStyle ForeColor="Blue"></ControlStyle>
+                            </asp:commandfield>
+                        </columns>                                              
                     </asp:GridView>
         
-
 </div>
    
 </div>

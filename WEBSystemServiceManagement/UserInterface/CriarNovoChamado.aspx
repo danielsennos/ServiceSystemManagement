@@ -47,11 +47,11 @@
                    <option value="INC">Falha ou Erro</option>
                </select>
 
-                    Cliente:
+                    Empresa:
                     <asp:DropDownList ID="Cliente" class="InputDefault" runat="server" OnSelectedIndexChanged="CarregaRequisitantes" AutoPostBack="true" ></asp:DropDownList>
 
                     <br />
-                    Requisitante:
+                    Cliente:
                     <asp:DropDownList ID="Requisitante" class="InputDefault" runat="server"></asp:DropDownList>
 
                     <br />

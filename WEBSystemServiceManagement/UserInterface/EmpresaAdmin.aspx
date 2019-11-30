@@ -33,7 +33,7 @@
 
             <form id="EmpresaForm" runat="server">
                 <input type="text" id="idempresa" runat="server" visible="false" readonly /><br />
-                <b>Nome da Embresa:</b><br />
+                <b>Nome da Empresa:</b><br />
                 <asp:TextBox ID="NomeEmpresaInput" runat="server" class="InputDefault"></asp:TextBox><br />
                 <b>CNPJ:</b><br />
                 <asp:TextBox ID="CNPJEmpresaInput" runat="server" class="InputDefault"></asp:TextBox><br />

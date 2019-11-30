@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
         <h2>Sistema de Gerenciamento de Serviços</h2>
-        <p>Ferramenta para a gesrão dos Serviços de TI. Crie, Controle e Exiba os serviços de TI em tempo real.</p>
+        <p>Ferramenta para a gestão dos Serviços de TI. Crie, Controle e Exiba os serviços de TI em tempo real.</p>
         <p><a href="/UserInterface/Login" class="btn btn-primary btn-lg">Acesse Já! &raquo;</a></p>
     </div>
 

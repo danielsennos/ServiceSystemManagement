@@ -43,85 +43,45 @@
                 <a href="./UsuariosAdmin" runat="server" class="MenuLink" style="padding-bottom: 30px;" id="IncluirUsuarioBtn">Incluir Usuário do Sistema</a>
                 
 
-                <asp:GridView ID="GridEmpresa" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarEmpresa" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
-                    <AlternatingRowStyle BackColor="White" />
-                    <FooterStyle BackColor="#CCCC99" />
-                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                    <RowStyle BackColor="#F7F7DE" />
-                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                    <SortedAscendingHeaderStyle BackColor="#848384" />
-                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                    <SortedDescendingHeaderStyle BackColor="#575357" />                    
+                <asp:GridView ID="GridEmpresa" runat="server" OnSelectedIndexChanged="EditarEmpresa" Width="1000px" CssClass="mGrid">
                     <Columns>
-                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="Editar" />
+                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="" >
+<ControlStyle ForeColor="Blue"></ControlStyle>
+                        </asp:CommandField>
                      </Columns>
                     
                 </asp:GridView>
 
-                <asp:GridView ID="GridCliente" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarCliente" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
-                    <AlternatingRowStyle BackColor="White" />
-                    <FooterStyle BackColor="#CCCC99" />
-                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                    <RowStyle BackColor="#F7F7DE" />
-                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                    <SortedAscendingHeaderStyle BackColor="#848384" />
-                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                    <SortedDescendingHeaderStyle BackColor="#575357" />
+                <asp:GridView ID="GridCliente" runat="server" OnSelectedIndexChanged="EditarCliente" Width="1000px" CssClass="mGrid">
                     <Columns>
-                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="Editar" />
+                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="" >
+<ControlStyle ForeColor="Blue"></ControlStyle>
+                        </asp:CommandField>
                          </Columns>
                 </asp:GridView>
 
-                <asp:GridView ID="GridCategoria" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarCategoria" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
-                    <AlternatingRowStyle BackColor="White" />
-                    <FooterStyle BackColor="#CCCC99" />
-                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                    <RowStyle BackColor="#F7F7DE" />
-                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                    <SortedAscendingHeaderStyle BackColor="#848384" />
-                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                    <SortedDescendingHeaderStyle BackColor="#575357" />
+                <asp:GridView ID="GridCategoria" runat="server" OnSelectedIndexChanged="EditarCategoria" Width="1000px" CssClass="mGrid">
                     <Columns>
-                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="Editar" />
+                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="" >
+<ControlStyle ForeColor="Blue"></ControlStyle>
+                        </asp:CommandField>
                       </Columns>
                 </asp:GridView>
 
-                <asp:GridView ID="GridGrupoSuporte" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarGrupoUsuario" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
-                    <AlternatingRowStyle BackColor="White" />
-                    <FooterStyle BackColor="#CCCC99" />
-                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                    <RowStyle BackColor="#F7F7DE" />
-                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                    <SortedAscendingHeaderStyle BackColor="#848384" />
-                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                    <SortedDescendingHeaderStyle BackColor="#575357" />
+                <asp:GridView ID="GridGrupoSuporte" runat="server" OnSelectedIndexChanged="EditarGrupoUsuario" Width="1000px" CssClass="mGrid">
                     <Columns>
-                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="Editar" />
+                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="" >
+<ControlStyle ForeColor="Blue"></ControlStyle>
+                        </asp:CommandField>
                      </Columns>
                 </asp:GridView>               
 
 
-                 <asp:GridView ID="GridUsuarios" runat="server" CellPadding="4" OnSelectedIndexChanged="EditarUsuarios" ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" Width="1000px">
-                    <AlternatingRowStyle BackColor="White" />
-                    <FooterStyle BackColor="#CCCC99" />
-                    <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-                    <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-                    <RowStyle BackColor="#F7F7DE" />
-                    <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-                    <SortedAscendingCellStyle BackColor="#FBFBF2" />
-                    <SortedAscendingHeaderStyle BackColor="#848384" />
-                    <SortedDescendingCellStyle BackColor="#EAEAD3" />
-                    <SortedDescendingHeaderStyle BackColor="#575357" />
+                 <asp:GridView ID="GridUsuarios" runat="server" OnSelectedIndexChanged="EditarUsuarios" Width="1000px" CssClass="mGrid">
                     <Columns>
-                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="Editar" />
+                        <asp:CommandField SelectText="Editar" ShowSelectButton="True" ControlStyle-ForeColor="Blue" HeaderText="" >
+<ControlStyle ForeColor="Blue"></ControlStyle>
+                        </asp:CommandField>
                     </Columns>
                 </asp:GridView>
             </div>
