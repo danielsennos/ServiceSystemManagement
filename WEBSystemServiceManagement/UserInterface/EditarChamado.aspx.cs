@@ -31,7 +31,6 @@ namespace WEBSystemServiceManagement
                     }
                     else
                     {
-                        //string numChamado = "56";
                         string numChamado = NumChamado.Text;
                         mChamado = chamadoController.EditarChamado(numChamado);
                     }
@@ -154,7 +153,7 @@ namespace WEBSystemServiceManagement
                     Session.Timeout = 20;
 
                 }
-                else { throw new Exception("Permissões insuficientes"); }
+                else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
             }
             else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 

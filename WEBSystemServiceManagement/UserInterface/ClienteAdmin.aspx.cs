@@ -94,7 +94,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
                         Session.Timeout = 20;
                     }
-                    else { throw new Exception("Permissões insuficientes"); }
+                    else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
 
 
                 }
@@ -150,7 +150,8 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.EstadoCliente = EstadosList.Text;
             pModel.CidadeCliente = CidadeList.Text;
             pModel.StatusCliente = Status.Value;
-            if (pModel.IdCliente != "") { adminController.EditarCliente(pModel); } else { adminController.IncluirCliente(pModel); }
+            if (pModel.IdCliente != "") { adminController.EditarCliente(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
+            } else { adminController.IncluirCliente(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
 
             
             Session["edit"] = pModel.NomeCliente;

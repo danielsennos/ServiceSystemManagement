@@ -25,7 +25,7 @@ namespace WEBSystemServiceManagement.UserInterface
             {
                 throw new Exception("O servidor demorou a reponder. Verifique sua conexão e tente novamente.");
 
-                //Response.Redirect("~/UserInterface/Pesquisar", true);
+                
             }
 
             if (mChamado.tipo_chamado == "REQ") { TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }

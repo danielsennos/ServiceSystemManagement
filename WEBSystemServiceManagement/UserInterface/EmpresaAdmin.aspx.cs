@@ -84,7 +84,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
                         Session.Timeout = 20;
                     }
-                    else { throw new Exception("Permissões insuficientes"); }
+                    else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
 
                 }
                 else { Response.Redirect("~/UserInterface/SessionExpired", true); }
@@ -133,12 +133,9 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.CidadeEmpresa = CidadeList.SelectedValue.ToString();
             pModel.StatusEmpresa = Status.Value;
 
-            if(pModel.IdEmpresa != "") {adminController.EditarEmpresa(pModel); } else { adminController.IncluirEmpresa(pModel); }
+            if(pModel.IdEmpresa != "") {adminController.EditarEmpresa(pModel); Response.Write("<script>alert('Dados Atualizados')</script>"); } 
+            else { adminController.IncluirEmpresa(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
 
-
-            Session["edit"] =  pModel.NomeEmpresa;
-
-            Response.Redirect("~/UserInterface/EmpresaAdmin", true);
 
         }
 

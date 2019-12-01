@@ -68,7 +68,7 @@ namespace WEBSystemServiceManagement.UserInterface
                         Session.Timeout = 20;
 
                     }
-                    else { throw new Exception("Permissões insuficientes"); }
+                    else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
                 }
                 else { Response.Redirect("~/UserInterface/SessionExpired", true); }
                 
@@ -96,13 +96,10 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.Grupo = GrupoList.SelectedValue;
             pModel.Permissao = PermissaoList.SelectedValue;
             pModel.StatusUsuario = Status.Value;
-            if (pModel.idUsuario != "") { adminController.EditarUsuario(pModel); } else { adminController.IncluirUsuario(pModel); }
+            if (pModel.idUsuario != "") { adminController.EditarUsuario(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
+            } else { adminController.IncluirUsuario(pModel); Response.Write("<script>alert('Sados Cadastrados')</script>"); }
 
             
-            Session["edit"] = pModel.NomeUsuario;
-
-
-            Response.Redirect("~/UserInterface/UsuariosAdmin", true);
 
         }
     }

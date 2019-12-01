@@ -46,7 +46,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
                         Session.Timeout = 20;
                     }
-                    else { throw new Exception("Permissões insuficientes"); }
+                    else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
                    
 
                     }
@@ -74,7 +74,8 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.SLACategoria = SLAInput.Value;
             pModel.StatusCategoria = Status.Value;
 
-            if (pModel.idCategoria != "") { adminController.EditarCategoria(pModel); } else { adminController.IncluirCategoria(pModel); }
+            if (pModel.idCategoria != "") { adminController.EditarCategoria(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
+            } else { adminController.IncluirCategoria(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
             
            Session["edit"] = pModel.NomeCategoria;          
 

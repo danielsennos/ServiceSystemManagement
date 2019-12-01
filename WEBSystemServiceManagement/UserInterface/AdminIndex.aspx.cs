@@ -24,7 +24,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
                     Session.Timeout = 20;
 
-                } else { throw new Exception("Permissões insuficientes"); }
+                } else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
             } else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
         }

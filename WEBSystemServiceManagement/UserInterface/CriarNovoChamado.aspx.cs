@@ -54,7 +54,7 @@ namespace WEBSystemServiceManagement
                     }
                     else
                     {
-                        throw new Exception("Permissões insuficientes");
+                        Response.Write("<script>alert('Permissões insificientes...')</script>");
                     }
                 }
                 else { Response.Redirect("~/UserInterface/SessionExpired", true); }
@@ -105,13 +105,8 @@ namespace WEBSystemServiceManagement
            ChamadoController ChamadoController = new ChamadoController();
             var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
 
-            
-            Session["edit"] = NewNumChamado;
-            
-           
 
-            Response.Redirect("~/UserInterface/EditarChamado", true);
-
+            Response.Write("<script>alert('Solicitação: " + (mChamado.tipo_chamado+ NewNumChamado.PadLeft((8 - NewNumChamado.Count()), '0')) + "')</script>");
 
         }
 
