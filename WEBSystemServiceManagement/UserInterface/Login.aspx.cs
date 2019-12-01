@@ -28,7 +28,8 @@ namespace WEBSystemServiceManagement
             {
                 _ = Session.IsNewSession;
                 Session["user_authenticated"] = "true";
-                Session["user_name"] = pModel.NomeUsuario;
+                Session["user_name"] = loginController.ConsultarNomeUser(pModel);
+                Session["user_id"] = loginController.ConsultarIdUser(pModel);
                 Session["user_login"] = pModel.LoginName;
                 Session["user_id_permisson"] = loginController.ConsultarPermissao(pModel);
 

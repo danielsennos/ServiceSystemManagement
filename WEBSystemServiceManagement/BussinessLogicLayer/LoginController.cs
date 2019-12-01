@@ -83,7 +83,67 @@ namespace WEBSystemServiceManagement
 
             return pModel.idPermissao;
         }
-        
+
+        public string ConsultarNomeUser(LoginModel pModel)
+        {
+            Repository db = new Repository();
+            String ConsultaNome = @"SELECT NOME_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'";
+            pModel.NomeUsuario = db.Consultar(ConsultaNome);
+
+            return pModel.NomeUsuario;
+        }
+          public string ConsultarIdUser(LoginModel pModel)
+        {
+            Repository db = new Repository();
+            String ConsultaIdUser = @"SELECT ID_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'";
+            pModel.idUser = (db.ConsultaInt(ConsultaIdUser)).ToString();
+
+            return pModel.idUser;
+        }
+
+        public void AlterarSenha(LoginModel pModel)
+        {
+            Repository db = new Repository();
+
+            string UpateSenha = @"UPDATE USUARIOS SET SENHA = '" + pModel.Password + "'" +
+                " WHERE ID_USUARIO = " + pModel.idUser;
+
+            db.Update(UpateSenha);
+
+            pModel.EmailUsuario = db.Consultar("SELECT EMAIL_USUARIO FROM USUARIOS WHERE ID_USUARIO =" + pModel.idUser);
+
+
+            #region notificação por e-mail
+            string remetenteEmail = "ssmoperacao@gmail.com";
+            MailMessage mail = new MailMessage();
+            mail.To.Add(pModel.EmailUsuario);
+            mail.From = new MailAddress(remetenteEmail, "SSM", System.Text.Encoding.UTF8);
+            mail.Subject = "SSM - Sua senha foi alterada";
+            mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            mail.Body = @"Olá! Este é um e-mail automático. <br />
+                              Sua senha foi alterada com sucesso. <br />
+                              Caso você ache que há alguém acessando sua conta, recomendamos entrar em contato com o administrador do sistema. <br /><br />
+                              Seu nova senha é: <b>" + pModel.Password + "</b>";
+
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential(remetenteEmail, "est@ciotcc2");
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            try
+            {
+                client.Send(mail);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro com envio do e-mail" + ex);
+            }
+            #endregion
+        }
+
     }
 
 
