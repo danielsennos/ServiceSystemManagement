@@ -14,6 +14,23 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             if (Session["user_authenticated"] != null)
             {
+                if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 3) {
+                    EmpresaBtn.Visible = true;
+                    ClienteBtn.Visible = true;
+                    CategoriaBtn.Visible = true;
+                    GrupoBtn.Visible = true;
+                    UsuarioBtn.Visible = true;
+                } 
+                else
+                {
+                    EmpresaBtn.Visible = false;
+                    ClienteBtn.Visible = false;
+                    CategoriaBtn.Visible = false;
+                    GrupoBtn.Visible = false;
+                    UsuarioBtn.Visible = false;
+                }
+
+
                 if (Convert.ToInt32(Session["user_id_permisson"]) == 0  || Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
                 {
                     IncluirEmpresaBtn.Visible = false;

@@ -265,6 +265,7 @@
     <Content Include="UserInterface\ExibirDetalhesChamado.aspx" />
     <Content Include="UserInterface\GrupoUsuarioAdmin.aspx" />
     <Content Include="UserInterface\Login.aspx" />
+    <Content Include="UserInterface\PasswordChange.aspx" />
     <Content Include="UserInterface\SessionExpired.aspx" />
     <Content Include="UserInterface\Pesquisar.aspx" />
     <Content Include="UserInterface\Relatorios.aspx" />
@@ -408,6 +409,13 @@
     </Compile>
     <Compile Include="UserInterface\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserInterface\PasswordChange.aspx.cs">
+      <DependentUpon>PasswordChange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserInterface\PasswordChange.aspx.designer.cs">
+      <DependentUpon>PasswordChange.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserInterface\SessionExpired.aspx.cs">
       <DependentUpon>SessionExpired.aspx</DependentUpon>

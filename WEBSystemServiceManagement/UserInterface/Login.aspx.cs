@@ -23,7 +23,7 @@ namespace WEBSystemServiceManagement
             if(AcessGranted == false)
             {
                 Session["user_authenticated"] = "false";
-                throw new Exception("Dados incorretos.");
+                Response.Write("<script>alert('Dados incorretos')</script>");
             } else
             {
                 _ = Session.IsNewSession;

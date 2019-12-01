@@ -17,7 +17,7 @@ namespace WEBSystemServiceManagement
             {
                 if (Session["user_authenticated"] != null)
                 {
-                    if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 3 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                    if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 3 || Convert.ToInt32(Session["user_id_permisson"]) == 2)
                     {
                         String queryCategoria = @"SELECT CATEGORIA FROM CATEGORIA_CHAMADO";
                         var ListaCategoria = SQLConnect.CarregaCategorias(queryCategoria);

@@ -18,8 +18,7 @@ namespace WEBSystemServiceManagement.UserInterface
                 {
                     if (Session["user_authenticated"].ToString() == "true")
                     {
-                        if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4) { AdminBtn.Visible = true; } else { AdminBtn.Visible = false; }
-
+                        
                         Session.Timeout = 20;
 
                         ChamadoController chamadoController = new ChamadoController();
