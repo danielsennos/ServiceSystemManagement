@@ -12,7 +12,7 @@ namespace WEBSystemServiceManagement
     {
         public DataTable ExibirEmpresa(){
             Repository db = new Repository();
-            String query = @"SELECT EMPRESA_NOME AS 'EMPRESA', CNPJ_EMPRESA AS 'CNPJ', ENDERECO_EMPRESA AS 'Endereço', 
+            String query = @"SELECT EMPRESA_NOME AS 'Empresa', CNPJ_EMPRESA AS 'CNPJ', ENDERECO_EMPRESA AS 'Endereço', 
                             CIDADE_EMPRESA AS 'Cidade', ESTADO_EMPRESA AS 'Estado'
                             FROM EMPRESAS 
                             ORDER BY EMPRESA_NOME";
@@ -225,7 +225,7 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
             AdminModel.Usuario pModel = new AdminModel.Usuario();
 
-            string Sql = @"SELECT US.ID_USUARIO, US.LOGIN, US.NOME_USUARIO, US.EMAIL_USUARIO, GP.GRUPO_NOME, PU.NOME_PERMISSAO, US.STATUS_USUARIO FROM USUARIOS US
+            string Sql = @"SELECT US.ID_USUARIO, US.LOGIN, US.NOME_USUARIO, US.EMAIL_USUARIO, EM.EMPRESA_NOME, GP.GRUPO_NOME, PU.NOME_PERMISSAO, US.STATUS_USUARIO FROM USUARIOS US
                             JOIN GRUPO_USUARIO GP ON US.ID_GRUPO = GP.ID_GRUPO
                             LEFT JOIN EMPRESAS EM ON EM.ID_EMPRESA = US.ID_EMPRESA
                             LEFT JOIN PERMISSOES_USUARIOS PU ON PU.ID_PERMISSAO = US.ID_PERMISSAO WHERE US.NOME_USUARIO ='" + nome + "'";

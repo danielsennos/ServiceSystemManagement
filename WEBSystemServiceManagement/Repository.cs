@@ -538,6 +538,7 @@ namespace WEBSystemServiceManagement
                     pModel.Grupo = row["GRUPO_NOME"].ToString();
                     pModel.Permissao = row["NOME_PERMISSAO"].ToString();
                     pModel.StatusUsuario = row["STATUS_USUARIO"].ToString();
+                    pModel.Empresa = row["EMPRESA_NOME"].ToString();
                 }
             }
             return pModel;
