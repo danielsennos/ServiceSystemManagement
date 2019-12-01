@@ -67,7 +67,7 @@
                         <asp:commandfield selecttext="Editar" showselectbutton="True"  ControlStyle-ForeColor="Blue" HeaderText="Alterar Chamado" >
 <ControlStyle ForeColor="Blue"></ControlStyle>
                             </asp:commandfield>
-                        </columns>                                              
+                        </columns>  
                     </asp:GridView>
         
 </div>

@@ -23,8 +23,7 @@ namespace WEBSystemServiceManagement.UserInterface
             }
             else
             {
-                throw new Exception("O servidor demorou a reponder. Verifique sua conexão e tente novamente.");
-
+                Response.Write("<script>alert('O Servidor demorou a responder. Verifique sua conexão ou procure o administrador do sistema.')</script>");
                 
             }
 

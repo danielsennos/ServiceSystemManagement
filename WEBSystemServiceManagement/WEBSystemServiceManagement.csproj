@@ -154,11 +154,14 @@
     <Content Include="About.aspx" />
     <Content Include="AboutSSM.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\avalia.PNG" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\equipe.jpg" />
     <Content Include="Content\logo.png" />
+    <Content Include="Content\service.jpg" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
