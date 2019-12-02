@@ -102,9 +102,10 @@ namespace WEBSystemServiceManagement
             var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
 
 
-            Response.Write("<script>alert('Solicitação Aberta: " + (mChamado.tipo_chamado + NewNumChamado.PadLeft((8 - NewNumChamado.Count()), '0')) + "')</script>");
-
-            Response.Redirect("");
+            //Response.Write("<script>alert('Solicitação Aberta: " + (mChamado.tipo_chamado + NewNumChamado.PadLeft((8 - NewNumChamado.Count()), '0')) + "')</script>");
+                       
+            Session["edit"] = NewNumChamado;
+            Response.Redirect("~/UserInterface/EditarChamado", true);
         }
 
         protected void ExibeChamadosLoad(object sender, EventArgs e)
