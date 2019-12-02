@@ -13,7 +13,7 @@
             <h4>Sistema de Gerenciamento de Serviços</h4>
             <p>
                 Um sistema criado para que você tenha controle total dos seus serviços de TI. <br />
-                <img src="Content/service.jpg" style="height:100px; width:300px; position:center; padding-left: 50px;"/>
+                <img src="Content/service.png" style="height:100px; width:300px; position:center; padding-left: 50px;"/>
             </p>
             <p>
                 <a class="btn btn-default" href="/AboutSSM">Saiba Mais &roplus;</a>
