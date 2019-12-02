@@ -24,40 +24,40 @@ namespace WEBSystemServiceManagement.UserInterface
         protected global::System.Web.UI.HtmlControls.HtmlForm RelatorioForm;
 
         /// <summary>
-        /// Controle EmpresaBtn.
+        /// Controle Relatorio1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton EmpresaBtn;
+        protected global::System.Web.UI.WebControls.LinkButton Relatorio1;
 
         /// <summary>
-        /// Controle LinkButton1.
+        /// Controle Relatorio2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.WebControls.LinkButton Relatorio2;
 
         /// <summary>
-        /// Controle LinkButton2.
+        /// Controle Relatorio3.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.LinkButton Relatorio3;
 
         /// <summary>
-        /// Controle LinkButton3.
+        /// Controle Relatorio4.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
+        protected global::System.Web.UI.WebControls.LinkButton Relatorio4;
 
         /// <summary>
         /// Controle MesAno.
