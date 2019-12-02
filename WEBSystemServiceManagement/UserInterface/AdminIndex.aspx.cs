@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
@@ -14,13 +10,14 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             if (Session["user_authenticated"] != null)
             {
-                if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 3) {
+                if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 3)
+                {
                     EmpresaBtn.Visible = true;
                     ClienteBtn.Visible = true;
                     CategoriaBtn.Visible = true;
                     GrupoBtn.Visible = true;
                     UsuarioBtn.Visible = true;
-                } 
+                }
                 else
                 {
                     EmpresaBtn.Visible = false;
@@ -31,7 +28,7 @@ namespace WEBSystemServiceManagement.UserInterface
                 }
 
 
-                if (Convert.ToInt32(Session["user_id_permisson"]) == 0  || Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
+                if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 1 || Convert.ToInt32(Session["user_id_permisson"]) == 4)
                 {
                     IncluirEmpresaBtn.Visible = false;
                     IncluirClienteBtn.Visible = false;
@@ -41,24 +38,26 @@ namespace WEBSystemServiceManagement.UserInterface
 
                     Session.Timeout = 20;
 
-                } else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
-            } else { Response.Redirect("~/UserInterface/SessionExpired", true); }
+                }
+                else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
+            }
+            else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
         }
         public void ExibirEmpresa(object sender, EventArgs e)
         {
             AdminController adminController = new AdminController();
             #region Visibilidade_das_Grids_e_Buttons
-                        GridEmpresa.Visible = true;
-                        GridCliente.Visible = false;
-                        GridCategoria.Visible = false;
-                        GridGrupoSuporte.Visible = false;
-                        GridUsuarios.Visible = false;
-                        IncluirEmpresaBtn.Visible = true;
-                        IncluirClienteBtn.Visible = false;
-                        IncluirCategoriaBtn.Visible = false;
-                        IncluirGrupoBtn.Visible = false;
-                        IncluirUsuarioBtn.Visible = false;
+            GridEmpresa.Visible = true;
+            GridCliente.Visible = false;
+            GridCategoria.Visible = false;
+            GridGrupoSuporte.Visible = false;
+            GridUsuarios.Visible = false;
+            IncluirEmpresaBtn.Visible = true;
+            IncluirClienteBtn.Visible = false;
+            IncluirCategoriaBtn.Visible = false;
+            IncluirGrupoBtn.Visible = false;
+            IncluirUsuarioBtn.Visible = false;
             #endregion
 
 

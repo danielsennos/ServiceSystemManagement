@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
@@ -14,11 +11,11 @@ namespace WEBSystemServiceManagement.UserInterface
             if (IsPostBack == false)
             {
 
-                if (Session["user_authenticated"] != null) 
+                if (Session["user_authenticated"] != null)
                 {
                     if (Session["user_authenticated"].ToString() == "true")
                     {
-                        
+
                         Session.Timeout = 20;
 
                         ChamadoController chamadoController = new ChamadoController();
@@ -91,7 +88,7 @@ namespace WEBSystemServiceManagement.UserInterface
         {
             GridViewRow gr = GridChamados.SelectedRow;
             var numChamadoSelected = (HttpUtility.HtmlDecode(gr.Cells[1].Text)).Substring(4, 7);
-            
+
             Session["edit"] = numChamadoSelected;
 
             Response.Redirect("~/UserInterface/EditarChamado", true);

@@ -1,13 +1,7 @@
-﻿using SharpDX.Direct2D1;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows;
 
 namespace WEBSystemServiceManagement
 {
@@ -15,9 +9,9 @@ namespace WEBSystemServiceManagement
     {
         public void Page_Load(object sender, EventArgs e)
         {
-           
-                ChamadoModel mChamado = new ChamadoModel();
-                ChamadoController chamadoController = new ChamadoController();
+
+            ChamadoModel mChamado = new ChamadoModel();
+            ChamadoController chamadoController = new ChamadoController();
 
             if (Session["user_authenticated"] != null)
             {
@@ -157,10 +151,6 @@ namespace WEBSystemServiceManagement
             }
             else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
-        
-                
-     
-
 
         }
 
@@ -178,7 +168,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            
+
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
@@ -197,7 +187,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            
+
             Session["edit"] = (mChamado.num_chamado).ToString(); ;
             Page_Load(sender, e);
         }
@@ -215,7 +205,7 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            
+
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
@@ -228,12 +218,12 @@ namespace WEBSystemServiceManagement
             String query = "UPDATE CHAMADOS SET STATUS_CHAMADO = 'Concluído' WHERE ID_CHAMADO =" + mChamado.id_chamado + ";";
             db.Update(query);
 
-            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído - " + AnotacaoEdit.InnerText + "','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "');";
+            String queryNota = @"INSERT INTO NOTAS_CHAMADOS(ID_CHAMADO, NOTA, DATA_NOTA) VALUES(" + mChamado.id_chamado + ",'Concluído " + AnotacaoEdit.InnerText + "','" + DateTime.Now.ToString("dd/MM/yyyy HH:mm", new CultureInfo("pt-BR")) + "');";
             db.Inserir(queryNota);
 
             AnotacaoEdit.InnerText = "";
 
-            
+
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }
@@ -252,10 +242,10 @@ namespace WEBSystemServiceManagement
 
             AnotacaoEdit.InnerText = "";
 
-            
+
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
-            
+
         }
         public void InsereAnotacao(object sender, EventArgs e)
         {
@@ -269,7 +259,7 @@ namespace WEBSystemServiceManagement
             db.Inserir(query);
             AnotacaoEdit.InnerText = "";
 
-            
+
             Session["edit"] = (mChamado.num_chamado).ToString();
             Page_Load(sender, e);
         }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
 {
@@ -45,7 +40,7 @@ namespace WEBSystemServiceManagement.UserInterface
                     else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
                 }
                 else { Response.Redirect("~/UserInterface/SessionExpired", true); }
-                
+
             }
 
         }
@@ -66,10 +61,13 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.NomeGrupo = NomeGrupoInput.Text;
             pModel.StatusGrupo = Status.Value;
 
-            if (pModel.idGrupo != "") { adminController.EditarGrupoUsuario(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
-            } else { adminController.IncluirGrupoUsuario(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
+            if (pModel.idGrupo != "")
+            {
+                adminController.EditarGrupoUsuario(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
+            }
+            else { adminController.IncluirGrupoUsuario(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
 
-                     
+
 
         }
     }

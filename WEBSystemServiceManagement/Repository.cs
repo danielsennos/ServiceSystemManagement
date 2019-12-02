@@ -1,10 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Data.SqlClient;
 
 namespace WEBSystemServiceManagement
@@ -31,7 +28,7 @@ namespace WEBSystemServiceManagement
             {
                 conexao.Open();
                 MySqlCommand comandos = new MySqlCommand();
-            
+
                 trans = conexao.BeginTransaction();
                 comandos = new MySqlCommand(InsertSql, conexao);
                 comandos.Connection = conexao;
@@ -43,7 +40,7 @@ namespace WEBSystemServiceManagement
             catch (Exception ex)
             {
                 trans.Rollback();
-                throw new Exception("Erro de comando SQL" + ex.Message);
+                Console.WriteLine("Erro de comando SQL" + ex.Message);
             }
             finally { conexao.Close(); }
         }
@@ -130,7 +127,7 @@ namespace WEBSystemServiceManagement
             catch (Exception ex)
             {
                 trans.Rollback();
-                throw new Exception("Erro de comando SQL" + ex.Message);
+                Console.WriteLine("Erro de comando SQL" + ex.Message);
             }
             finally { conexao.Close(); }
         }
@@ -176,7 +173,7 @@ namespace WEBSystemServiceManagement
             }
             return lista;
         }
-        public ArrayList CarregaEmpresa(String SQLQuery) 
+        public ArrayList CarregaEmpresa(String SQLQuery)
         {
             ArrayList lista = new ArrayList();
 
@@ -278,8 +275,9 @@ namespace WEBSystemServiceManagement
         public String InserirChamado(String InsertSql, String ConsultarSql)
         {
             String Result = "";
-            
-            using (MySqlConnection conexao = new MySqlConnection(PATH)) {
+
+            using (MySqlConnection conexao = new MySqlConnection(PATH))
+            {
                 MySqlTransaction trans = null;
 
                 try
@@ -316,10 +314,11 @@ namespace WEBSystemServiceManagement
 
 
 
-                } catch (SqlException ex)
+                }
+                catch (SqlException ex)
                 {
                     trans.Rollback();
-                    throw new Exception("Erro de comando SQL" + ex.Message);
+                    Console.WriteLine("Erro de comando SQL" + ex.Message);
                 }
                 finally { conexao.Close(); }
             }
@@ -515,7 +514,7 @@ namespace WEBSystemServiceManagement
                 }
             }
             return pModel;
-        } 
+        }
 
         public AdminModel.Usuario ExibirUsuarios(String SQLQuery)
         {

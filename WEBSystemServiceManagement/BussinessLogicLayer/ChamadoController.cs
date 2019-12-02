@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
-using System.Linq;
-using System.Web;
 
 namespace WEBSystemServiceManagement
 {
@@ -40,7 +37,7 @@ namespace WEBSystemServiceManagement
                                       + "'Aberto','" //STATUS_CHAMADO
                                       + mChamado.resumo_chamado + "'," //RESUMO_CHAMADO
                                       + "(SELECT ID FROM(SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + mChamado.grupo_designado + "') AS T5),"  //ID_GRUPO
-                                      + "(SELECT ID FROM(SELECT ID_USUARIO AS ID FROM USUARIOS WHERE NOME_USUARIO = '" + mChamado.designado +"') AS T6))" ;  //ID_DESIGANDO
+                                      + "(SELECT ID FROM(SELECT ID_USUARIO AS ID FROM USUARIOS WHERE NOME_USUARIO = '" + mChamado.designado + "') AS T6))";  //ID_DESIGANDO
 
 
 

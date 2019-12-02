@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
 {
@@ -21,12 +16,12 @@ namespace WEBSystemServiceManagement.UserInterface
 
                 }
                 else { Response.Redirect("~/UserInterface/SessionExpired", true); }
-            }   
+            }
         }
 
         protected void AtualizarSenha(object sender, EventArgs e)
         {
-           
+
 
             if (Password1.Value.Length < 6)
             {

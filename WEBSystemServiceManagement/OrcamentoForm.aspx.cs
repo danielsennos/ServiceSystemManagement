@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Net.Mail;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Windows;
 
 namespace WEBSystemServiceManagement
 {
@@ -44,7 +39,7 @@ namespace WEBSystemServiceManagement
             client.Host = "smtp.gmail.com";
             client.EnableSsl = true;
             try
-            {                
+            {
                 client.Send(mail);
 
             }

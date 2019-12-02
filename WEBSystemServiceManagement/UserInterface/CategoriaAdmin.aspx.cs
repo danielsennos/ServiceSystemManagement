@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
 {
@@ -47,14 +42,14 @@ namespace WEBSystemServiceManagement.UserInterface
                         Session.Timeout = 20;
                     }
                     else { Response.Write("<script>alert('Permissões insificientes...')</script>"); }
-                   
 
-                    }
-                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
-                    
+
                 }
-                
-                
+                else { Response.Redirect("~/UserInterface/SessionExpired", true); }
+
+            }
+
+
 
         }
 
@@ -74,10 +69,13 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.SLACategoria = SLAInput.Value;
             pModel.StatusCategoria = Status.Value;
 
-            if (pModel.idCategoria != "") { adminController.EditarCategoria(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
-            } else { adminController.IncluirCategoria(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
-            
-           Session["edit"] = pModel.NomeCategoria;          
+            if (pModel.idCategoria != "")
+            {
+                adminController.EditarCategoria(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
+            }
+            else { adminController.IncluirCategoria(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
+
+            Session["edit"] = pModel.NomeCategoria;
 
 
             Response.Redirect("~/UserInterface/CategoriaAdmin", true);

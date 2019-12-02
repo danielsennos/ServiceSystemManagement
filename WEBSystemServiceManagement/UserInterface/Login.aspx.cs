@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement
 {
     public partial class Login : System.Web.UI.Page
     {
-       protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
 
         }
@@ -20,11 +15,12 @@ namespace WEBSystemServiceManagement
             pModel.LoginName = LoginName.Value;
             pModel.Password = LoginPassword.Value;
             bool AcessGranted = loginController.GrantAccess(pModel);
-            if(AcessGranted == false)
+            if (AcessGranted == false)
             {
                 Session["user_authenticated"] = "false";
                 Response.Write("<script>alert('Dados incorretos')</script>");
-            } else
+            }
+            else
             {
                 _ = Session.IsNewSession;
                 Session["user_authenticated"] = "true";
@@ -44,9 +40,9 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
 
             if (LoginName.Value == "")
-            {                
+            {
                 Response.Write("<script>alert('Digite o Login para envio da senha')</script>");
-                            
+
             }
             else
             {
@@ -67,7 +63,7 @@ namespace WEBSystemServiceManagement
                         Response.Write("<script>alert('E-mail não cadastrado, procure o adminstrador do sistema')</script>");
                     }
                     else { loginController.EsqueciMinhaSenha(pModel); }
-                    
+
                 }
             }
         }

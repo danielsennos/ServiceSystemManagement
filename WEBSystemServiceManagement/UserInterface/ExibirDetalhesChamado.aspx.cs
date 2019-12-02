@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
 {
@@ -24,7 +20,7 @@ namespace WEBSystemServiceManagement.UserInterface
             else
             {
                 Response.Write("<script>alert('O Servidor demorou a responder. Verifique sua conexão ou procure o administrador do sistema.')</script>");
-                
+
             }
 
             if (mChamado.tipo_chamado == "REQ") { TipoSolicitacaoEdit.Text = "Solicitação"; } else { TipoSolicitacaoEdit.Text = "Erro/Falha"; }

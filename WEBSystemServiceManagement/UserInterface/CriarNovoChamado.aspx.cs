@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement
 {
     public partial class CriarNovoChamado : System.Web.UI.Page
     {
         Repository SQLConnect = new Repository();
-        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -62,9 +58,9 @@ namespace WEBSystemServiceManagement
 
         }
 
-        
+
         protected void CarregaRequisitantes(object sender, EventArgs e)
-        {             
+        {
 
             Requisitante.Items.Clear();
 
@@ -88,12 +84,12 @@ namespace WEBSystemServiceManagement
             }
         }
 
-            protected void SalvarChamado(object sender, EventArgs e)
+        protected void SalvarChamado(object sender, EventArgs e)
         {
             ChamadoModel mChamado = new ChamadoModel();
 
             mChamado.tipo_chamado = TipoSolicitacao.Value.ToString();
-            mChamado.cliente = (Cliente.SelectedItem.ToString()); 
+            mChamado.cliente = (Cliente.SelectedItem.ToString());
             mChamado.requisitante = (Requisitante.SelectedItem.ToString());
             mChamado.categoria = (Categoria.SelectedItem.ToString());
             mChamado.resumo_chamado = Resumo.Value;
@@ -102,12 +98,13 @@ namespace WEBSystemServiceManagement
             mChamado.designado = Designado.SelectedItem.ToString();
 
 
-           ChamadoController ChamadoController = new ChamadoController();
+            ChamadoController ChamadoController = new ChamadoController();
             var NewNumChamado = ChamadoController.SalvarChamado(mChamado);
 
 
-            Response.Write("<script>alert('Solicitação: " + (mChamado.tipo_chamado+ NewNumChamado.PadLeft((8 - NewNumChamado.Count()), '0')) + "')</script>");
+            Response.Write("<script>alert('Solicitação Aberta: " + (mChamado.tipo_chamado + NewNumChamado.PadLeft((8 - NewNumChamado.Count()), '0')) + "')</script>");
 
+            Response.Redirect("");
         }
 
         protected void ExibeChamadosLoad(object sender, EventArgs e)

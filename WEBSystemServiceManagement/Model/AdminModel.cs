@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace WEBSystemServiceManagement
+﻿namespace WEBSystemServiceManagement
 {
     public class AdminModel
     {
@@ -33,7 +28,7 @@ namespace WEBSystemServiceManagement
 
         public class Categoria
         {
-           public string idCategoria { get; set; }
+            public string idCategoria { get; set; }
             public string NomeCategoria { get; set; }
             public string SLACategoria { get; set; }
             public string StatusCategoria { get; set; }
@@ -48,18 +43,18 @@ namespace WEBSystemServiceManagement
 
         public class Usuario
         {
-            public string idUsuario { get; set; } 
-            public string Login { get; set; } 
-            public string Senha { get; set; } 
-            public string NomeUsuario { get; set; } 
-            public string StatusUsuario { get; set; } 
+            public string idUsuario { get; set; }
+            public string Login { get; set; }
+            public string Senha { get; set; }
+            public string NomeUsuario { get; set; }
+            public string StatusUsuario { get; set; }
             public string idGrupo { get; set; }
-            public string Grupo { get; set; } 
+            public string Grupo { get; set; }
             public string idEmpresa { get; set; }
-            public string Empresa { get; set; } 
+            public string Empresa { get; set; }
             public string idPermissao { get; set; }
-            public string Permissao { get; set; } 
-            public string EmailUsuario { get; set; } 
+            public string Permissao { get; set; }
+            public string EmailUsuario { get; set; }
         }
 
 

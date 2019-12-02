@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
 {
@@ -13,7 +8,7 @@ namespace WEBSystemServiceManagement.UserInterface
         {
 
             if (IsPostBack == false)
-         {
+            {
                 if (Session["user_authenticated"] != null)
                 {
                     if (Convert.ToInt32(Session["user_id_permisson"]) == 0 || Convert.ToInt32(Session["user_id_permisson"]) == 3)
@@ -90,9 +85,9 @@ namespace WEBSystemServiceManagement.UserInterface
                 else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
             }
-                
-                
-            
+
+
+
         }
         protected void CarregaItens(object sender, EventArgs e)
         {
@@ -133,7 +128,7 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.CidadeEmpresa = CidadeList.SelectedValue.ToString();
             pModel.StatusEmpresa = Status.Value;
 
-            if(pModel.IdEmpresa != "") {adminController.EditarEmpresa(pModel); Response.Write("<script>alert('Dados Atualizados')</script>"); } 
+            if (pModel.IdEmpresa != "") { adminController.EditarEmpresa(pModel); Response.Write("<script>alert('Dados Atualizados')</script>"); }
             else { adminController.IncluirEmpresa(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
 
 
@@ -141,7 +136,7 @@ namespace WEBSystemServiceManagement.UserInterface
 
         protected void Cancelar(object sender, EventArgs e)
         {
-           
+
             Response.Redirect("~/UserInterface/AdminIndex", true);
 
         }

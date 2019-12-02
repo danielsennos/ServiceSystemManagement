@@ -1,75 +1,72 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
 using System.Net.Mail;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement
 {
     public class LoginController
     {
-       
+
         public bool GrantAccess(LoginModel pModel)
         {
             Repository db = new Repository();
 
-            string ConsultarNome = @"SELECT LOGIN FROM USUARIOS WHERE LOGIN = '" +pModel.LoginName + "';";
+            string ConsultarNome = @"SELECT LOGIN FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
             string NomeUser = db.Consultar(ConsultarNome);
             if (NomeUser != pModel.LoginName)
             {
-                return false;                
-            } else
+                return false;
+            }
+            else
             {
                 string ConsultarSenha = @"SELECT SENHA FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
                 string ConsultarStatus = @"SELECT STATUS_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "';";
                 string UserStatus = db.Consultar(ConsultarStatus);
                 string UserPassword = db.Consultar(ConsultarSenha);
 
-                
+
 
                 if (UserStatus == "D" || UserPassword != pModel.Password)
-                {                    
+                {
                     return false;
-                } else
+                }
+                else
                 {
                     return true;
                 }
-             }            
+            }
         }
 
         public void EsqueciMinhaSenha(LoginModel pModel)
-        {                   
-            
-                string remetenteEmail = "ssmoperacao@gmail.com";
-                MailMessage mail = new MailMessage();
-                mail.To.Add(pModel.EmailUsuario);
-                mail.From = new MailAddress(remetenteEmail, "SSM", System.Text.Encoding.UTF8);
-                mail.Subject = "SSM - Esqueci minha senha";
-                mail.SubjectEncoding = System.Text.Encoding.UTF8;
-                mail.Body = @"Olá! Este é um e-mail automático de envio de senha. <br />
+        {
+
+            string remetenteEmail = "ssmoperacao@gmail.com";
+            MailMessage mail = new MailMessage();
+            mail.To.Add(pModel.EmailUsuario);
+            mail.From = new MailAddress(remetenteEmail, "SSM", System.Text.Encoding.UTF8);
+            mail.Subject = "SSM - Esqueci minha senha";
+            mail.SubjectEncoding = System.Text.Encoding.UTF8;
+            mail.Body = @"Olá! Este é um e-mail automático de envio de senha. <br />
                               Se você não solicitou sua senha favor ignorar este e-mail. <br />
                               Caso você ache que há alguém tentando acessar sua conta, recomendamos alterar sua senha imediatamente. <br /><br />
                               Seu senha é: <b>" + pModel.Password + "</b>";
 
-                mail.BodyEncoding = System.Text.Encoding.UTF8;
-                mail.IsBodyHtml = true;
-                SmtpClient client = new SmtpClient();
-                client.Credentials = new System.Net.NetworkCredential(remetenteEmail, "est@ciotcc2");
-                client.Port = 587;
-                client.Host = "smtp.gmail.com";
-                client.EnableSsl = true;
-                try
-                {
-                    client.Send(mail);
+            mail.BodyEncoding = System.Text.Encoding.UTF8;
+            mail.IsBodyHtml = true;
+            SmtpClient client = new SmtpClient();
+            client.Credentials = new System.Net.NetworkCredential(remetenteEmail, "est@ciotcc2");
+            client.Port = 580; //587
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            try
+            {
+                client.Send(mail);
 
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Ocorreu um erro com envio do e-mail" + ex);
-                }            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Ocorreu um erro com envio do e-mail" + ex);
+                //throw new Exception("Ocorreu um erro com envio do e-mail" + ex);
+            }
 
         }
 
@@ -92,7 +89,7 @@ namespace WEBSystemServiceManagement
 
             return pModel.NomeUsuario;
         }
-          public string ConsultarIdUser(LoginModel pModel)
+        public string ConsultarIdUser(LoginModel pModel)
         {
             Repository db = new Repository();
             String ConsultaIdUser = @"SELECT ID_USUARIO FROM USUARIOS WHERE LOGIN = '" + pModel.LoginName + "'";

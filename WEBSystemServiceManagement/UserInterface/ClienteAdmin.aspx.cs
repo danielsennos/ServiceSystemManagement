@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WEBSystemServiceManagement.UserInterface
 {
@@ -100,8 +95,8 @@ namespace WEBSystemServiceManagement.UserInterface
                 }
                 else { Response.Redirect("~/UserInterface/SessionExpired", true); }
 
-            }                
-               
+            }
+
         }
 
         protected void CarregaItens(object sender, EventArgs e)
@@ -150,10 +145,13 @@ namespace WEBSystemServiceManagement.UserInterface
             pModel.EstadoCliente = EstadosList.Text;
             pModel.CidadeCliente = CidadeList.Text;
             pModel.StatusCliente = Status.Value;
-            if (pModel.IdCliente != "") { adminController.EditarCliente(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
-            } else { adminController.IncluirCliente(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
+            if (pModel.IdCliente != "")
+            {
+                adminController.EditarCliente(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
+            }
+            else { adminController.IncluirCliente(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
 
-            
+
             Session["edit"] = pModel.NomeCliente;
 
 

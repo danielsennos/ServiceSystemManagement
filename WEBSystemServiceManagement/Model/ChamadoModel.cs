@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace WEBSystemServiceManagement
 {
@@ -26,7 +23,7 @@ namespace WEBSystemServiceManagement
         public int id_grupo_usuario { get; set; }
         public string grupo_designado { get; set; }
         public string anotacao { get; set; }
-        public List<AnotacoesList> anotacoeslista {get; set;}
+        public List<AnotacoesList> anotacoeslista { get; set; }
         public List<ChamadoModel> ChamadoList { get; set; }
 
 

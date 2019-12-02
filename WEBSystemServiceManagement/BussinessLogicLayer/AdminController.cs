@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-using System.Net.Mail;
 using System.Data;
+using System.Linq;
+using System.Net.Mail;
 
 namespace WEBSystemServiceManagement
 {
     public class AdminController
     {
-        public DataTable ExibirEmpresa(){
+        public DataTable ExibirEmpresa()
+        {
             Repository db = new Repository();
             String query = @"SELECT EMPRESA_NOME AS 'Empresa', CNPJ_EMPRESA AS 'CNPJ', ENDERECO_EMPRESA AS 'Endereço', 
                             CIDADE_EMPRESA AS 'Cidade', ESTADO_EMPRESA AS 'Estado'
@@ -19,7 +17,7 @@ namespace WEBSystemServiceManagement
             DataTable dt = db.RetornaTabela(query);
 
             return dt;
-            }
+        }
         public DataTable ExibirCliente()
         {
             Repository db = new Repository();
@@ -66,23 +64,23 @@ namespace WEBSystemServiceManagement
             return dt;
         }
 
-        public AdminModel.Empresa ExibirEmpresa(string nome) 
+        public AdminModel.Empresa ExibirEmpresa(string nome)
         {
             Repository db = new Repository();
             AdminModel.Empresa pModel = new AdminModel.Empresa();
-            
+
             string Sql = @"SELECT * FROM EMPRESAS WHERE EMPRESA_NOME ='" + nome + "';";
             pModel = db.ExibirEmpresa(Sql);
 
             return pModel;
         }
 
-        public void EditarEmpresa( AdminModel.Empresa pModel)
+        public void EditarEmpresa(AdminModel.Empresa pModel)
         {
             Repository db = new Repository();
 
             String SQL = @"UPDATE EMPRESAS SET 
-                                            EMPRESA_NOME ='" +pModel.NomeEmpresa + "'," +
+                                            EMPRESA_NOME ='" + pModel.NomeEmpresa + "'," +
                                             "CNPJ_EMPRESA = '" + pModel.CNPJEmpresa + "'," +
                                             "CIDADE_EMPRESA = '" + pModel.CidadeEmpresa + "'," +
                                             "ESTADO_EMPRESA = '" + pModel.EstadoEmpresa + "'," +
@@ -102,7 +100,7 @@ namespace WEBSystemServiceManagement
                                                     pModel.CidadeEmpresa + "','" +
                                                     pModel.EstadoEmpresa + "','" +
                                                     pModel.StatusEmpresa + "')";
-            
+
             db.Inserir(SQL);
         }
         public AdminModel.Cliente ExibirCliente(string nome)
@@ -114,7 +112,7 @@ namespace WEBSystemServiceManagement
                         FROM CLIENTE CLI
                         LEFT JOIN EMPRESAS EM ON EM.ID_EMPRESA = CLI.ID_EMPRESA
                         WHERE CLI.NOME_CLIENTE = '" + nome + "';";
-                        pModel = db.ExibirCliente(Sql);
+            pModel = db.ExibirCliente(Sql);
 
             return pModel;
         }
@@ -124,28 +122,28 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
 
             String SQL = @"UPDATE CLIENTE SET
-                            NOME_CLIENTE = '"+ pModel.NomeCliente +"'," + 
+                            NOME_CLIENTE = '" + pModel.NomeCliente + "'," +
                             "CIDADE_CLIENTE = '" + pModel.CidadeCliente + "'," +
                             "TELEFONE_CLIENTE = '" + pModel.TelefoneCliente + "'," +
-                            "EMAIL_CLIENTE = '" + pModel.EmailCliente+ "'," + 
-                            "ID_EMPRESA = (select ID FROM(SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.EmpresaCliente + "') AS TEMP)," + 
-                            "ESTADO_CLIENTE = '" + pModel.EstadoCliente +"'," +
-                            "STATUS_CLIENTE = '" + pModel.StatusCliente +"'" +
-                            "WHERE ID_CLIENTE = " + pModel.IdCliente ;
+                            "EMAIL_CLIENTE = '" + pModel.EmailCliente + "'," +
+                            "ID_EMPRESA = (select ID FROM(SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.EmpresaCliente + "') AS TEMP)," +
+                            "ESTADO_CLIENTE = '" + pModel.EstadoCliente + "'," +
+                            "STATUS_CLIENTE = '" + pModel.StatusCliente + "'" +
+                            "WHERE ID_CLIENTE = " + pModel.IdCliente;
             db.Update(SQL);
         }
         public void IncluirCliente(AdminModel.Cliente pModel)
         {
             Repository db = new Repository();
-            
+
             String SQL = @"INSERT INTO CLIENTE VALUES ( (SELECT MAXID FROM (SELECT (COALESCE(MAX(ID_CLIENTE),0) + 1) AS MAXID FROM CLIENTE)AS T1),'" +
                                                     pModel.NomeCliente + "','" +
                                                     pModel.CidadeCliente + "','" +
                                                     pModel.TelefoneCliente + "','" +
                                                     pModel.EmailCliente + "'," +
-                                                    "(select ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '"+ pModel.EmpresaCliente  +"') AS TEMP),'" +
+                                                    "(select ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.EmpresaCliente + "') AS TEMP),'" +
                                                     pModel.EstadoCliente + "','" +
-                                                    pModel.StatusCliente+ "')";
+                                                    pModel.StatusCliente + "')";
 
             db.Inserir(SQL);
         }
@@ -202,7 +200,7 @@ namespace WEBSystemServiceManagement
             Repository db = new Repository();
 
             String SQL = @"UPDATE GRUPO_USUARIO SET GRUPO_NOME ='" +
-                            pModel.NomeGrupo + "'," + "STATUS_GRUPO='" + pModel.StatusGrupo + 
+                            pModel.NomeGrupo + "'," + "STATUS_GRUPO='" + pModel.StatusGrupo +
                             "' WHERE ID_GRUPO =" + pModel.idGrupo;
 
 
@@ -213,8 +211,8 @@ namespace WEBSystemServiceManagement
         {
             Repository db = new Repository();
 
-           
-            String SQL = @"INSERT INTO GRUPO_USUARIO VALUES ((SELECT MAXID FROM(SELECT (COALESCE(MAX(ID_GRUPO),0) + 1) AS MAXID FROM GRUPO_USUARIO) AS T1),'" + 
+
+            String SQL = @"INSERT INTO GRUPO_USUARIO VALUES ((SELECT MAXID FROM(SELECT (COALESCE(MAX(ID_GRUPO),0) + 1) AS MAXID FROM GRUPO_USUARIO) AS T1),'" +
                 pModel.NomeGrupo + "','" +
                 pModel.StatusGrupo + "')";
             db.Inserir(SQL);
@@ -245,9 +243,9 @@ namespace WEBSystemServiceManagement
                                               "LOGIN = '" + pModel.Login + "'," +
                                               "ID_GRUPO = (SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + pModel.Grupo + "') AS TEMP)" + "," +
                                               "ID_EMPRESA = (SELECT ID FROM (SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.Empresa + "') AS TEMP1)" + "," +
-                                              "ID_PERMISSAO = (SELECT ID FROM (SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao  +"') AS TEMP2)" + "," +
+                                              "ID_PERMISSAO = (SELECT ID FROM (SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao + "') AS TEMP2)" + "," +
                                               "EMAIL_USUARIO = '" + pModel.EmailUsuario + "' " +
-                                              " WHERE ID_USUARIO = " +pModel.idUsuario;
+                                              " WHERE ID_USUARIO = " + pModel.idUsuario;
 
 
 
@@ -256,7 +254,7 @@ namespace WEBSystemServiceManagement
         public void IncluirUsuario(AdminModel.Usuario pModel)
         {
             Repository db = new Repository();
-            
+
 
 
             pModel.Senha = RandomString(6);
@@ -277,7 +275,7 @@ namespace WEBSystemServiceManagement
                             pModel.StatusUsuario + "'," + //STATUS_USUARIO
                             "(SELECT ID FROM (SELECT ID_GRUPO AS ID FROM GRUPO_USUARIO WHERE GRUPO_NOME = '" + pModel.Grupo + "') AS TEMP)" + "," + //ID_GRUPO
                             "(SELECT ID FROM(SELECT ID_EMPRESA AS ID FROM EMPRESAS WHERE EMPRESA_NOME = '" + pModel.Empresa + "') AS TEMP1)" + "," + //ID_EMPRESA
-                            "(SELECT ID FROM(SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao  +"') AS TEMP2)" + ",'" + //ID_PERMISSAO
+                            "(SELECT ID FROM(SELECT ID_PERMISSAO AS ID FROM PERMISSOES_USUARIOS WHERE NOME_PERMISSAO = '" + pModel.Permissao + "') AS TEMP2)" + ",'" + //ID_PERMISSAO
                             pModel.EmailUsuario + "')"; //EMAIL_USUARIO
 
             db.Inserir(SQL);
@@ -289,7 +287,7 @@ namespace WEBSystemServiceManagement
             mail.Subject = "SSM - Seu Novo Usuário";
             mail.SubjectEncoding = System.Text.Encoding.UTF8;
             mail.Body = @"Olá! Seu novo usuário ao System Service Management foi criado. Seguem abaixo os dados de Login. <br />
-                        Seu Login é: <b>" +pModel.Login + "</b> <br />" +
+                        Seu Login é: <b>" + pModel.Login + "</b> <br />" +
                         "Sua senha é: <b>" + pModel.Senha + "</b> <br />" +
                         "http://ssmenterprise.gear.host/";
 
@@ -307,7 +305,8 @@ namespace WEBSystemServiceManagement
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro com envio do e-mail" + ex);
+                Console.WriteLine("Ocorreu um erro com envio do e-mail" + ex);
+                //throw new Exception("Ocorreu um erro com envio do e-mail" + ex);
             }
             #endregion
         }
