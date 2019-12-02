@@ -78,10 +78,6 @@
               <textarea id="ResumoEdit" cols="40" runat="server" rows="10" style="border-radius: 5px" readonly></textarea>
 
                     <br />
-                <asp:Button ID="SalvarEditBtn" runat="server" Text="Salvar" />
-                <asp:Button ID="CancelarEditBtn" runat="server" Text="Cancelar" OnClick="Page_Load" />
-
-
 
                 </div>
                 <div class="ColumFixedRight">

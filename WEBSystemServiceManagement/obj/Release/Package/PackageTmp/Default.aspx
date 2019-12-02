@@ -12,7 +12,8 @@
         <div class="col-md-4">
             <h4>Sistema de Gerenciamento de Serviços</h4>
             <p>
-                Um sistema criado para que você tenha controle total dos seus serviços de TI.
+                Um sistema criado para que você tenha controle total dos seus serviços de TI. <br />
+                <img src="Content/service.jpg" style="height:100px; width:300px; position:center; padding-left: 50px;"/>
             </p>
             <p>
                 <a class="btn btn-default" href="/AboutSSM">Saiba Mais &roplus;</a>
@@ -21,7 +22,8 @@
         <div class="col-md-4">
             <h4>Solicite Sua Avaliação</h4>
             <p>
-                Um sistema customizado para atender às necessidades de seu negócio.
+                Um sistema customizado para atender às necessidades de seu negócio.<br />
+                <img src="Content/avalia.PNG" style="height:100px; width:300px; position:center; padding-left: 50px;"/>
             </p>
             <p>
                 <a class="btn btn-default" href="/OrcamentoForm">Solicite Já! &raquo;</a>
@@ -30,7 +32,8 @@
         <div class="col-md-4">
             <h4>Sobre Nós</h4>
             <p>
-                Desenvolvodores que buscam levar a baixo custo ferramentas capazes de ajudar e melhoro o seu negócio.
+                Desenvolvodores que buscam levar a baixo custo ferramentas capazes de ajudar e melhoro o seu negócio.<br />
+                <img src="Content/equipe.jpg" style="height:100px; width:300px; position:center; padding-left: 50px;"/>
             </p>
             <p>
                 <a class="btn btn-default" href="/About">Saiba Mais &roplus;</a>

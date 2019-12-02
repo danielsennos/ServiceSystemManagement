@@ -132,24 +132,6 @@ namespace WEBSystemServiceManagement
         protected global::System.Web.UI.HtmlControls.HtmlTextArea ResumoEdit;
 
         /// <summary>
-        /// Controle SalvarEditBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SalvarEditBtn;
-
-        /// <summary>
-        /// Controle CancelarEditBtn.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CancelarEditBtn;
-
-        /// <summary>
         /// Controle AbertoChange.
         /// </summary>
         /// <remarks>

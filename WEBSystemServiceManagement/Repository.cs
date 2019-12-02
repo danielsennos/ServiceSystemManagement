@@ -564,5 +564,21 @@ namespace WEBSystemServiceManagement
             return lista;
         }
 
+        public DataTable ExibeRelatorios(String SQLQuery)
+        {
+            DataTable dt = new DataTable();
+
+            using (var conn = new MySqlConnection(PATH))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter();
+                adapter.SelectCommand = new MySqlCommand(SQLQuery, conn);
+
+                adapter.Fill(dt);
+
+            }
+
+            return dt;
+        }
+
     }
 }
