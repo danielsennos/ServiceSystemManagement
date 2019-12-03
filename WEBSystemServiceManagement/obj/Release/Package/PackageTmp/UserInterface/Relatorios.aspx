@@ -27,10 +27,10 @@
     <div class="BodyContent">
         <!--INÍCIO DO MENU LATERAL DE RELATÓRIOS-->
         <div class="Menu-Left-Bar">
-            <asp:LinkButton ID="EmpresaBtn" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Chamado_por_Empresa">Chamado por Empresa</asp:LinkButton>
-            <asp:LinkButton ID="LinkButton1" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Tempo_Médio_de_Atendimento">Tempo Médio de Atendimento</asp:LinkButton>
-            <asp:LinkButton ID="LinkButton2" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Chamados_Abertos_no_Mês">Chamados Abertos no Mês</asp:LinkButton>
-            <asp:LinkButton ID="LinkButton3" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Categorias_mais_solicitadas">Categorias mais Solicitadas</asp:LinkButton>
+            <asp:LinkButton ID="Relatorio1" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Chamado_por_Empresa">Chamado por Empresa</asp:LinkButton>
+            <asp:LinkButton ID="Relatorio2" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Tempo_Médio_de_Atendimento">Tempo Médio de Atendimento</asp:LinkButton>
+            <asp:LinkButton ID="Relatorio3" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Chamados_Abertos_no_Mês">Chamados Abertos no Mês</asp:LinkButton>
+            <asp:LinkButton ID="Relatorio4" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width: 215px; left: 10px;" OnClick="Categorias_mais_solicitadas">Categorias mais Solicitadas</asp:LinkButton>
             
             <a href="./ExibirChamados" runat="server" class="list-group-item list-group-item-action bg-light" style="padding-left:0px; width:215px; margin-left:10px">Voltar</a>
         </div>
