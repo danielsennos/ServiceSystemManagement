@@ -17,13 +17,20 @@ namespace WEBSystemServiceManagement.UserInterface
                     {
 
                         Session.Timeout = 20;
-
+                        Repository db = new Repository();
                         ChamadoController chamadoController = new ChamadoController();
                         ChamadoModel mChamado = new ChamadoModel();
-                        String StatusChamado = "Aberto";
+                        String SQL = @"SELECT CONCAT(CS.TIPO_CHAMADO, CS.NUM_CHAMADO) as 'Número do Chamado', CS.STATUS_CHAMADO as 'Status',
+                            CC.CATEGORIA as 'Categoria', EMCLI.EMPRESA_NOME as 'Cliente', CS.URGENCIA as 'Urgência',
+                            CS.DATA_ABERTURA as 'Data Abertura', CS.DATA_ALVO_RESOLUCAO as 'Data Alvo para Resolução'
+                            FROM CHAMADOS CS
+                            LEFT JOIN CLIENTE CLI ON CS.ID_CLIENTE = CLI.ID_CLIENTE
+                            LEFT JOIN EMPRESAS EMCLI ON EMCLI.ID_EMPRESA = CS.ID_EMPRESA
+                            LEFT JOIN CATEGORIA_CHAMADO CC ON CS.ID_CATEGORIA = CC.ID_CATEGORIA
+                            WHERE CS.STATUS_CHAMADO = 'Aberto' OR CS.STATUS_CHAMADO = 'Em Andamento' OR CS.STATUS_CHAMADO='Pendente';";
 
 
-                        GridChamados.DataSource = chamadoController.ExibirChamados(StatusChamado);
+                        GridChamados.DataSource = db.ExibeChamados(SQL);
                         GridChamados.DataBind();
                     }
                     else { Response.Redirect("~/UserInterface/SessionExpired", true); }
