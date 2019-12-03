@@ -11,10 +11,10 @@ namespace WEBSystemServiceManagement
 
         private MySqlConnection conexao;
         #region Path de Desenvolvimento     
-        private readonly string PATH = "SERVER=den1.mysql6.gear.host; DATABASE=ssmdesenv; UID=ssmdesenv; PASSWORD=Ib2l?~K2ZEsR"; // Banco de DESENVOLVIMENTO
+        //private readonly string PATH = "SERVER=den1.mysql6.gear.host; DATABASE=ssmdesenv; UID=ssmdesenv; PASSWORD=Ib2l?~K2ZEsR"; // Banco de DESENVOLVIMENTO
         #endregion
         #region Path de Produção
-        //private readonly string PATH = "SERVER=den1.mysql2.gear.host; DATABASE=ssmproducao; UID=ssmproducao; PASSWORD=Jk4P2Bh?~aA0"; // Banco de DESENVOLVIMENTO
+        private readonly string PATH = "SERVER=den1.mysql2.gear.host; DATABASE=ssmproducao; UID=ssmproducao; PASSWORD=Jk4P2Bh?~aA0"; // Banco de DESENVOLVIMENTO
         #endregion
 
         #region MetodosUniversais
