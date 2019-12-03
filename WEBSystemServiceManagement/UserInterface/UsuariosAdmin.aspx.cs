@@ -95,7 +95,7 @@ namespace WEBSystemServiceManagement.UserInterface
             {
                 adminController.EditarUsuario(pModel); Response.Write("<script>alert('Dados Atualizados')</script>");
             }
-            else { adminController.IncluirUsuario(pModel); Response.Write("<script>alert('Sados Cadastrados')</script>"); }
+            else { adminController.IncluirUsuario(pModel); Response.Write("<script>alert('Dados Cadastrados')</script>"); }
 
 
 

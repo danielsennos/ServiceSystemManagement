@@ -54,7 +54,7 @@ namespace WEBSystemServiceManagement
             mail.IsBodyHtml = true;
             SmtpClient client = new SmtpClient();
             client.Credentials = new System.Net.NetworkCredential(remetenteEmail, "est@ciotcc2");
-            client.Port = 580; //587
+            client.Port = 587;
             client.Host = "smtp.gmail.com";
             client.EnableSsl = true;
             try
